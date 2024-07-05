@@ -2,27 +2,33 @@ package com.myprojects.lists;
 
 public class Utils {
 
-    public static void addElementAfterHead(ListNode head, int val) {
+    public static ListNode addElementAfterHead(ListNode head, int val) {
         ListNode newNode = new ListNode(val);
 
         newNode.next = head.next;
         head.next = newNode;
+        return head;
     }
 
-    //TODO how to remove the first element?
-    public static void removeElement(ListNode head, int val) {
+    public static ListNode removeElement(ListNode head, int val) {
         ListNode previous = null;
-        while (head != null && head.val != val) {
-            previous = head;
-            head = head.next;
+        ListNode current = head;
+        while (current != null && current.val != val) {
+            previous = current;
+            current = current.next;
         }
-        if (head != null && previous != null) {
-            previous.next = head.next;
+        if (current != null) {
+            if(previous == null) {
+                head = head.next;
+            } else {
+                previous.next = current.next;
+            }
         }
+        return head;
     }
 
-    public static void removeNthElement(ListNode head, int n) {
-        int i = 1;
+    public static ListNode removeNthElement(ListNode head, int n) {
+        int i = 0;
         ListNode previous = null;
         while(head != null && i<n) {
             previous = head;
@@ -30,9 +36,14 @@ public class Utils {
             i++;
         }
 
-        if(head != null && previous != null) {
-            previous.next = head.next;
+        if(head != null) {
+            if(previous == null) {
+                head = head.next;
+            } else {
+                previous.next = head.next;
+            }
         }
+        return head;
     }
 
     public static void printList(ListNode head) {
