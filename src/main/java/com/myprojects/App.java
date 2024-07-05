@@ -20,6 +20,10 @@ public class App {
         Utils.removeElement(head, 2);
 
         Utils.printList(head);
+
+        Utils.removeNthElement(head, 2);
+
+        Utils.printList(head);
     }
 
 }

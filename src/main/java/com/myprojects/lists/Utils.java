@@ -20,6 +20,20 @@ public class Utils {
         }
     }
 
+    public static void removeNthElement(ListNode head, int n) {
+        int i = 1;
+        ListNode previous = null;
+        while(head != null && i<n) {
+            previous = head;
+            head = head.next;
+            i++;
+        }
+
+        if(head != null && previous != null) {
+            previous.next = head.next;
+        }
+    }
+
     public static void printList(ListNode head) {
         while (head != null) {
             System.out.print(head.val + " ");
