@@ -18,6 +18,10 @@ public class App {
         head = Utils.removeElement(head, 1);
 
         Utils.printList(head);
+
+        head = Utils.removeNthElement(head, 1);
+
+        Utils.printList(head);
     }
 
 }

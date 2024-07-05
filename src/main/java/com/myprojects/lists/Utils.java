@@ -28,19 +28,20 @@ public class Utils {
     }
 
     public static ListNode removeNthElement(ListNode head, int n) {
-        int i = 0;
+        int i = 1;
         ListNode previous = null;
-        while(head != null && i<n) {
-            previous = head;
-            head = head.next;
+        ListNode current = head;
+        while(current != null && i<n) {
+            previous = current;
+            current = current.next;
             i++;
         }
 
-        if(head != null) {
+        if(current != null) {
             if(previous == null) {
                 head = head.next;
             } else {
-                previous.next = head.next;
+                previous.next = current.next;
             }
         }
         return head;
