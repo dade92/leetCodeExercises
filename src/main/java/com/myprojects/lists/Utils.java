@@ -2,6 +2,25 @@ package com.myprojects.lists;
 
 public class Utils {
 
+    public static ListNode addElement(ListNode head, int val, int position) {
+        ListNode newNode = new ListNode(val);
+
+        if(position == 1) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            ListNode current = head;
+            for(int i = 1; i <= position -1; i++) {
+                current = current.next;
+            }
+
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        return head;
+    }
+
     public static ListNode addElementAfterHead(ListNode head, int val) {
         ListNode newNode = new ListNode(val);
 
