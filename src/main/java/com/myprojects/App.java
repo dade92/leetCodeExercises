@@ -1,6 +1,7 @@
 package com.myprojects;
 
 import com.myprojects.lists.ListNode;
+import com.myprojects.lists.Utils;
 
 /**
  * Hello world!
@@ -8,22 +9,17 @@ import com.myprojects.lists.ListNode;
  */
 public class App {
     public static void main( String[] args ) {
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
+        ListNode head = new ListNode(1);
 
-        ListNode head = node1;
-        head.next = node2;
+        Utils.addElementAfterHead(head, 2);
+        Utils.addElementAfterHead(head, 3);
+        Utils.addElementAfterHead(head, 4);
 
-        traverse(head);
-        traverse(head);
+        Utils.printList(head);
+
+        Utils.removeElement(head, 2);
+
+        Utils.printList(head);
     }
 
-    private static void traverse(ListNode head) {
-        while (head != null) {
-            System.out.print(head.val + " ");
-            head = head.next;
-        }
-
-        System.out.println();
-    }
 }
