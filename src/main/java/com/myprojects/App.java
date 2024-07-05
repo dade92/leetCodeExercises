@@ -17,13 +17,13 @@ public class App {
 
         Utils.printList(head);
 
-        Utils.removeElement(head, 2);
+        Utils.removeElement(head, 1);
 
         Utils.printList(head);
 
-        Utils.removeNthElement(head, 2);
+//        Utils.removeNthElement(head, 1);
 
-        Utils.printList(head);
+//        Utils.printList(head);
     }
 
 }

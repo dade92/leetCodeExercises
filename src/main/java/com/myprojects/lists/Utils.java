@@ -9,6 +9,7 @@ public class Utils {
         head.next = newNode;
     }
 
+    //TODO how to remove the first element?
     public static void removeElement(ListNode head, int val) {
         ListNode previous = null;
         while (head != null && head.val != val) {
