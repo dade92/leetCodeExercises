@@ -18,26 +18,33 @@ public final class Utils {
     }
 
     public static ArrayList<Integer> inOrderTraversal(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        } else {
-            ArrayList<Integer> traversalOutcome = inOrderTraversal(root.left);
-            traversalOutcome.add(root.val);
-            traversalOutcome.addAll(inOrderTraversal(root.right));
-            return traversalOutcome;
+        ArrayList<Integer> result = new ArrayList<>();
+        if (root != null) {
+            result.addAll(inOrderTraversal(root.left));
+            result.add(root.val);
+            result.addAll(inOrderTraversal(root.right));
         }
+        return result;
     }
 
     public static ArrayList<Integer> preOrderTraversal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        } else {
+        if (root != null) {
             result.add(root.val);
             result.addAll(preOrderTraversal(root.left));
             result.addAll(preOrderTraversal(root.right));
-            return result;
         }
+        return result;
+    }
+
+    public static ArrayList<Integer> postOrderTraversal(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if (root != null) {
+            result.addAll(postOrderTraversal(root.left));
+            result.addAll(postOrderTraversal(root.right));
+            result.add(root.val);
+        }
+        return result;
     }
 
 }

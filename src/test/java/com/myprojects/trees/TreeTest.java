@@ -1,5 +1,6 @@
 package com.myprojects.trees;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public class TreeTest {
         root.left.left = new TreeNode(9);
         root.right.right = new TreeNode(11);
 
-        assertEquals(Utils.inOrderTraversal(root), Arrays.asList(9, 3, 5, 8, 11));
+        assertEquals(Arrays.asList(9, 3, 5, 8, 11), Utils.inOrderTraversal(root));
     }
 
     @Test
@@ -28,10 +29,22 @@ public class TreeTest {
         root.left.left = new TreeNode(9);
         root.right.right = new TreeNode(11);
 
-        assertEquals(Utils.preOrderTraversal(root), Arrays.asList(5, 3, 9, 8, 11));
+        assertEquals(Arrays.asList(5, 3, 9, 8, 11), Utils.preOrderTraversal(root));
     }
 
     @Test
+    void postOrderTraversal() {
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(8);
+        root.left.left = new TreeNode(9);
+        root.right.right = new TreeNode(11);
+
+        assertEquals(Arrays.asList(9, 3, 11, 8, 5), Utils.postOrderTraversal(root));
+    }
+
+    @Test
+    @Disabled
     void insert() {
         TreeNode root = null;
 
