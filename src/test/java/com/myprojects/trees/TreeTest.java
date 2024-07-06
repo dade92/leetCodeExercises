@@ -1,10 +1,12 @@
 package com.myprojects.trees;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TreeTest {
@@ -44,17 +46,14 @@ public class TreeTest {
     }
 
     @Test
-    @Disabled
     void insert() {
         TreeNode root = null;
 
         root = Utils.insert(root, 5);
         root = Utils.insert(root, 3);
-        root = Utils.insert(root, 1);
+        root = Utils.insert(root, 7);
 
+        assertEquals(Arrays.asList(3, 5, 7), Utils.inOrderTraversal(root));
     }
 
-    private void checkTreeStatus(TreeNode root, int[] expectedInOrderStatus) {
-
-    }
 }
