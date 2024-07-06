@@ -3,6 +3,7 @@ package com.myprojects.lists;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class LisTest {
 
@@ -23,7 +24,7 @@ public class LisTest {
 
     @Test
     void removeElement() {
-        int[] expectedFinalResult = {3, 5, 4, 8};
+        int[] expectedFinalResult = {};
 
         ListNode head = new ListNode(5);
 
@@ -32,9 +33,16 @@ public class LisTest {
         checkListStatus(head, new int[]{5, 8, 10});
         head = Utils.removeElement(head, 5);            //at the top
         checkListStatus(head, new int[]{8, 10});
+        head = Utils.removeElement(head, 10);            //at the end
+        checkListStatus(head, new int[]{8});
+        head = Utils.removeElement(head, 8);            //at the end
+        checkListStatus(head, expectedFinalResult);
     }
 
     private void checkListStatus(ListNode head, int[] expectedElements) {
+        if(expectedElements.length == 0) {
+            assertNull(head);
+        }
         int index = 0;
         while(head != null) {
             assertEquals(expectedElements[index], head.val);

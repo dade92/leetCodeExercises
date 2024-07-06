@@ -38,7 +38,7 @@ public final class Utils {
         return head;
     }
 
-    public static ListNode removeNthElement(ListNode head, int n) {
+    public static ListNode removeElementAt(ListNode head, int n) {
         int i = 1;
         ListNode previous = null;
         ListNode current = head;
