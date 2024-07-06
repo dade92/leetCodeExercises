@@ -46,6 +46,20 @@ public class TreeTest {
     }
 
     @Test
+    void search() {
+        TreeNode toBeSearched = new TreeNode(8);
+
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = toBeSearched;
+        root.left.left = new TreeNode(9);
+        root.right.right = new TreeNode(11);
+
+        assertEquals(toBeSearched, Utils.search(root, 8));
+        assertNull(Utils.search(root, 66));
+    }
+
+    @Test
     void insert() {
         TreeNode root = null;
 

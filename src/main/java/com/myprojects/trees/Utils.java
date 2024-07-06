@@ -47,4 +47,16 @@ public final class Utils {
         return result;
     }
 
+    public static TreeNode search(TreeNode root, int val) {
+        if(root == null || root.val == val) {
+            return root;
+        } else {
+            if(val < root.val) {
+                return search(root.left, val);
+            } else {
+                return search(root.right, val);
+            }
+        }
+    }
+
 }
