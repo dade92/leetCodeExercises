@@ -1,6 +1,6 @@
 package com.myprojects.lists;
 
-public class Utils {
+public final class Utils {
 
     public static ListNode addElement(ListNode head, int val, int position) {
         ListNode newNode = new ListNode(val);
@@ -10,7 +10,7 @@ public class Utils {
             head = newNode;
         } else {
             ListNode current = head;
-            for(int i = 1; i <= position -1; i++) {
+            for(int i = 1; i < position -1; i++) {
                 current = current.next;
             }
 
@@ -18,14 +18,6 @@ public class Utils {
             current.next = newNode;
         }
 
-        return head;
-    }
-
-    public static ListNode addElementAfterHead(ListNode head, int val) {
-        ListNode newNode = new ListNode(val);
-
-        newNode.next = head.next;
-        head.next = newNode;
         return head;
     }
 
