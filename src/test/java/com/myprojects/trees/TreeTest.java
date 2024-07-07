@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -63,13 +64,17 @@ public class TreeTest {
         root = Utils.insert(root, 3);
         root = Utils.insert(root, 7);
 
-        assertEquals(Arrays.asList(3, 5, 7), Utils.inOrderTraversal(root));
+        checkTreeInBreadth(root, Arrays.asList(5, 3, 7));
     }
 
     @Test
     void invertTree() {
         root = Utils.invertTree(root);
 
-        assertEquals(Arrays.asList(11, 8, 5, 3, 9), Utils.inOrderTraversal(root));
+        checkTreeInBreadth(root, Arrays.asList(5, 8, 3, 11, 9));
+    }
+
+    private void checkTreeInBreadth(TreeNode root, List<Integer> expected) {
+        assertEquals(expected, Utils.breadthTraversal(root));
     }
 }
