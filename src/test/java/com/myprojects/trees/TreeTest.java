@@ -70,4 +70,16 @@ public class TreeTest {
         assertEquals(Arrays.asList(3, 5, 7), Utils.inOrderTraversal(root));
     }
 
+    @Test
+    void invertTree() {
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(8);
+        root.left.left = new TreeNode(9);
+        root.right.right = new TreeNode(11);
+
+        root = Utils.invertTree(root);
+
+        assertEquals(Arrays.asList(11, 8, 5, 3, 9), Utils.inOrderTraversal(root));
+    }
 }
