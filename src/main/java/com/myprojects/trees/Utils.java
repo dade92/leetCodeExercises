@@ -1,6 +1,6 @@
 package com.myprojects.trees;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public final class Utils {
 
@@ -66,6 +66,32 @@ public final class Utils {
             root.right = temp;
         }
         return root;
+    }
+
+    public static List<Integer> breadthTraversal(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<Integer> output = new ArrayList<>();
+
+        if(root == null) {
+            return output;
+        }
+
+        queue.offer(root);
+
+        while(!queue.isEmpty()) {
+            TreeNode treeNode = queue.poll();
+            output.add(treeNode.val);
+
+            if(treeNode.left != null) {
+                queue.offer(treeNode.left);
+            }
+            if(treeNode.right != null) {
+                queue.offer(treeNode.right);
+            }
+
+        }
+
+        return output;
     }
 
 }
