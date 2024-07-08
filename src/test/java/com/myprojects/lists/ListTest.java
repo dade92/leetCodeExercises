@@ -2,8 +2,7 @@ package com.myprojects.lists;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static com.myprojects.Shared.checkListStatus;
 
 public class ListTest {
 
@@ -57,15 +56,4 @@ public class ListTest {
         checkListStatus(head, expectedFinalResult);
     }
 
-    private void checkListStatus(ListNode head, int[] expectedElements) {
-        if(expectedElements.length == 0) {
-            assertNull(head);
-        }
-        int index = 0;
-        while(head != null) {
-            assertEquals(expectedElements[index], head.val);
-            head = head.next;
-            index++;
-        }
-    }
 }

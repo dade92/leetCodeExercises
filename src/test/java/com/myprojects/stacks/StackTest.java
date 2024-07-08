@@ -3,6 +3,7 @@ package com.myprojects.stacks;
 import com.myprojects.lists.ListNode;
 import org.junit.jupiter.api.Test;
 
+import static com.myprojects.Shared.checkListStatus;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -36,15 +37,4 @@ public class StackTest {
         checkListStatus(head, expectedFinalResult);
     }
 
-    private void checkListStatus(ListNode head, int[] expectedElements) {
-        if (expectedElements.length == 0) {
-            assertNull(head);
-        }
-        int index = 0;
-        while (head != null) {
-            assertEquals(expectedElements[index], head.val);
-            head = head.next;
-            index++;
-        }
-    }
 }
