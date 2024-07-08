@@ -31,17 +31,17 @@ public class StackTest {
         checkListStatus(head, new int[]{8});
         StackStatus status = Utils.pop(head);
 
-        head =status.newHead();
+        head = status.newHead();
         assertEquals(8, status.removedValue());
         checkListStatus(head, expectedFinalResult);
     }
 
     private void checkListStatus(ListNode head, int[] expectedElements) {
-        if(expectedElements.length == 0) {
+        if (expectedElements.length == 0) {
             assertNull(head);
         }
         int index = 0;
-        while(head != null) {
+        while (head != null) {
             assertEquals(expectedElements[index], head.val);
             head = head.next;
             index++;
