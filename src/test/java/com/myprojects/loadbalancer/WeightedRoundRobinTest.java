@@ -1,36 +1,75 @@
 package com.myprojects.loadbalancer;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
-class WeightedRoundRobinTest {
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    List<String> servers = List.of("Server1", "Server2", "Server3");
-    List<Integer> weights = List.of(5, 1, 1);
+public class WeightedRoundRobinTest {
 
-    private WeightedRoundRobin weightedRoundRobin = new WeightedRoundRobin(servers, weights);
+    private final List<String> servers = List.of("Server1", "Server2", "Server3");
 
-    @Test
-    void getNextServer() {
+    @ParameterizedTest
+    @MethodSource("weights")
+    void getNextServer(
+        List<Integer> weights,
+        List<String> expected
+    ) {
+        WeightedRoundRobin weightedRoundRobin = new WeightedRoundRobin(servers, weights);
+
         List<String> actual = new ArrayList<>();
-        List<String> expected = Arrays.asList(
-            "Server1",
-            "Server1",
-            "Server1",
-            "Server1",
-            "Server1",
-            "Server2",
-            "Server3"
-        );
 
         for (int i = 0; i < 7; i++) {
             actual.add(weightedRoundRobin.getNextServer());
         }
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
+    }
+
+    static Stream<Arguments> weights() {
+        return Stream.of(
+            Arguments.of(
+                asList(5, 1, 1),
+                asList(
+                    "Server1",
+                    "Server1",
+                    "Server1",
+                    "Server1",
+                    "Server1",
+                    "Server2",
+                    "Server3"
+                )
+            ),
+            Arguments.of(
+                asList(1, 1, 1),
+                asList(
+                    "Server1",
+                    "Server2",
+                    "Server3",
+                    "Server1",
+                    "Server2",
+                    "Server3",
+                    "Server1"
+                )
+            ),
+            Arguments.of(
+                asList(3, 2, 1),
+                asList(
+                    "Server1",
+                    "Server1",
+                    "Server2",
+                    "Server1",
+                    "Server2",
+                    "Server3",
+                    "Server1"
+                )
+            )
+        );
     }
 }
