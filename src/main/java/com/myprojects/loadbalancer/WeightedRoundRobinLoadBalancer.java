@@ -2,13 +2,13 @@ package com.myprojects.loadbalancer;
 
 import java.util.List;
 
-public class WeightedRoundRobin {
+public class WeightedRoundRobinLoadBalancer implements LoadBalancer {
     private final List<String> servers;
     private final List<Integer> weights;
     private int currentIndex;
     private int currentWeight;
 
-    public WeightedRoundRobin(List<String> servers, List<Integer> weights) {
+    public WeightedRoundRobinLoadBalancer(List<String> servers, List<Integer> weights) {
         this.servers = servers;
         this.weights = weights;
         this.currentIndex = -1;

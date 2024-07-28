@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WeightedRoundRobinTest {
+public class WeightedRoundRobinLoadBalancerTest {
 
     private final List<String> servers = List.of("Server1", "Server2", "Server3");
 
@@ -21,12 +21,12 @@ public class WeightedRoundRobinTest {
         List<Integer> weights,
         List<String> expected
     ) {
-        WeightedRoundRobin weightedRoundRobin = new WeightedRoundRobin(servers, weights);
+        WeightedRoundRobinLoadBalancer weightedRoundRobinLoadBalancer = new WeightedRoundRobinLoadBalancer(servers, weights);
 
         List<String> actual = new ArrayList<>();
 
         for (int i = 0; i < 7; i++) {
-            actual.add(weightedRoundRobin.getNextServer());
+            actual.add(weightedRoundRobinLoadBalancer.getNextServer());
         }
 
         assertEquals(expected, actual);
