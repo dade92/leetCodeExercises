@@ -12,6 +12,7 @@ public class RoundRobinLoadBalancer implements LoadBalancer {
         currentIndex = -1;
     }
 
+    @Override
     public String getNextServer() {
         currentIndex = (currentIndex + 1) % servers.size();
         return servers.get(currentIndex);

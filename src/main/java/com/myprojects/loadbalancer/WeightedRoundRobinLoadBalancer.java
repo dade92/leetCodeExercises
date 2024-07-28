@@ -15,6 +15,7 @@ public class WeightedRoundRobinLoadBalancer implements LoadBalancer {
         this.currentWeight = 0;
     }
 
+    @Override
     public String getNextServer() {
         while (true) {
             currentIndex = (currentIndex + 1) % servers.size();
