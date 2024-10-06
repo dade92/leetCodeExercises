@@ -43,11 +43,11 @@ class Trie {
 
     public List<String> printWords() {
         List<String> output = new LinkedList<>();
-        innerPrintWords(root, new StringBuilder(), output, "");
+        printWordsStartingFrom(root, new StringBuilder(), output);
         return output;
     }
 
-    public List<String> printWordsStartingFrom(String word) {
+    public List<String> suggestFrom(String word) {
         TrieNode node = root;
         for(char c: word.toCharArray()) {
             int index = c - OFFSET;
@@ -58,7 +58,7 @@ class Trie {
         }
 
         List<String> output = new LinkedList<>();
-        innerPrintWords(node, new StringBuilder(), output, word);
+        printWordsStartingFrom(node, new StringBuilder(word), output);
         return output;
     }
 
@@ -89,16 +89,16 @@ class Trie {
         return false;
     }
 
-    private void innerPrintWords(TrieNode node, StringBuilder builder, List<String> output, String prefix) {
+    private void printWordsStartingFrom(TrieNode node, StringBuilder temp, List<String> output) {
         if (node.isEndOfWord) {
-            output.add(prefix + builder.toString());
+            output.add(temp.toString());
         }
 
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {
             if (node.children[i] != null) {
-                builder.append((char) ('a' + i));
-                innerPrintWords(node.children[i], builder, output, prefix);
-                builder.deleteCharAt(builder.length() - 1);
+                temp.append((char) ('a' + i));
+                printWordsStartingFrom(node.children[i], temp, output);
+                temp.deleteCharAt(temp.length() - 1);
             }
         }
     }

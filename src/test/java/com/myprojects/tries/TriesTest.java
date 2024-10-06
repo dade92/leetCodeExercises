@@ -1,6 +1,5 @@
 package com.myprojects.tries;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -55,6 +54,6 @@ public class TriesTest {
 
         assertEquals(trie.printWords(), Arrays.asList("app", "apple", "banana", "bananas"));
 
-        assertEquals(trie.printWordsStartingFrom("ap"), Arrays.asList("app", "apple"));
+        assertEquals(trie.suggestFrom("ap"), Arrays.asList("app", "apple"));
     }
 }
