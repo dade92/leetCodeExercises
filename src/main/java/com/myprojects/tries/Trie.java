@@ -1,5 +1,6 @@
 package com.myprojects.tries;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,7 +43,22 @@ class Trie {
 
     public List<String> printWords() {
         List<String> output = new LinkedList<>();
-        printWords(root, new StringBuilder(), output);
+        innerPrintWords(root, new StringBuilder(), output, "");
+        return output;
+    }
+
+    public List<String> printWordsStartingFrom(String word) {
+        TrieNode node = root;
+        for(char c: word.toCharArray()) {
+            int index = c - OFFSET;
+            if (node.children[index] == null) {
+                return Collections.emptyList();
+            }
+            node = node.children[index];
+        }
+
+        List<String> output = new LinkedList<>();
+        innerPrintWords(node, new StringBuilder(), output, word);
         return output;
     }
 
@@ -73,16 +89,16 @@ class Trie {
         return false;
     }
 
-    private void printWords(TrieNode node, StringBuilder prefix, List<String> output) {
+    private void innerPrintWords(TrieNode node, StringBuilder builder, List<String> output, String prefix) {
         if (node.isEndOfWord) {
-            output.add(prefix.toString());
+            output.add(prefix + builder.toString());
         }
 
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {
             if (node.children[i] != null) {
-                prefix.append((char) ('a' + i));
-                printWords(node.children[i], prefix, output);
-                prefix.deleteCharAt(prefix.length() - 1);
+                builder.append((char) ('a' + i));
+                innerPrintWords(node.children[i], builder, output, prefix);
+                builder.deleteCharAt(builder.length() - 1);
             }
         }
     }
