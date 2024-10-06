@@ -13,9 +13,8 @@ public class TriesTest {
     Trie trie = new Trie();
 
     @Test
-    void insertAndSearch() {
-        trie.insert("apple");
-        trie.insert("banana");
+    void search() {
+        trie = new Trie("apple", "banana");
 
         assertTrue(trie.search("apple"));
         assertTrue(trie.search("banana"));
@@ -32,8 +31,7 @@ public class TriesTest {
         String word = "ciccio";
         String anotherWordWithCommonPrefix = "cicc";
 
-        trie.insert(word);
-        trie.insert(anotherWordWithCommonPrefix);
+        trie = new Trie(word, anotherWordWithCommonPrefix);
         assertTrue(trie.search(word));
 
         trie.delete(word);
@@ -47,10 +45,7 @@ public class TriesTest {
 
     @Test
     void printWords() {
-        trie.insert("apple");
-        trie.insert("app");
-        trie.insert("banana");
-        trie.insert("bananas");
+        trie = new Trie("apple", "app", "banana", "bananas");
 
         assertEquals(trie.printWords(), Arrays.asList("app", "apple", "banana", "bananas"));
 

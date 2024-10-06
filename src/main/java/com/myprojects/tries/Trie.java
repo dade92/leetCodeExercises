@@ -13,6 +13,13 @@ class Trie {
         root = new TrieNode();
     }
 
+    public Trie(String... words) {
+        root = new TrieNode();
+        for (String word : words) {
+            this.insert(word);
+        }
+    }
+
     public void insert(String word) {
         TrieNode node = root;
         for (char c : word.toCharArray()) {
@@ -49,7 +56,7 @@ class Trie {
 
     public List<String> suggestFrom(String word) {
         TrieNode node = root;
-        for(char c: word.toCharArray()) {
+        for (char c : word.toCharArray()) {
             int index = c - OFFSET;
             if (node.children[index] == null) {
                 return Collections.emptyList();
