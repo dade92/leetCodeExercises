@@ -1,5 +1,8 @@
 package com.myprojects.tries;
 
+import java.util.LinkedList;
+import java.util.List;
+
 class Trie {
     private final TrieNode root;
     private static final int NUM_OF_SYMBOLS = 26;
@@ -37,8 +40,10 @@ class Trie {
         return delete(root, word, 0);
     }
 
-    public void printWords() {
-        printWords(root, new StringBuilder());
+    public List<String> printWords() {
+        List<String> output = new LinkedList<>();
+        printWords(root, new StringBuilder(), output);
+        return output;
     }
 
     private boolean delete(TrieNode current, String word, int depth) {
@@ -68,15 +73,15 @@ class Trie {
         return false;
     }
 
-    private void printWords(TrieNode node, StringBuilder prefix) {
+    private void printWords(TrieNode node, StringBuilder prefix, List<String> output) {
         if (node.isEndOfWord) {
-            System.out.println(prefix.toString());
+            output.add(prefix.toString());
         }
 
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {
             if (node.children[i] != null) {
                 prefix.append((char) ('a' + i));
-                printWords(node.children[i], prefix);
+                printWords(node.children[i], prefix, output);
                 prefix.deleteCharAt(prefix.length() - 1);
             }
         }

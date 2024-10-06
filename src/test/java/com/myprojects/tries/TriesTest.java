@@ -20,7 +20,7 @@ public class TriesTest {
         assertFalse(trie.search("app"));
 
         System.out.println("Words in the trie:");
-        trie.printWords();
+        System.out.println(trie.printWords());
     }
 
 
@@ -39,6 +39,6 @@ public class TriesTest {
         assertTrue(trie.search(anotherWordWithCommonPrefix));
 
         System.out.println("Words in the trie:");
-        trie.printWords();
+        System.out.println(trie.printWords());
     }
 }
