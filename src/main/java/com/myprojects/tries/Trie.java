@@ -48,13 +48,13 @@ class Trie {
         return delete(root, word, 0);
     }
 
-    public List<String> printWords() {
+    public List<String> retrieveWords() {
         List<String> output = new LinkedList<>();
-        printWordsStartingFrom(root, new StringBuilder(), output);
+        retrieveWordsStartingFrom(root, new StringBuilder(), output);
         return output;
     }
 
-    public List<String> suggestFrom(String word) {
+    public List<String> retrieveWordsWithPrefix(String word) {
         TrieNode node = root;
         for (char c : word.toCharArray()) {
             int index = c - OFFSET;
@@ -65,7 +65,7 @@ class Trie {
         }
 
         List<String> output = new LinkedList<>();
-        printWordsStartingFrom(node, new StringBuilder(word), output);
+        retrieveWordsStartingFrom(node, new StringBuilder(word), output);
         return output;
     }
 
@@ -96,7 +96,7 @@ class Trie {
         return false;
     }
 
-    private void printWordsStartingFrom(TrieNode node, StringBuilder temp, List<String> output) {
+    private void retrieveWordsStartingFrom(TrieNode node, StringBuilder temp, List<String> output) {
         if (node.isEndOfWord) {
             output.add(temp.toString());
         }
@@ -104,7 +104,7 @@ class Trie {
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {
             if (node.children[i] != null) {
                 temp.append((char) ('a' + i));
-                printWordsStartingFrom(node.children[i], temp, output);
+                retrieveWordsStartingFrom(node.children[i], temp, output);
                 temp.deleteCharAt(temp.length() - 1);
             }
         }

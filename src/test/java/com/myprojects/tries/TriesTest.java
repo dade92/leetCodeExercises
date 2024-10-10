@@ -22,9 +22,8 @@ public class TriesTest {
         assertFalse(trie.search("app"));
 
         System.out.println("Words in the trie:");
-        System.out.println(trie.printWords());
+        System.out.println(trie.retrieveWords());
     }
-
 
     @Test
     void delete() {
@@ -40,15 +39,15 @@ public class TriesTest {
         assertTrue(trie.search(anotherWordWithCommonPrefix));
 
         System.out.println("Words in the trie:");
-        System.out.println(trie.printWords());
+        System.out.println(trie.retrieveWords());
     }
 
     @Test
-    void printWords() {
+    void retrieveWords() {
         trie = new Trie("apple", "app", "banana", "bananas");
 
-        assertEquals(trie.printWords(), Arrays.asList("app", "apple", "banana", "bananas"));
+        assertEquals(trie.retrieveWords(), Arrays.asList("app", "apple", "banana", "bananas"));
 
-        assertEquals(trie.suggestFrom("ap"), Arrays.asList("app", "apple"));
+        assertEquals(trie.retrieveWordsWithPrefix("ap"), Arrays.asList("app", "apple"));
     }
 }
