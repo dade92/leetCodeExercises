@@ -103,7 +103,7 @@ class Trie {
 
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {
             if (node.children[i] != null) {
-                temp.append((char) ('a' + i));
+                temp.append((char) (OFFSET + i));
                 retrieveWordsStartingFrom(node.children[i], temp, output);
                 temp.deleteCharAt(temp.length() - 1);
             }

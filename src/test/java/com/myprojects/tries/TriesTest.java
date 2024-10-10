@@ -43,10 +43,15 @@ public class TriesTest {
     }
 
     @Test
-    void retrieveWords() {
+    void retrieveAllWords() {
         trie = new Trie("apple", "app", "banana", "bananas");
 
         assertEquals(trie.retrieveWords(), Arrays.asList("app", "apple", "banana", "bananas"));
+    }
+
+    @Test
+    void retrieveWordsFromPrefix() {
+        trie = new Trie("apple", "app", "banana", "bananas");
 
         assertEquals(trie.retrieveWordsWithPrefix("ap"), Arrays.asList("app", "apple"));
     }
