@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static com.myprojects.Shared.checkListStatus;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class StackTest {
 

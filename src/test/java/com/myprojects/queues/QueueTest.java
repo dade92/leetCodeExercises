@@ -1,12 +1,10 @@
 package com.myprojects.queues;
 
-import com.myprojects.Shared;
 import com.myprojects.lists.ListNode;
 import org.junit.jupiter.api.Test;
 
 import static com.myprojects.Shared.checkListStatus;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class QueueTest {
 
