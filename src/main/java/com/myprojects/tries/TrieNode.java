@@ -4,8 +4,8 @@ class TrieNode {
     TrieNode[] children;
     boolean isEndOfWord;
 
-    public TrieNode() {
-        children = new TrieNode[26];
+    public TrieNode(int numOfSymbols) {
+        children = new TrieNode[numOfSymbols];
         isEndOfWord = false;
     }
 }

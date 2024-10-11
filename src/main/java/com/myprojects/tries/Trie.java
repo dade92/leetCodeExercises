@@ -10,11 +10,11 @@ class Trie {
     private static final char OFFSET = 'a';
 
     public Trie() {
-        root = new TrieNode();
+        root = new TrieNode(NUM_OF_SYMBOLS);
     }
 
     public Trie(String... words) {
-        root = new TrieNode();
+        root = new TrieNode(NUM_OF_SYMBOLS);
         for (String word : words) {
             this.insert(word);
         }
@@ -25,7 +25,7 @@ class Trie {
         for (char c : word.toCharArray()) {
             int index = c - OFFSET;
             if (node.children[index] == null) {
-                node.children[index] = new TrieNode();
+                node.children[index] = new TrieNode(NUM_OF_SYMBOLS);
             }
             node = node.children[index];
         }
