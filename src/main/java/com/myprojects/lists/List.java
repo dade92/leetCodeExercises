@@ -26,7 +26,7 @@ public class List {
     }
 
     public int searchElement(int val) {
-        return Utils.search(head, val);
+        return Utils.searchElement(head, val);
     }
 
     public int[] printList() {

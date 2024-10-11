@@ -21,7 +21,7 @@ public final class Utils {
         return head;
     }
 
-    public static int search(ListNode current, int val) {
+    public static int searchElement(ListNode current, int val) {
         int index = 1;
         while(current != null) {
             if(current.val == val) {

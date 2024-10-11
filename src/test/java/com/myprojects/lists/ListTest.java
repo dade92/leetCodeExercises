@@ -78,5 +78,9 @@ class ListTest {
             2,
             list.searchElement(8)
         );
+        assertEquals(
+            -1,
+            list.searchElement(69)
+        );
     }
 }
