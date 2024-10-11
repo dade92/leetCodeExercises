@@ -1,6 +1,6 @@
 package com.myprojects.lists;
 
-public final class Utils {
+final class Utils {
 
     public static ListNode addElement(ListNode head, int val, int position) {
         ListNode newNode = new ListNode(val);
