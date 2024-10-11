@@ -2,57 +2,40 @@ package com.myprojects.tries;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TriesTest {
 
-    Trie trie = new Trie();
+    Trie trie = new Trie("apple", "app", "banana", "bananas", "pear");
 
     @Test
     void search() {
-        trie = new Trie("apple", "banana");
-
         assertTrue(trie.search("apple"));
         assertTrue(trie.search("banana"));
         assertFalse(trie.search("banan"));
-        assertFalse(trie.search("app"));
-
-        System.out.println("Words in the trie:");
-        System.out.println(trie.retrieveWords());
-    }
-
-    @Test
-    void delete() {
-        String word = "ciccio";
-        String anotherWordWithCommonPrefix = "cicc";
-
-        trie = new Trie(word, anotherWordWithCommonPrefix);
-        assertTrue(trie.search(word));
-
-        trie.delete(word);
-
-        assertFalse(trie.search(word));
-        assertTrue(trie.search(anotherWordWithCommonPrefix));
-
-        System.out.println("Words in the trie:");
-        System.out.println(trie.retrieveWords());
+        assertFalse(trie.search("apps"));
+        assertFalse(trie.search("orange"));
     }
 
     @Test
     void retrieveAllWords() {
-        trie = new Trie("apple", "app", "banana", "bananas");
-
-        assertEquals(trie.retrieveWords(), Arrays.asList("app", "apple", "banana", "bananas"));
+        assertEquals(trie.retrieveWords(), asList("app", "apple", "banana", "bananas", "pear"));
     }
 
     @Test
     void retrieveWordsFromPrefix() {
-        trie = new Trie("apple", "app", "banana", "bananas");
+        assertEquals(trie.retrieveWordsWithPrefix("ap"), asList("app", "apple"));
+    }
 
-        assertEquals(trie.retrieveWordsWithPrefix("ap"), Arrays.asList("app", "apple"));
+    @Test
+    void delete() {
+        assertTrue(trie.search("pear"));
+
+        trie.delete("pear");
+
+        assertFalse(trie.search("pear"));
     }
 }
