@@ -1,14 +1,16 @@
 package com.myprojects.lists;
 
+import com.myprojects.lists.exceptions.EmptyListException;
+import com.myprojects.lists.exceptions.InvalidPositionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ListTest {
 
     private List list;
+    private final List empty = new List();
 
     @BeforeEach
     void setUp() {
@@ -16,7 +18,7 @@ class ListTest {
     }
 
     @Test
-    void init() {
+    void initListCorrectlyPassingListOfParams() {
         assertArrayEquals(
             new int[]{5, 8, 10},
             list.printList()
@@ -24,11 +26,19 @@ class ListTest {
     }
 
     @Test
-    void firstElement() {
+    void returnFirstElementCorrectly() {
         assertEquals(5, list.first());
         assertArrayEquals(
             new int[]{5, 8, 10},
             list.printList()
+        );
+    }
+
+    @Test
+    void requestingFirstElementifEmptyThrowsError() {
+        assertThrows(
+            EmptyListException.class,
+            empty::first
         );
     }
 
@@ -54,6 +64,14 @@ class ListTest {
     }
 
     @Test
+    void popElementFromEmptyListThrowsException() {
+        assertThrows(
+            EmptyListException.class,
+            empty::pop
+        );
+    }
+
+    @Test
     void addElement() {
         list.addElement(5, 1);    //first element
         list.addElement(8, 2);    //at the end
@@ -63,6 +81,18 @@ class ListTest {
         assertArrayEquals(
             new int[]{3, 5, 4, 8, 5, 8, 10},
             list.printList()
+        );
+    }
+
+    @Test
+    void addElementInInvalidPositionThrowsException() {
+        assertThrows(
+            InvalidPositionException.class,
+            () -> empty.addElement(11, 2)
+        );
+        assertThrows(
+            InvalidPositionException.class,
+            () -> list.addElement(11, 5)
         );
     }
 
@@ -82,6 +112,14 @@ class ListTest {
         assertArrayEquals(
             new int[]{},
             list.printList()
+        );
+    }
+
+    @Test
+    void removingElementFromEmptyListThrowsException() {
+        assertThrows(
+            EmptyListException.class,
+            () -> empty.removeElement(1)
         );
     }
 

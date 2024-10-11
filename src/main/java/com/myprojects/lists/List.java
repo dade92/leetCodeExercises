@@ -1,5 +1,8 @@
 package com.myprojects.lists;
 
+import com.myprojects.lists.exceptions.EmptyListException;
+import com.myprojects.lists.exceptions.InvalidPositionException;
+
 public class List {
 
     private ListNode head;
@@ -18,6 +21,9 @@ public class List {
     }
 
     public void addElement(int val, int position) {
+        if(position < 1 || position > size + 1) {
+            throw new InvalidPositionException();
+        }
         head = ListUtils.addElement(head, val, position);
         size++;
     }
@@ -35,12 +41,19 @@ public class List {
     }
 
     public int first() {
-        return head != null ? head.val : -1;
+        if(head != null) {
+            return head.val;
+        }
+        throw new EmptyListException();
     }
 
     public void removeElement(int val) {
-        head = ListUtils.removeElement(head, val);
-        size--;
+        if(head != null) {
+            head = ListUtils.removeElement(head, val);
+            size--;
+        } else {
+            throw new EmptyListException();
+        }
     }
 
     public void removeElementAt(int n) {
