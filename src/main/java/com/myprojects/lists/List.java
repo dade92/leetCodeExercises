@@ -28,6 +28,11 @@ public class List {
         size++;
     }
 
+    public void addLast(int val) {
+        head = ListUtils.enqueue(head, val);
+        size++;
+    }
+
     public void push(int val) {
         head = ListUtils.push(head, val);
         size++;

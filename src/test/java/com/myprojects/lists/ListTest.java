@@ -85,6 +85,23 @@ class ListTest {
     }
 
     @Test
+    void addElementAsLast() {
+        list.addLast(55);
+
+        assertArrayEquals(
+            new int[]{5, 8, 10, 55},
+            list.printList()
+        );
+
+        empty.addLast(12);
+
+        assertArrayEquals(
+            new int[]{12},
+            empty.printList()
+        );
+    }
+
+    @Test
     void addElementInInvalidPositionThrowsException() {
         assertThrows(
             InvalidPositionException.class,
