@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class TreeTest {
+public class TreeUtilsTest {
 
     TreeNode root;
 
@@ -24,22 +24,22 @@ public class TreeTest {
 
     @Test
     void inOrderTraversal() {
-        assertEquals(Arrays.asList(9, 3, 5, 8, 11), Utils.inOrderTraversal(root));
+        assertEquals(Arrays.asList(9, 3, 5, 8, 11), TreeUtils.inOrderTraversal(root));
     }
 
     @Test
     void preOrderTraversal() {
-        assertEquals(Arrays.asList(5, 3, 9, 8, 11), Utils.preOrderTraversal(root));
+        assertEquals(Arrays.asList(5, 3, 9, 8, 11), TreeUtils.preOrderTraversal(root));
     }
 
     @Test
     void postOrderTraversal() {
-        assertEquals(Arrays.asList(9, 3, 11, 8, 5), Utils.postOrderTraversal(root));
+        assertEquals(Arrays.asList(9, 3, 11, 8, 5), TreeUtils.postOrderTraversal(root));
     }
 
     @Test
     void breadthTraversal() {
-        assertEquals(Arrays.asList(5, 3, 8, 9, 11), Utils.breadthTraversal(root));
+        assertEquals(Arrays.asList(5, 3, 8, 9, 11), TreeUtils.breadthTraversal(root));
     }
 
     @Test
@@ -52,29 +52,29 @@ public class TreeTest {
         root.left.left = new TreeNode(9);
         root.right.right = new TreeNode(11);
 
-        assertEquals(toBeSearched, Utils.search(root, 8));
-        assertNull(Utils.search(root, 66));
+        assertEquals(toBeSearched, TreeUtils.search(root, 8));
+        assertNull(TreeUtils.search(root, 66));
     }
 
     @Test
     void insert() {
         TreeNode root = null;
 
-        root = Utils.insert(root, 5);
-        root = Utils.insert(root, 3);
-        root = Utils.insert(root, 7);
+        root = TreeUtils.insert(root, 5);
+        root = TreeUtils.insert(root, 3);
+        root = TreeUtils.insert(root, 7);
 
         checkTreeInBreadth(root, Arrays.asList(5, 3, 7));
     }
 
     @Test
     void invertTree() {
-        root = Utils.invertTree(root);
+        root = TreeUtils.invertTree(root);
 
         checkTreeInBreadth(root, Arrays.asList(5, 8, 3, 11, 9));
     }
 
     private void checkTreeInBreadth(TreeNode root, List<Integer> expected) {
-        assertEquals(expected, Utils.breadthTraversal(root));
+        assertEquals(expected, TreeUtils.breadthTraversal(root));
     }
 }

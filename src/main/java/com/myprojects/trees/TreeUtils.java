@@ -2,7 +2,7 @@ package com.myprojects.trees;
 
 import java.util.*;
 
-public final class Utils {
+public final class TreeUtils {
 
     public static TreeNode insert(TreeNode root, int val) {
         if (root == null) {

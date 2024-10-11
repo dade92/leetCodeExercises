@@ -13,17 +13,17 @@ public class List {
     public List(int... elements) {
         this.size = elements.length;
         for (int element : elements) {
-            head = Utils.enqueue(head, element);
+            head = ListUtils.enqueue(head, element);
         }
     }
 
     public void addElement(int val, int position) {
-        head = Utils.addElement(head, val, position);
+        head = ListUtils.addElement(head, val, position);
         size++;
     }
 
     public void push(int val) {
-        head = Utils.push(head, val);
+        head = ListUtils.push(head, val);
         size++;
     }
 
@@ -39,17 +39,17 @@ public class List {
     }
 
     public void removeElement(int val) {
-        head = Utils.removeElement(head, val);
+        head = ListUtils.removeElement(head, val);
         size--;
     }
 
     public void removeElementAt(int n) {
-        head = Utils.removeElementAt(head, n);
+        head = ListUtils.removeElementAt(head, n);
         size--;
     }
 
     public int searchElement(int val) {
-        return Utils.searchElement(head, val);
+        return ListUtils.searchElement(head, val);
     }
 
     public int[] printList() {
