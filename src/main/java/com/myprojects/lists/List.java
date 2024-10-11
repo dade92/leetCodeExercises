@@ -10,9 +10,22 @@ public class List {
         this.size = 0;
     }
 
+    public List(int... elements) {
+        this.head = null;
+        this.size = 0;
+        for (int element : elements) {
+            head = Utils.enqueue(head, element);
+            size++;
+        }
+    }
+
     public void addElement(int val, int position) {
         head = Utils.addElement(head, val, position);
         size++;
+    }
+
+    public int first() {
+        return head != null ? head.val : -1;
     }
 
     public void removeElement(int val) {

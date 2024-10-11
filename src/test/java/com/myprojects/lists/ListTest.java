@@ -7,7 +7,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ListTest {
 
-    private final List list = new List();
+    private List list = new List();
+
+    @Test
+    void init() {
+        list = new List(7, 42, 5, 24);
+
+        assertArrayEquals(
+            new int[] {7 ,42, 5, 24},
+            list.printList()
+        );
+    }
+
+    @Test
+    void firstElement() {
+        list = new List(7, 42, 5, 24);
+
+        assertEquals(7, list.first());
+        assertArrayEquals(
+            new int[] {7, 42, 5, 24},
+            list.printList()
+        );
+    }
 
     @Test
     void addElement() {
