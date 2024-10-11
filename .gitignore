@@ -10,4 +10,6 @@ spring-example1.iml
 .idea
 .settings
 *.jar
+*.class
+*.lst
 local-env/database
