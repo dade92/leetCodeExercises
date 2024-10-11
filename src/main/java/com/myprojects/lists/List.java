@@ -12,10 +12,9 @@ public class List {
 
     public List(int... elements) {
         this.head = null;
-        this.size = 0;
+        this.size = elements.length;
         for (int element : elements) {
             head = Utils.enqueue(head, element);
-            size++;
         }
     }
 
