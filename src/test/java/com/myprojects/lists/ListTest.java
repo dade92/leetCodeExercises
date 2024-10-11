@@ -2,58 +2,68 @@ package com.myprojects.lists;
 
 import org.junit.jupiter.api.Test;
 
-import static com.myprojects.Shared.checkListStatus;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class ListTest {
+class ListTest {
+
+    private final List list = new List();
 
     @Test
     void addElement() {
-        int[] expectedFinalResult = {3, 5, 4, 8};
+        list.addElement(5, 1);    //first element
+        list.addElement(8, 2);    //at the end
+        list.addElement(3, 1);    //at the top
+        list.addElement(4, 3);    //in the middle
 
-        ListNode head = null;
-        head = Utils.addElement(head, 5, 1);    //first element
-        checkListStatus(head, new int[]{5});
-        head = Utils.addElement(head, 8, 2);    //at the end
-        checkListStatus(head, new int[]{5, 8});
-        head = Utils.addElement(head, 3, 1);    //at the top
-        checkListStatus(head, new int[]{3, 5, 8});
-        head = Utils.addElement(head, 4, 3);    //in the middle
-
-        checkListStatus(head, expectedFinalResult);
+        assertArrayEquals(
+            new int[] {3, 5, 4, 8},
+            list.printList()
+        );
     }
 
     @Test
     void removeElement() {
-        int[] expectedFinalResult = {};
+        list.addElement(10, 1);
+        list.addElement(8, 1);
+        list.addElement(5, 1);
 
-        ListNode head = new ListNode(5);
-
-        head = Utils.addElement(head, 8, 2);
-        head = Utils.addElement(head, 10, 3);
-        checkListStatus(head, new int[]{5, 8, 10});
-        head = Utils.removeElement(head, 5);            //at the top
-        checkListStatus(head, new int[]{8, 10});
-        head = Utils.removeElement(head, 10);            //at the end
-        checkListStatus(head, new int[]{8});
-        head = Utils.removeElement(head, 8);            //the last one
-        checkListStatus(head, expectedFinalResult);
+        list.removeElement(5);
+        assertArrayEquals(
+            new int[] {8, 10},
+            list.printList()
+        );
+        list.removeElement(8);
+        assertArrayEquals(
+            new int[] {10},
+            list.printList()
+        );
+        list.removeElement(10);
+        assertArrayEquals(
+            new int[] {},
+            list.printList()
+        );
     }
 
     @Test
     void removeElementAt() {
-        int[] expectedFinalResult = {8};
+        list.addElement(10, 1);
+        list.addElement(8, 1);
+        list.addElement(5, 1);
 
-        ListNode head = new ListNode(5);
-
-        head = Utils.addElement(head, 8, 2);
-        head = Utils.addElement(head, 10, 3);
-        checkListStatus(head, new int[]{5, 8, 10});
-        head = Utils.removeElementAt(head, 1);            //at the top
-        checkListStatus(head, new int[]{8, 10});
-        head = Utils.removeElementAt(head, 2);            //at the end
-        checkListStatus(head, new int[]{8});
-        head = Utils.removeElementAt(head, 8);            //Non existing position
-        checkListStatus(head, expectedFinalResult);
+        list.removeElementAt(2);
+        assertArrayEquals(
+            new int[] {5, 10},
+            list.printList()
+        );
+        list.removeElementAt(1);
+        assertArrayEquals(
+            new int[] {10},
+            list.printList()
+        );
+        list.removeElementAt(1);
+        assertArrayEquals(
+            new int[] {},
+            list.printList()
+        );
     }
-
 }
