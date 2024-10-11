@@ -33,6 +33,17 @@ class ListTest {
     }
 
     @Test
+    void pushElement() {
+        list.push(88);
+        list.push(72);
+
+        assertArrayEquals(
+            new int[]{72, 88, 5, 8, 10},
+            list.printList()
+        );
+    }
+
+    @Test
     void addElement() {
         list.addElement(5, 1);    //first element
         list.addElement(8, 2);    //at the end

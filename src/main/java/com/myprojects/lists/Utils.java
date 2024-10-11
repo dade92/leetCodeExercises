@@ -37,6 +37,19 @@ public final class Utils {
         return head;
     }
 
+    public static ListNode push(ListNode head, int val) {
+        ListNode newNode = new ListNode(val);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+
+        return head;
+    }
+
     public static int searchElement(ListNode current, int val) {
         int index = 1;
         while (current != null) {

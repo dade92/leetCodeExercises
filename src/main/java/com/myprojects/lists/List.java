@@ -24,6 +24,11 @@ public class List {
         size++;
     }
 
+    public void push(int val) {
+        head = Utils.push(head, val);
+        size++;
+    }
+
     public int first() {
         return head != null ? head.val : -1;
     }
