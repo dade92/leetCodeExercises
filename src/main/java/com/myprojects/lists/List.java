@@ -29,6 +29,13 @@ public class List {
         size++;
     }
 
+    public int pop() {
+        int poppedValue = first();
+        head = head.next;
+        size--;
+        return poppedValue;
+    }
+
     public int first() {
         return head != null ? head.val : -1;
     }

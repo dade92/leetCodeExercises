@@ -44,6 +44,16 @@ class ListTest {
     }
 
     @Test
+    void popElement() {
+        int popped = list.pop();
+        assertArrayEquals(
+            new int[]{8, 10},
+            list.printList()
+        );
+        assertEquals(5, popped);
+    }
+
+    @Test
     void addElement() {
         list.addElement(5, 1);    //first element
         list.addElement(8, 2);    //at the end
