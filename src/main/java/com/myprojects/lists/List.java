@@ -57,6 +57,9 @@ public class List {
     }
 
     public void removeElementAt(int n) {
+        if(n < 1 || n > size) {
+            throw new InvalidPositionException();
+        }
         head = ListUtils.removeElementAt(head, n);
         size--;
     }

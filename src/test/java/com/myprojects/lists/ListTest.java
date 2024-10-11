@@ -143,6 +143,18 @@ class ListTest {
     }
 
     @Test
+    void removeElementAtInvalidPosition() {
+        assertThrows(
+            InvalidPositionException.class,
+            () -> list.removeElementAt(4)
+        );
+        assertThrows(
+            InvalidPositionException.class,
+            () -> list.removeElementAt(0)
+        );
+    }
+
+    @Test
     void search() {
         assertEquals(
             2,
