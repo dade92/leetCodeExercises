@@ -3,6 +3,7 @@ package com.myprojects.lists;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ListTest {
 
@@ -64,6 +65,18 @@ class ListTest {
         assertArrayEquals(
             new int[] {},
             list.printList()
+        );
+    }
+
+    @Test
+    void search() {
+        list.addElement(10, 1);
+        list.addElement(8, 1);
+        list.addElement(5, 1);
+
+        assertEquals(
+            2,
+            list.searchElement(8)
         );
     }
 }

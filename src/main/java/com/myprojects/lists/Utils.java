@@ -21,6 +21,18 @@ public final class Utils {
         return head;
     }
 
+    public static int search(ListNode current, int val) {
+        int index = 1;
+        while(current != null) {
+            if(current.val == val) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
+
     public static ListNode removeElement(ListNode head, int val) {
         ListNode previous = null;
         ListNode current = head;

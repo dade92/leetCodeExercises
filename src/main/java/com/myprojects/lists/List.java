@@ -25,6 +25,10 @@ public class List {
         size--;
     }
 
+    public int searchElement(int val) {
+        return Utils.search(head, val);
+    }
+
     public int[] printList() {
         int[] result = new int[size];
         int index = 0;
