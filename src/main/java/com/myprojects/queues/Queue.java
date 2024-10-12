@@ -6,6 +6,10 @@ public class Queue {
 
     private final List list;
 
+    public Queue() {
+        list = new List();
+    }
+
     public Queue(int... elements) {
         this.list = new List(elements);
     }

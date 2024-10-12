@@ -4,36 +4,45 @@ import com.myprojects.lists.ListNode;
 import org.junit.jupiter.api.Test;
 
 import static com.myprojects.Shared.checkListStatus;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StackTest {
 
+    private final Stack stack = new Stack(6, 23, 52);
+
     @Test
     void push() {
-        int[] expectedFinalResult = {5, 4, 8};
+        stack.push(8);
+        stack.push(1);
 
-        ListNode head = null;
-
-        head = Utils.push(head, 8);
-        checkListStatus(head, new int[]{8});
-        head = Utils.push(head, 4);
-        head = Utils.push(head, 5);
-        checkListStatus(head, expectedFinalResult);
+        assertArrayEquals(
+            new int[]{1, 8, 6, 23, 52},
+            stack.printStack()
+        );
     }
 
     @Test
     void pop() {
-        int[] expectedFinalResult = {};
+        int result = stack.pop();
 
-        ListNode head = null;
+        assertEquals(6, result);
 
-        head = Utils.push(head, 8);
-        checkListStatus(head, new int[]{8});
-        StackStatus status = Utils.pop(head);
-
-        head = status.newHead();
-        assertEquals(8, status.removedValue());
-        checkListStatus(head, expectedFinalResult);
+        assertArrayEquals(
+            new int[]{23, 52},
+            stack.printStack()
+        );
     }
 
+    @Test
+    void top() {
+        int top = stack.top();
+
+        assertEquals(6, top);
+
+        assertArrayEquals(
+            new int[]{6, 23, 52},
+            stack.printStack()
+        );
+    }
 }
