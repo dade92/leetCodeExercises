@@ -84,4 +84,8 @@ public class List {
         }
         return result;
     }
+
+    public int size() {
+        return size;
+    }
 }

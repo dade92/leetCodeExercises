@@ -1,9 +1,7 @@
 package com.myprojects.stacks;
 
-import com.myprojects.lists.ListNode;
 import org.junit.jupiter.api.Test;
 
-import static com.myprojects.Shared.checkListStatus;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

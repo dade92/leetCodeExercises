@@ -26,6 +26,11 @@ class ListTest {
     }
 
     @Test
+    void size() {
+        assertEquals(3, list.size());
+    }
+
+    @Test
     void returnFirstElementCorrectly() {
         assertEquals(5, list.first());
         assertArrayEquals(
@@ -35,7 +40,7 @@ class ListTest {
     }
 
     @Test
-    void requestingFirstElementifEmptyThrowsError() {
+    void requestingFirstElementIfEmptyThrowsError() {
         assertThrows(
             EmptyListException.class,
             empty::first
