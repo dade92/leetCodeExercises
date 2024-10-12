@@ -40,4 +40,15 @@ public class QueueTest {
         );
     }
 
+    @Test
+    void top() {
+        int top = queue.top();
+
+        assertEquals(5, top);
+
+        assertArrayEquals(
+            new int[]{5, 8, 10},
+            queue.printQueue()
+        );
+    }
 }

@@ -4,7 +4,7 @@ import com.myprojects.lists.List;
 
 public class Queue {
 
-    private List list;
+    private final List list;
 
     public Queue(int... elements) {
         this.list = new List(elements);
@@ -16,6 +16,10 @@ public class Queue {
 
     public int dequeue() {
         return list.pop();
+    }
+
+    public int top() {
+        return list.first();
     }
 
     public int[] printQueue() {
