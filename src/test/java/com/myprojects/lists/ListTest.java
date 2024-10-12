@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ListTest {
-
     private List list;
     private final List empty = new List();
 
@@ -23,11 +22,16 @@ class ListTest {
             new int[]{5, 8, 10},
             list.printList()
         );
+        assertArrayEquals(
+            new int[]{},
+            empty.printList()
+        );
     }
 
     @Test
     void size() {
         assertEquals(3, list.size());
+        assertEquals(0, empty.size());
     }
 
     @Test
