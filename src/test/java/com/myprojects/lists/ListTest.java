@@ -31,11 +31,31 @@ class ListTest {
     }
 
     @Test
+    void isEmpty() {
+        assertFalse(list.isEmpty());
+        assertTrue(empty.isEmpty());
+    }
+
+    @Test
     void returnFirstElementCorrectly() {
         assertEquals(5, list.first());
         assertArrayEquals(
             new int[]{5, 8, 10},
             list.printList()
+        );
+    }
+
+    @Test
+    void getAt() {
+        assertEquals(8, list.getAt(2));
+        assertEquals(5, list.getAt(1));
+    }
+
+    @Test
+    void getAtThrowsExceptionIfPositionIsInvalid() {
+        assertThrows(
+            InvalidPositionException.class,
+            () -> list.getAt(4)
         );
     }
 

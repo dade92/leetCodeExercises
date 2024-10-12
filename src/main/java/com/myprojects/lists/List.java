@@ -52,6 +52,13 @@ public class List {
         throw new EmptyListException();
     }
 
+    public int getAt(int position) {
+        if(position < 0 || position > size) {
+            throw new InvalidPositionException();
+        }
+        return ListUtils.getAt(head, position);
+    }
+
     public void removeElement(int val) {
         if(head != null) {
             head = ListUtils.removeElement(head, val);
@@ -71,6 +78,10 @@ public class List {
 
     public int searchElement(int val) {
         return ListUtils.searchElement(head, val);
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     public int[] printList() {

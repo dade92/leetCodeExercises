@@ -62,6 +62,17 @@ final class ListUtils {
         return -1;
     }
 
+    public static int getAt(ListNode head, int position) {
+        int index = 1;
+        ListNode current = head;
+        while(index < position) {
+            current = current.next;
+            index++;
+        }
+
+        return current.val;
+    }
+
     public static ListNode removeElement(ListNode head, int val) {
         ListNode previous = null;
         ListNode current = head;
