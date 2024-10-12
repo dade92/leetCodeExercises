@@ -7,7 +7,7 @@ public class Stack {
     private final List list;
 
     public Stack() {
-        list = new List();
+        this.list = new List();
     }
 
     public Stack(int... elements) {
@@ -15,11 +15,11 @@ public class Stack {
     }
 
     public void push(int val) {
-        list.push(val);
+        list.addFirst(val);
     }
 
     public int pop() {
-        return list.pop();
+        return list.removeFromTop();
     }
 
     public int top() {

@@ -48,9 +48,9 @@ class ListTest {
     }
 
     @Test
-    void pushElement() {
-        list.push(88);
-        list.push(72);
+    void addFirstElement() {
+        list.addFirst(88);
+        list.addFirst(72);
 
         assertArrayEquals(
             new int[]{72, 88, 5, 8, 10},
@@ -59,8 +59,8 @@ class ListTest {
     }
 
     @Test
-    void popElement() {
-        int popped = list.pop();
+    void removeFromTop() {
+        int popped = list.removeFromTop();
         assertArrayEquals(
             new int[]{8, 10},
             list.printList()
@@ -69,10 +69,10 @@ class ListTest {
     }
 
     @Test
-    void popElementFromEmptyListThrowsException() {
+    void removeFromTopElementFromEmptyListThrowsException() {
         assertThrows(
             EmptyListException.class,
-            empty::pop
+            empty::removeFromTop
         );
     }
 

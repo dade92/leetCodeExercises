@@ -7,7 +7,7 @@ public class Queue {
     private final List list;
 
     public Queue() {
-        list = new List();
+        this.list = new List();
     }
 
     public Queue(int... elements) {
@@ -19,7 +19,7 @@ public class Queue {
     }
 
     public int dequeue() {
-        return list.pop();
+        return list.removeFromTop();
     }
 
     public int top() {

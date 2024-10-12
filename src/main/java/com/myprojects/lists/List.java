@@ -33,12 +33,12 @@ public class List {
         size++;
     }
 
-    public void push(int val) {
+    public void addFirst(int val) {
         head = ListUtils.push(head, val);
         size++;
     }
 
-    public int pop() {
+    public int removeFromTop() {
         int poppedValue = first();
         head = head.next;
         size--;
