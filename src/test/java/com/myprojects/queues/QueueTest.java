@@ -1,36 +1,43 @@
 package com.myprojects.queues;
 
-import com.myprojects.lists.ListNode;
 import org.junit.jupiter.api.Test;
 
-import static com.myprojects.Shared.checkListStatus;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QueueTest {
 
+    private final Queue queue = new Queue(5, 8, 10);
+
+    @Test
+    void initCorrectly() {
+        assertArrayEquals(
+            new int[]{5, 8, 10},
+            queue.printQueue()
+        );
+    }
+
     @Test
     void enqueue() {
-        ListNode head = null;
+        queue.enqueue(62);
+        queue.enqueue(64);
 
-        head = Utils.enqueue(head, 3);
-        checkListStatus(head, new int[] {3});
-        head = Utils.enqueue(head, 1);
-        checkListStatus(head, new int[] {3, 1});
+        assertArrayEquals(
+            new int[]{5, 8, 10, 62, 64},
+            queue.printQueue()
+        );
     }
 
     @Test
     void dequeue() {
-        ListNode head = null;
+        int result = queue.dequeue();
 
-        head = Utils.enqueue(head, 3);
-        checkListStatus(head, new int[] {3});
-        head = Utils.enqueue(head, 1);
-        checkListStatus(head, new int[] {3, 1});
+        assertEquals(5, result);
 
-        QueueStatus status = Utils.dequeue(head);
-        head = status.newHead();
-        assertEquals(3, status.removedValue());
-        checkListStatus(head, new int[] {1});
+        assertArrayEquals(
+            new int[]{8, 10},
+            queue.printQueue()
+        );
     }
 
 }
