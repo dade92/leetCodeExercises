@@ -11,17 +11,17 @@ public class TriesTest {
     Trie trie = new Trie("apple", "app", "banana", "bananas", "pear");
 
     @Test
+    void initCorrectly() {
+        assertEquals(trie.retrieveWords(), asList("app", "apple", "banana", "bananas", "pear"));
+    }
+
+    @Test
     void search() {
         assertTrue(trie.search("apple"));
         assertTrue(trie.search("banana"));
         assertFalse(trie.search("banan"));
         assertFalse(trie.search("apps"));
         assertFalse(trie.search("orange"));
-    }
-
-    @Test
-    void retrieveAllWords() {
-        assertEquals(trie.retrieveWords(), asList("app", "apple", "banana", "bananas", "pear"));
     }
 
     @Test
