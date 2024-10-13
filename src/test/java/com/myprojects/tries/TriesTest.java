@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TriesTest {
+
     Trie trie = new Trie("apple", "app", "banana", "bananas", "pear");
 
     @Test
