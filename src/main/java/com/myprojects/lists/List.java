@@ -23,7 +23,7 @@ public class List {
     }
 
     public void addElement(int val, int position) {
-        if(position < 1 || position > size + 1) {
+        if (position < 1 || position > size + 1) {
             throw new InvalidPositionException();
         }
         head = ListUtils.addElement(head, val, position);
@@ -48,21 +48,21 @@ public class List {
     }
 
     public int first() {
-        if(head != null) {
+        if (head != null) {
             return head.val;
         }
         throw new EmptyListException();
     }
 
     public int getAt(int position) {
-        if(position < 0 || position > size) {
+        if (position < 0 || position > size) {
             throw new InvalidPositionException();
         }
         return ListUtils.getAt(head, position);
     }
 
     public void removeElement(int val) {
-        if(head != null) {
+        if (head != null) {
             head = ListUtils.removeElement(head, val);
             size--;
         } else {
@@ -71,7 +71,7 @@ public class List {
     }
 
     public void removeElementAt(int n) {
-        if(n < 1 || n > size) {
+        if (n < 1 || n > size) {
             throw new InvalidPositionException();
         }
         head = ListUtils.removeElementAt(head, n);
@@ -108,12 +108,12 @@ public class List {
         if (o == null || getClass() != o.getClass()) return false;
         List list = (List) o;
         boolean sizeAreEquals = size == list.size;
-        if(!sizeAreEquals) {
+        if (!sizeAreEquals) {
             return false;
         }
         int index = 1;
-        while(index<=size) {
-            if(this.getAt(index) != list.getAt(index)) return false;
+        while (index <= size) {
+            if (this.getAt(index) != list.getAt(index)) return false;
             index++;
         }
         return true;

@@ -2,8 +2,9 @@ package com.myprojects.stacks;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.security.spec.NamedParameterSpec;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
 
@@ -42,5 +43,16 @@ public class StackTest {
             new int[]{6, 23, 52},
             stack.printStack()
         );
+    }
+
+    @Test
+    void equals() {
+        Stack another = new Stack(6, 23, 52);
+        Stack notEqual = new Stack(6, 23);
+        Stack notEqual2 = new Stack(6, 23, 51);
+
+        assertEquals(stack, another);
+        assertNotEquals(stack, notEqual);
+        assertNotEquals(stack, notEqual2);
     }
 }
