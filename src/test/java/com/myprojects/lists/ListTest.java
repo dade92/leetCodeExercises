@@ -213,6 +213,14 @@ class ListTest {
     }
 
     @Test
+    void toArray() {
+        assertArrayEquals(
+            new int[]{5, 8, 10},
+            list.toArray()
+        );
+    }
+
+    @Test
     void equals() {
         List shorter = new List(5, 8);
         List equal = new List(5, 8, 10);
@@ -221,5 +229,15 @@ class ListTest {
         assertNotEquals(list, shorter);
         assertNotEquals(list, otherElements);
         assertEquals(list, equal);
+    }
+
+    @Test
+    void addAll() {
+        list.addAll(new List(1, 2));
+
+        assertArrayEquals(
+            new int[]{5, 8, 10, 1, 2},
+            list.printList()
+        );
     }
 }

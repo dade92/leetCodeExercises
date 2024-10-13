@@ -30,6 +30,16 @@ public class List {
         size++;
     }
 
+    public void addAll(List another) {
+        for (int e : another.toArray()) {
+            this.addLast(e);
+        }
+    }
+
+    public int[] toArray() {
+        return printList();
+    }
+
     public void addLast(int val) {
         head = ListUtils.enqueue(head, val);
         size++;
