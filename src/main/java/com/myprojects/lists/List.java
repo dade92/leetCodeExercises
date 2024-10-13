@@ -3,6 +3,8 @@ package com.myprojects.lists;
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
 
+import java.util.Objects;
+
 public class List {
 
     private ListNode head;
@@ -98,5 +100,27 @@ public class List {
 
     public int size() {
         return size;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        List list = (List) o;
+        boolean sizeAreEquals = size == list.size;
+        if(!sizeAreEquals) {
+            return false;
+        }
+        int index = 1;
+        while(index<=size) {
+            if(this.getAt(index) != list.getAt(index)) return false;
+            index++;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(head, size);
     }
 }

@@ -211,4 +211,15 @@ class ListTest {
             list.searchElement(69)
         );
     }
+
+    @Test
+    void equals() {
+        List shorter = new List(5, 8);
+        List equal = new List(5, 8, 10);
+        List otherElements = new List(5, 8, 11);
+
+        assertNotEquals(list, shorter);
+        assertNotEquals(list, otherElements);
+        assertEquals(list, equal);
+    }
 }

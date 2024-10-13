@@ -40,7 +40,6 @@ class TreeTest {
         );
     }
 
-
     @Test
     void breadthTraversal() {
         assertEquals(
