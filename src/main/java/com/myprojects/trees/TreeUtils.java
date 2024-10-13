@@ -1,14 +1,16 @@
 package com.myprojects.trees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public final class TreeUtils {
 
-    public static TreeNode insert(TreeNode root, int val) {
+    public static <T extends Comparable<T>> TreeNode<T> insert(TreeNode<T> root, T val) {
         if (root == null) {
-            root = new TreeNode(val);
+            root = new TreeNode<>(val);
         } else {
-            if (val < root.val) {
+            if (val.compareTo(root.val) < 0) {
                 root.left = insert(root.left, val);
             } else {
                 root.right = insert(root.right, val);
@@ -17,8 +19,8 @@ public final class TreeUtils {
         return root;
     }
 
-    public static ArrayList<Integer> inOrderTraversal(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public static <T extends Comparable<T>> ArrayList<T> inOrderTraversal(TreeNode<T> root) {
+        ArrayList<T> result = new ArrayList<>();
         if (root != null) {
             result.addAll(inOrderTraversal(root.left));
             result.add(root.val);
@@ -27,8 +29,8 @@ public final class TreeUtils {
         return result;
     }
 
-    public static ArrayList<Integer> preOrderTraversal(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public static <T extends Comparable<T>> ArrayList<T> preOrderTraversal(TreeNode<T> root) {
+        ArrayList<T> result = new ArrayList<>();
         if (root != null) {
             result.add(root.val);
             result.addAll(preOrderTraversal(root.left));
@@ -37,8 +39,8 @@ public final class TreeUtils {
         return result;
     }
 
-    public static ArrayList<Integer> postOrderTraversal(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public static <T extends Comparable<T>> ArrayList<T> postOrderTraversal(TreeNode<T> root) {
+        ArrayList<T> result = new ArrayList<>();
         if (root != null) {
             result.addAll(postOrderTraversal(root.left));
             result.addAll(postOrderTraversal(root.right));
@@ -47,11 +49,11 @@ public final class TreeUtils {
         return result;
     }
 
-    public static TreeNode search(TreeNode root, int val) {
-        if(root == null || root.val == val) {
+    public static <T extends Comparable<T>> TreeNode<T> search(TreeNode<T> root, T val) {
+        if (root == null || root.val == val) {
             return root;
         } else {
-            if(val < root.val) {
+            if (val.compareTo(root.val) < 0) {
                 return search(root.left, val);
             } else {
                 return search(root.right, val);
@@ -59,33 +61,33 @@ public final class TreeUtils {
         }
     }
 
-    public static TreeNode invertTree(TreeNode root) {
+    public static <T extends Comparable<T>> TreeNode<T> invertTree(TreeNode<T> root) {
         if (root != null) {
-            TreeNode temp = invertTree(root.left);
+            TreeNode<T> temp = invertTree(root.left);
             root.left = invertTree(root.right);
             root.right = temp;
         }
         return root;
     }
 
-    public static ArrayList<Integer> breadthTraversal(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        ArrayList<Integer> output = new ArrayList<>();
+    public static <T extends Comparable<T>> ArrayList<T> breadthTraversal(TreeNode<T> root) {
+        Queue<TreeNode<T>> queue = new LinkedList<>();
+        ArrayList<T> output = new ArrayList<>();
 
-        if(root == null) {
+        if (root == null) {
             return output;
         }
 
         queue.offer(root);
 
-        while(!queue.isEmpty()) {
-            TreeNode treeNode = queue.poll();
+        while (!queue.isEmpty()) {
+            TreeNode<T> treeNode = queue.poll();
             output.add(treeNode.val);
 
-            if(treeNode.left != null) {
+            if (treeNode.left != null) {
                 queue.offer(treeNode.left);
             }
-            if(treeNode.right != null) {
+            if (treeNode.right != null) {
                 queue.offer(treeNode.right);
             }
 

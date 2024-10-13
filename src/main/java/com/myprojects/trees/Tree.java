@@ -2,41 +2,41 @@ package com.myprojects.trees;
 
 import java.util.List;
 
-public class Tree {
+public class Tree<T extends Comparable<T>> {
 
-    private TreeNode root;
+    private TreeNode<T> root;
 
     public Tree() {
         this.root = null;
     }
 
-    public Tree(int... elements) {
-        for (int e : elements) {
+    public Tree(T... elements) {
+        for (T e : elements) {
             insert(e);
         }
     }
 
-    public void insert(int val) {
+    public void insert(T val) {
         root = TreeUtils.insert(root, val);
     }
 
-    public TreeNode search(int val) {
+    public TreeNode<T> search(T val) {
         return TreeUtils.search(root, val);
     }
 
-    public List<Integer> inOrderTraversal() {
+    public List<T> inOrderTraversal() {
         return TreeUtils.inOrderTraversal(root);
     }
 
-    public List<Integer> preOrderTraversal() {
+    public List<T> preOrderTraversal() {
         return TreeUtils.preOrderTraversal(root);
     }
 
-    public List<Integer> postOrderTraversal() {
+    public List<T> postOrderTraversal() {
         return TreeUtils.postOrderTraversal(root);
     }
 
-    public List<Integer> breadthTraversal() {
+    public List<T> breadthTraversal() {
         return TreeUtils.breadthTraversal(root);
     }
 

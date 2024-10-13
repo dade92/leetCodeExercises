@@ -11,15 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TreeUtilsTest {
 
-    TreeNode root;
+    TreeNode<Integer> root;
 
     @BeforeEach
     void setUp() {
-        root = new TreeNode(5);
-        root.left = new TreeNode(3);
-        root.right = new TreeNode(8);
-        root.left.left = new TreeNode(9);
-        root.right.right = new TreeNode(11);
+        root = new TreeNode<>(5);
+        root.left = new TreeNode<>(3);
+        root.right = new TreeNode<>(8);
+        root.left.left = new TreeNode<>(9);
+        root.right.right = new TreeNode<>(11);
     }
 
     @Test
@@ -44,13 +44,13 @@ public class TreeUtilsTest {
 
     @Test
     void search() {
-        TreeNode toBeSearched = new TreeNode(8);
+        TreeNode<Integer> toBeSearched = new TreeNode<>(8);
 
-        TreeNode root = new TreeNode(5);
-        root.left = new TreeNode(3);
+        TreeNode<Integer> root = new TreeNode<>(5);
+        root.left = new TreeNode<>(3);
         root.right = toBeSearched;
-        root.left.left = new TreeNode(9);
-        root.right.right = new TreeNode(11);
+        root.left.left = new TreeNode<>(9);
+        root.right.right = new TreeNode<>(11);
 
         assertEquals(toBeSearched, TreeUtils.search(root, 8));
         assertNull(TreeUtils.search(root, 66));
@@ -58,7 +58,7 @@ public class TreeUtilsTest {
 
     @Test
     void insert() {
-        TreeNode root = null;
+        TreeNode<Integer> root = null;
 
         root = TreeUtils.insert(root, 5);
         root = TreeUtils.insert(root, 3);
@@ -74,7 +74,7 @@ public class TreeUtilsTest {
         checkTreeInBreadth(root, Arrays.asList(5, 8, 3, 11, 9));
     }
 
-    private void checkTreeInBreadth(TreeNode root, List<Integer> expected) {
+    private void checkTreeInBreadth(TreeNode<Integer> root, List<Integer> expected) {
         assertEquals(expected, TreeUtils.breadthTraversal(root));
     }
 }

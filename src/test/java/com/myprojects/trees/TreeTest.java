@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TreeTest {
 
-    private Tree tree;
+    private Tree<Integer> tree;
 
     @BeforeEach
     void setUp() {
-        tree = new Tree(5, 3, 8, 9, 7);
+        tree = new Tree<>(5, 3, 8, 9, 7);
     }
 
     @Test
@@ -61,7 +61,7 @@ class TreeTest {
     @Test
     void search() {
         int searched = 9;
-        TreeNode found = tree.search(searched);
+        TreeNode<Integer> found = tree.search(searched);
 
         assertEquals(
             searched,
