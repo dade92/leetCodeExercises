@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
 
-    private final Stack stack = new Stack(6, 23, 52);
+    private final Stack<Integer> stack = new Stack<>(6, 23, 52);
 
     @Test
     void push() {
@@ -16,7 +16,7 @@ public class StackTest {
         stack.push(1);
 
         assertArrayEquals(
-            new int[]{1, 8, 6, 23, 52},
+            new Integer[]{1, 8, 6, 23, 52},
             stack.printStack()
         );
     }
@@ -28,7 +28,7 @@ public class StackTest {
         assertEquals(6, result);
 
         assertArrayEquals(
-            new int[]{23, 52},
+            new Integer[]{23, 52},
             stack.printStack()
         );
     }
@@ -40,7 +40,7 @@ public class StackTest {
         assertEquals(6, top);
 
         assertArrayEquals(
-            new int[]{6, 23, 52},
+            new Integer[]{6, 23, 52},
             stack.printStack()
         );
     }

@@ -4,31 +4,31 @@ import com.myprojects.lists.List;
 
 import java.util.Objects;
 
-public class Queue {
+public class Queue<T> {
 
-    private final List list;
+    private final List<T> list;
 
     public Queue() {
-        this.list = new List();
+        this.list = new List<T>();
     }
 
-    public Queue(int... elements) {
-        this.list = new List(elements);
+    public Queue(T... elements) {
+        this.list = new List<>(elements);
     }
 
-    public void enqueue(int val) {
+    public void enqueue(T val) {
         list.addLast(val);
     }
 
-    public int dequeue() {
+    public T dequeue() {
         return list.removeFromTop();
     }
 
-    public int top() {
+    public T top() {
         return list.first();
     }
 
-    public int[] printQueue() {
+    public T[] printQueue() {
         return list.printList();
     }
 

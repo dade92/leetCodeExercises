@@ -4,31 +4,31 @@ import com.myprojects.lists.List;
 
 import java.util.Objects;
 
-public class Stack {
+public class Stack<T> {
 
-    private final List list;
+    private final List<T> list;
 
     public Stack() {
-        this.list = new List();
+        this.list = new List<>();
     }
 
-    public Stack(int... elements) {
-        this.list = new List(elements);
+    public Stack(T... elements) {
+        this.list = new List<>(elements);
     }
 
-    public void push(int val) {
+    public void push(T val) {
         list.addFirst(val);
     }
 
-    public int pop() {
+    public T pop() {
         return list.removeFromTop();
     }
 
-    public int top() {
+    public T top() {
         return list.first();
     }
 
-    public int[] printStack() {
+    public T[] printStack() {
         return list.printList();
     }
 
@@ -36,7 +36,7 @@ public class Stack {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Stack stack = (Stack) o;
+        Stack<T> stack = (Stack) o;
         return Objects.equals(list, stack.list);
     }
 

@@ -2,11 +2,11 @@ package com.myprojects.lists;
 
 import java.util.Objects;
 
-public final class ListNode {
-    public int val;
-    public ListNode next;
+public final class ListNode<T> {
+    public T val;
+    public ListNode<T> next;
 
-    public ListNode(int val) {
+    public ListNode(T val) {
         this.val = val;
         this.next = null;
     }

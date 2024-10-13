@@ -8,22 +8,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ListTest {
-    private List list;
-    private final List empty = new List();
+    private List<Integer> list;
+    private final List<Integer> empty = new List<>();
 
     @BeforeEach
     void setUp() {
-        list = new List(5, 8, 10);
+        list = new List<>(5, 8, 10);
     }
 
     @Test
     void initListCorrectlyPassingListOfParams() {
         assertArrayEquals(
-            new int[]{5, 8, 10},
+            new Integer[]{5, 8, 10},
             list.printList()
         );
         assertArrayEquals(
-            new int[]{},
+            new Integer[]{},
             empty.printList()
         );
     }
@@ -44,7 +44,7 @@ class ListTest {
     void returnFirstElementCorrectly() {
         assertEquals(5, list.first());
         assertArrayEquals(
-            new int[]{5, 8, 10},
+            new Integer[]{5, 8, 10},
             list.printList()
         );
     }
@@ -77,7 +77,7 @@ class ListTest {
         list.addFirst(72);
 
         assertArrayEquals(
-            new int[]{72, 88, 5, 8, 10},
+            new Integer[]{72, 88, 5, 8, 10},
             list.printList()
         );
     }
@@ -86,7 +86,7 @@ class ListTest {
     void removeFromTop() {
         int popped = list.removeFromTop();
         assertArrayEquals(
-            new int[]{8, 10},
+            new Integer[]{8, 10},
             list.printList()
         );
         assertEquals(5, popped);
@@ -108,7 +108,7 @@ class ListTest {
         list.addElement(4, 3);    //in the middle
 
         assertArrayEquals(
-            new int[]{3, 5, 4, 8, 5, 8, 10},
+            new Integer[]{3, 5, 4, 8, 5, 8, 10},
             list.printList()
         );
     }
@@ -118,14 +118,14 @@ class ListTest {
         list.addLast(55);
 
         assertArrayEquals(
-            new int[]{5, 8, 10, 55},
+            new Integer[]{5, 8, 10, 55},
             list.printList()
         );
 
         empty.addLast(12);
 
         assertArrayEquals(
-            new int[]{12},
+            new Integer[]{12},
             empty.printList()
         );
     }
@@ -146,17 +146,17 @@ class ListTest {
     void removeElement() {
         list.removeElement(5);
         assertArrayEquals(
-            new int[]{8, 10},
+            new Integer[]{8, 10},
             list.printList()
         );
         list.removeElement(8);
         assertArrayEquals(
-            new int[]{10},
+            new Integer[]{10},
             list.printList()
         );
         list.removeElement(10);
         assertArrayEquals(
-            new int[]{},
+            new Integer[]{},
             list.printList()
         );
     }
@@ -173,17 +173,17 @@ class ListTest {
     void removeElementAt() {
         list.removeElementAt(2);
         assertArrayEquals(
-            new int[]{5, 10},
+            new Integer[]{5, 10},
             list.printList()
         );
         list.removeElementAt(1);
         assertArrayEquals(
-            new int[]{10},
+            new Integer[]{10},
             list.printList()
         );
         list.removeElementAt(1);
         assertArrayEquals(
-            new int[]{},
+            new Integer[]{},
             list.printList()
         );
     }
@@ -215,7 +215,7 @@ class ListTest {
     @Test
     void toArray() {
         assertArrayEquals(
-            new int[]{5, 8, 10},
+            new Integer[]{5, 8, 10},
             list.toArray()
         );
     }
@@ -236,7 +236,7 @@ class ListTest {
         list.addAll(new List(1, 2));
 
         assertArrayEquals(
-            new int[]{5, 8, 10, 1, 2},
+            new Integer[]{5, 8, 10, 1, 2},
             list.printList()
         );
     }

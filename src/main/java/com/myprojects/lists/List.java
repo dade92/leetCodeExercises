@@ -3,11 +3,12 @@ package com.myprojects.lists;
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
 
+import java.lang.reflect.Array;
 import java.util.Objects;
 
-public class List {
+public class List<T> {
 
-    private ListNode head;
+    private ListNode<T> head;
     private int size;
 
     public List() {
@@ -15,9 +16,9 @@ public class List {
         this.size = 0;
     }
 
-    public List(int... elements) {
+    public List(T... elements) {
         this.size = elements.length;
-        for (int element : elements) {
+        for (T element : elements) {
             head = ListUtils.enqueue(head, element);
         }
     }
@@ -30,48 +31,48 @@ public class List {
         size++;
     }
 
-    public void addAll(List another) {
-        for (int e : another.toArray()) {
+    public void addAll(List<T> another) {
+        for (T e : another.toArray()) {
             this.addLast(e);
         }
     }
 
-    public int[] toArray() {
+    public T[] toArray() {
         return printList();
     }
 
-    public void addLast(int val) {
+    public void addLast(T val) {
         head = ListUtils.enqueue(head, val);
         size++;
     }
 
-    public void addFirst(int val) {
+    public void addFirst(T val) {
         head = ListUtils.push(head, val);
         size++;
     }
 
-    public int removeFromTop() {
-        int poppedValue = first();
+    public T removeFromTop() {
+        T poppedValue = first();
         head = head.next;
         size--;
         return poppedValue;
     }
 
-    public int first() {
+    public T first() {
         if (head != null) {
             return head.val;
         }
         throw new EmptyListException();
     }
 
-    public int getAt(int position) {
+    public T getAt(int position) {
         if (position < 0 || position > size) {
             throw new InvalidPositionException();
         }
         return ListUtils.getAt(head, position);
     }
 
-    public void removeElement(int val) {
+    public void removeElement(T val) {
         if (head != null) {
             head = ListUtils.removeElement(head, val);
             size--;
@@ -96,10 +97,10 @@ public class List {
         return size == 0;
     }
 
-    public int[] printList() {
-        int[] result = new int[size];
+    public T[] printList() {
+        T[] result = (T[]) new Object[size];
         int index = 0;
-        ListNode temp = head;
+        ListNode<T> temp = head;
         while (temp != null) {
             result[index] = temp.val;
             temp = temp.next;

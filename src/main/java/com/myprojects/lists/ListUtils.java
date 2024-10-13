@@ -21,7 +21,7 @@ final class ListUtils {
         return head;
     }
 
-    public static ListNode enqueue(ListNode head, int val) {
+    public static <T> ListNode<T> enqueue(ListNode head, T val) {
         ListNode newNode = new ListNode(val);
 
         if (head == null) {
@@ -37,7 +37,7 @@ final class ListUtils {
         return head;
     }
 
-    public static ListNode push(ListNode head, int val) {
+    public static <T> ListNode<T> push(ListNode head, T val) {
         ListNode newNode = new ListNode(val);
 
         if (head == null) {
@@ -50,7 +50,7 @@ final class ListUtils {
         return head;
     }
 
-    public static int searchElement(ListNode current, int val) {
+    public static <T> int  searchElement(ListNode current, T val) {
         int index = 1;
         while (current != null) {
             if (current.val == val) {
@@ -62,9 +62,9 @@ final class ListUtils {
         return -1;
     }
 
-    public static int getAt(ListNode head, int position) {
+    public static <T> T getAt(ListNode<T> head, int position) {
         int index = 1;
-        ListNode current = head;
+        ListNode<T> current = head;
         while(index < position) {
             current = current.next;
             index++;
@@ -73,9 +73,9 @@ final class ListUtils {
         return current.val;
     }
 
-    public static ListNode removeElement(ListNode head, int val) {
-        ListNode previous = null;
-        ListNode current = head;
+    public static <T> ListNode<T> removeElement(ListNode head, T val) {
+        ListNode<T> previous = null;
+        ListNode<T> current = head;
         while (current != null && current.val != val) {
             previous = current;
             current = current.next;

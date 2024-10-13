@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class QueueTest {
 
-    private final Queue queue = new Queue(5, 8, 10);
+    private final Queue<Integer> queue = new Queue<>(5, 8, 10);
 
     @Test
     void initCorrectly() {
         assertArrayEquals(
-            new int[]{5, 8, 10},
+            new Integer[]{5, 8, 10},
             queue.printQueue()
         );
     }
@@ -22,7 +22,7 @@ public class QueueTest {
         queue.enqueue(64);
 
         assertArrayEquals(
-            new int[]{5, 8, 10, 62, 64},
+            new Integer[]{5, 8, 10, 62, 64},
             queue.printQueue()
         );
     }
@@ -34,7 +34,7 @@ public class QueueTest {
         assertEquals(5, result);
 
         assertArrayEquals(
-            new int[]{8, 10},
+            new Integer[]{8, 10},
             queue.printQueue()
         );
     }
@@ -46,7 +46,7 @@ public class QueueTest {
         assertEquals(5, top);
 
         assertArrayEquals(
-            new int[]{5, 8, 10},
+            new Integer[]{5, 8, 10},
             queue.printQueue()
         );
     }
