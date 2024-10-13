@@ -73,7 +73,7 @@ final class ListUtils {
         return current.val;
     }
 
-    public static <T> ListNode<T> removeElement(ListNode head, T val) {
+    public static <T> ListNode<T> removeElement(ListNode<T> head, T val) {
         ListNode<T> previous = null;
         ListNode<T> current = head;
         while (current != null && current.val != val) {
@@ -109,5 +109,4 @@ final class ListUtils {
         }
         return head;
     }
-
 }

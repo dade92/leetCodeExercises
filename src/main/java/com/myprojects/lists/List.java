@@ -3,7 +3,6 @@ package com.myprojects.lists;
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
 
-import java.lang.reflect.Array;
 import java.util.Objects;
 
 public class List<T> {
@@ -37,10 +36,6 @@ public class List<T> {
         }
     }
 
-    public T[] toArray() {
-        return printList();
-    }
-
     public void addLast(T val) {
         head = ListUtils.enqueue(head, val);
         size++;
@@ -49,13 +44,6 @@ public class List<T> {
     public void addFirst(T val) {
         head = ListUtils.push(head, val);
         size++;
-    }
-
-    public T removeFromTop() {
-        T poppedValue = first();
-        head = head.next;
-        size--;
-        return poppedValue;
     }
 
     public T first() {
@@ -89,12 +77,15 @@ public class List<T> {
         size--;
     }
 
-    public int searchElement(T val) {
-        return ListUtils.searchElement(head, val);
+    public T removeFromTop() {
+        T poppedValue = first();
+        head = head.next;
+        size--;
+        return poppedValue;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
+    public int searchElement(T val) {
+        return ListUtils.searchElement(head, val);
     }
 
     public T[] printList() {
@@ -107,6 +98,14 @@ public class List<T> {
             index++;
         }
         return result;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public T[] toArray() {
+        return printList();
     }
 
     public int size() {
