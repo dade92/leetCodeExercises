@@ -68,9 +68,9 @@ public final class TreeUtils {
         return root;
     }
 
-    public static List<Integer> breadthTraversal(TreeNode root) {
+    public static ArrayList<Integer> breadthTraversal(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
-        List<Integer> output = new ArrayList<>();
+        ArrayList<Integer> output = new ArrayList<>();
 
         if(root == null) {
             return output;
