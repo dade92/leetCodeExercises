@@ -2,14 +2,14 @@ package com.myprojects.lists;
 
 final class ListUtils {
 
-    public static ListNode addElement(ListNode head, int val, int position) {
-        ListNode newNode = new ListNode(val);
+    public static <T> ListNode<T> addElement(ListNode<T> head, T val, int position) {
+        ListNode<T> newNode = new ListNode<>(val);
 
         if (position == 1) {
             newNode.next = head;
             head = newNode;
         } else {
-            ListNode current = head;
+            ListNode<T> current = head;
             for (int i = 1; i < position - 1; i++) {
                 current = current.next;
             }
@@ -21,13 +21,13 @@ final class ListUtils {
         return head;
     }
 
-    public static <T> ListNode<T> enqueue(ListNode head, T val) {
-        ListNode newNode = new ListNode(val);
+    public static <T> ListNode<T> enqueue(ListNode<T> head, T val) {
+        ListNode<T> newNode = new ListNode<>(val);
 
         if (head == null) {
             head = newNode;
         } else {
-            ListNode current = head;
+            ListNode<T> current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -37,8 +37,8 @@ final class ListUtils {
         return head;
     }
 
-    public static <T> ListNode<T> push(ListNode head, T val) {
-        ListNode newNode = new ListNode(val);
+    public static <T> ListNode<T> push(ListNode<T> head, T val) {
+        ListNode<T> newNode = new ListNode<>(val);
 
         if (head == null) {
             head = newNode;
@@ -90,10 +90,10 @@ final class ListUtils {
         return head;
     }
 
-    public static ListNode removeElementAt(ListNode head, int n) {
+    public static <T> ListNode<T> removeElementAt(ListNode<T> head, int n) {
         int i = 1;
-        ListNode previous = null;
-        ListNode current = head;
+        ListNode<T> previous = null;
+        ListNode<T> current = head;
         while (current != null && i < n) {
             previous = current;
             current = current.next;

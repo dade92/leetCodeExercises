@@ -23,7 +23,7 @@ public class List<T> {
         }
     }
 
-    public void addElement(int val, int position) {
+    public void addElement(T val, int position) {
         if (position < 1 || position > size + 1) {
             throw new InvalidPositionException();
         }

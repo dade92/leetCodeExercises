@@ -10,7 +10,7 @@ public class ListUtilsTest {
     void addElement() {
         int[] expectedFinalResult = {3, 5, 4, 8};
 
-        ListNode head = null;
+        ListNode<Integer> head = null;
         head = ListUtils.addElement(head, 5, 1);    //first element
         checkListStatus(head, new int[]{5});
         head = ListUtils.addElement(head, 8, 2);    //at the end
@@ -26,7 +26,7 @@ public class ListUtilsTest {
     void removeElement() {
         int[] expectedFinalResult = {};
 
-        ListNode head = new ListNode(5);
+        ListNode<Integer> head = new ListNode<>(5);
 
         head = ListUtils.addElement(head, 8, 2);
         head = ListUtils.addElement(head, 10, 3);
@@ -43,7 +43,7 @@ public class ListUtilsTest {
     void removeElementAt() {
         int[] expectedFinalResult = {8};
 
-        ListNode head = new ListNode(5);
+        ListNode<Integer> head = new ListNode<>(5);
 
         head = ListUtils.addElement(head, 8, 2);
         head = ListUtils.addElement(head, 10, 3);
