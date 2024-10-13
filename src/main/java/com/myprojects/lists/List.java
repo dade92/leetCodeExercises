@@ -89,7 +89,7 @@ public class List<T> {
         size--;
     }
 
-    public int searchElement(int val) {
+    public int searchElement(T val) {
         return ListUtils.searchElement(head, val);
     }
 

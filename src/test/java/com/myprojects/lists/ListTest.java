@@ -222,9 +222,9 @@ class ListTest {
 
     @Test
     void equals() {
-        List shorter = new List(5, 8);
-        List equal = new List(5, 8, 10);
-        List otherElements = new List(5, 8, 11);
+        List<Integer> shorter = new List<>(5, 8);
+        List<Integer> equal = new List<>(5, 8, 10);
+        List<Integer> otherElements = new List<>(5, 8, 11);
 
         assertNotEquals(list, shorter);
         assertNotEquals(list, otherElements);
@@ -233,7 +233,7 @@ class ListTest {
 
     @Test
     void addAll() {
-        list.addAll(new List(1, 2));
+        list.addAll(new List<>(1, 2));
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 1, 2},
