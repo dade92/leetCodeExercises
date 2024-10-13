@@ -17,6 +17,27 @@ class TreeTest {
     }
 
     @Test
+    void insert() {
+        tree.insert(4);
+
+        assertEquals(
+            Arrays.asList(3, 4, 5, 7, 8, 9),
+            tree.inOrderTraversal()
+        );
+    }
+
+    @Test
+    void search() {
+        int searched = 9;
+        TreeNode<Integer> found = tree.search(searched);
+
+        assertEquals(
+            searched,
+            found.val
+        );
+    }
+
+    @Test
     void inOrderTraversal() {
         assertEquals(
             Arrays.asList(3, 5, 7, 8, 9),
@@ -45,27 +66,6 @@ class TreeTest {
         assertEquals(
             Arrays.asList(5, 3, 8, 7, 9),
             tree.breadthTraversal()
-        );
-    }
-
-    @Test
-    void insert() {
-        tree.insert(4);
-
-        assertEquals(
-            Arrays.asList(3, 4, 5, 7, 8, 9),
-            tree.inOrderTraversal()
-        );
-    }
-
-    @Test
-    void search() {
-        int searched = 9;
-        TreeNode<Integer> found = tree.search(searched);
-
-        assertEquals(
-            searched,
-            found.val
         );
     }
 }

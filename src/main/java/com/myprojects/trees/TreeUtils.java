@@ -19,6 +19,27 @@ public final class TreeUtils {
         return root;
     }
 
+    public static <T extends Comparable<T>> TreeNode<T> search(TreeNode<T> root, T val) {
+        if (root == null || root.val == val) {
+            return root;
+        } else {
+            if (val.compareTo(root.val) < 0) {
+                return search(root.left, val);
+            } else {
+                return search(root.right, val);
+            }
+        }
+    }
+
+    public static <T extends Comparable<T>> TreeNode<T> invertTree(TreeNode<T> root) {
+        if (root != null) {
+            TreeNode<T> temp = invertTree(root.left);
+            root.left = invertTree(root.right);
+            root.right = temp;
+        }
+        return root;
+    }
+
     public static <T extends Comparable<T>> ArrayList<T> inOrderTraversal(TreeNode<T> root) {
         ArrayList<T> result = new ArrayList<>();
         if (root != null) {
@@ -47,27 +68,6 @@ public final class TreeUtils {
             result.add(root.val);
         }
         return result;
-    }
-
-    public static <T extends Comparable<T>> TreeNode<T> search(TreeNode<T> root, T val) {
-        if (root == null || root.val == val) {
-            return root;
-        } else {
-            if (val.compareTo(root.val) < 0) {
-                return search(root.left, val);
-            } else {
-                return search(root.right, val);
-            }
-        }
-    }
-
-    public static <T extends Comparable<T>> TreeNode<T> invertTree(TreeNode<T> root) {
-        if (root != null) {
-            TreeNode<T> temp = invertTree(root.left);
-            root.left = invertTree(root.right);
-            root.right = temp;
-        }
-        return root;
     }
 
     public static <T extends Comparable<T>> ArrayList<T> breadthTraversal(TreeNode<T> root) {
