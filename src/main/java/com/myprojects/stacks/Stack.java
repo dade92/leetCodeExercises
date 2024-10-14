@@ -28,6 +28,10 @@ public class Stack<T> {
         return list.first();
     }
 
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
     public T[] printStack() {
         return list.printList();
     }

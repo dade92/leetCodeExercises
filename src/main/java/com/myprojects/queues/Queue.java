@@ -9,7 +9,7 @@ public class Queue<T> {
     private final List<T> list;
 
     public Queue() {
-        this.list = new List<T>();
+        this.list = new List<>();
     }
 
     public Queue(T... elements) {
@@ -30,6 +30,10 @@ public class Queue<T> {
 
     public T[] printQueue() {
         return list.printList();
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
     }
 
     @Override
