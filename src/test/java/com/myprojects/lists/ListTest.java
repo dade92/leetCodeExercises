@@ -2,6 +2,7 @@ package com.myprojects.lists;
 
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -238,6 +239,15 @@ class ListTest {
         assertArrayEquals(
             new Integer[]{5, 8, 10, 1, 2},
             list.printList()
+        );
+    }
+
+    @Test
+    void printingWithToString() {
+        Assertions.assertEquals(
+            "5,8,10"
+            ,
+            list.toString()
         );
     }
 }

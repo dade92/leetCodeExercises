@@ -4,6 +4,7 @@ import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class List<T> {
 
@@ -110,6 +111,17 @@ public class List<T> {
 
     public int size() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner sj = new StringJoiner(",");
+
+        for(T element: toArray()) {
+            sj.add(element.toString());
+        }
+
+        return sj.toString();
     }
 
     @Override
