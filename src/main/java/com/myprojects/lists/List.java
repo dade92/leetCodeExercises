@@ -20,10 +20,8 @@ public class List<T> {
     }
 
     public List(T... elements) {
-        this.size = elements.length;
         for (T element : elements) {
-            Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, element);
-            movePointers(outcome);
+            this.addLast(element);
         }
     }
 
@@ -34,11 +32,6 @@ public class List<T> {
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.addElement(head, tail, val, position);
         movePointers(outcome);
         size++;
-    }
-
-    private void movePointers(Pair<ListNode<T>, ListNode<T>> outcome) {
-        head = outcome.getLeft();
-        tail = outcome.getRight();
     }
 
     public void addAll(List<T> another) {
@@ -177,5 +170,10 @@ public class List<T> {
     @Override
     public int hashCode() {
         return Objects.hash(head, size);
+    }
+
+    private void movePointers(Pair<ListNode<T>, ListNode<T>> outcome) {
+        head = outcome.getLeft();
+        tail = outcome.getRight();
     }
 }
