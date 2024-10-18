@@ -241,6 +241,11 @@ class ListTest {
             new Integer[]{},
             list.printList()
         );
+
+        assertThrows(
+            InvalidPositionException.class,
+            () -> list.removeElementAt(1)
+        );
     }
 
     @Test
