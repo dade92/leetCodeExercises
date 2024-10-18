@@ -23,8 +23,7 @@ public class List<T> {
         this.size = elements.length;
         for (T element : elements) {
             Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, element);
-            head = outcome.getLeft();
-            tail = outcome.getRight();
+            movePointers(outcome);
         }
     }
 
@@ -33,9 +32,13 @@ public class List<T> {
             throw new InvalidPositionException();
         }
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.addElement(head, tail, val, position);
+        movePointers(outcome);
+        size++;
+    }
+
+    private void movePointers(Pair<ListNode<T>, ListNode<T>> outcome) {
         head = outcome.getLeft();
         tail = outcome.getRight();
-        size++;
     }
 
     public void addAll(List<T> another) {
@@ -46,15 +49,13 @@ public class List<T> {
 
     public void addLast(T val) {
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, val);
-        head = outcome.getLeft();
-        tail = outcome.getRight();
+        movePointers(outcome);
         size++;
     }
 
     public void addFirst(T val) {
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.push(head, tail, val);
-        head = outcome.getLeft();
-        tail = outcome.getRight();
+        movePointers(outcome);
         size++;
     }
 
@@ -88,8 +89,7 @@ public class List<T> {
     public void removeElement(T val) {
         if (head != null) {
             Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.removeElement(head, tail, val);
-            head = outcome.getLeft();
-            tail = outcome.getRight();
+            movePointers(outcome);
             size--;
         } else {
             throw new EmptyListException();
@@ -102,8 +102,7 @@ public class List<T> {
         }
 
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.removeElementAt(head, tail, n);
-        head = outcome.getLeft();
-        tail = outcome.getRight();
+        movePointers(outcome);
         size--;
     }
 
