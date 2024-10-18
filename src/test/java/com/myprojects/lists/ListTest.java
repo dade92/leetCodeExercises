@@ -244,7 +244,7 @@ class ListTest {
 
     @Test
     void printingWithToString() {
-        Assertions.assertEquals(
+        assertEquals(
             "5,8,10"
             ,
             list.toString()
