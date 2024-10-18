@@ -12,15 +12,6 @@ public final class ListNode<T> {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (ListNode) obj;
-        return this.val == that.val &&
-            Objects.equals(this.next, that.next);
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(val, next);
     }

@@ -2,6 +2,7 @@ package com.myprojects.lists;
 
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -9,17 +10,21 @@ import java.util.StringJoiner;
 public class List<T> {
 
     private ListNode<T> head;
+    private ListNode<T> tail;
     private int size;
 
     public List() {
         this.head = null;
+        this.tail = null;
         this.size = 0;
     }
 
     public List(T... elements) {
         this.size = elements.length;
         for (T element : elements) {
-            head = ListUtils.enqueue(head, element);
+            Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, element);
+            head = outcome.getLeft();
+            tail = outcome.getRight();
         }
     }
 
@@ -27,7 +32,9 @@ public class List<T> {
         if (position < 1 || position > size + 1) {
             throw new InvalidPositionException();
         }
-        head = ListUtils.addElement(head, val, position);
+        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.addElement(head, tail, val, position);
+        head = outcome.getLeft();
+        tail = outcome.getRight();
         size++;
     }
 
@@ -38,12 +45,16 @@ public class List<T> {
     }
 
     public void addLast(T val) {
-        head = ListUtils.enqueue(head, val);
+        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, val);
+        head = outcome.getLeft();
+        tail = outcome.getRight();
         size++;
     }
 
     public void addFirst(T val) {
-        head = ListUtils.push(head, val);
+        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.push(head, tail, val);
+        head = outcome.getLeft();
+        tail = outcome.getRight();
         size++;
     }
 
@@ -54,16 +65,31 @@ public class List<T> {
         throw new EmptyListException();
     }
 
+    public T last() {
+        if (tail != null) {
+            return tail.val;
+        }
+        throw new EmptyListException();
+    }
+
     public T getAt(int position) {
         if (position < 0 || position > size) {
             throw new InvalidPositionException();
         }
-        return ListUtils.getAt(head, position);
+        if (position == 1) {
+            return head.val;
+        } else if (position == size) {
+            return tail.val;
+        } else {
+            return ListUtils.getAt(head, position);
+        }
     }
 
     public void removeElement(T val) {
         if (head != null) {
-            head = ListUtils.removeElement(head, val);
+            Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.removeElement(head, tail, val);
+            head = outcome.getLeft();
+            tail = outcome.getRight();
             size--;
         } else {
             throw new EmptyListException();
@@ -74,13 +100,21 @@ public class List<T> {
         if (n < 1 || n > size) {
             throw new InvalidPositionException();
         }
-        head = ListUtils.removeElementAt(head, n);
+
+        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.removeElementAt(head, tail, n);
+        head = outcome.getLeft();
+        tail = outcome.getRight();
         size--;
     }
 
     public T removeFromTop() {
         T poppedValue = first();
-        head = head.next;
+        if(head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+        }
         size--;
         return poppedValue;
     }
@@ -117,7 +151,7 @@ public class List<T> {
     public String toString() {
         StringJoiner sj = new StringJoiner(",");
 
-        for(T element: toArray()) {
+        for (T element : toArray()) {
             sj.add(element.toString());
         }
 

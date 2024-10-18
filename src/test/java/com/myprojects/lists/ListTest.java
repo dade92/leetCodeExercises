@@ -2,11 +2,15 @@ package com.myprojects.lists;
 
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ListTest {
     private List<Integer> list;
@@ -44,16 +48,18 @@ class ListTest {
     @Test
     void returnFirstElementCorrectly() {
         assertEquals(5, list.first());
-        assertArrayEquals(
-            new Integer[]{5, 8, 10},
-            list.printList()
-        );
+    }
+
+    @Test
+    void returnLastElementCorrectly() {
+        assertEquals(10, list.last());
     }
 
     @Test
     void getAt() {
-        assertEquals(8, list.getAt(2));
         assertEquals(5, list.getAt(1));
+        assertEquals(8, list.getAt(2));
+        assertEquals(10, list.getAt(3));
     }
 
     @Test
@@ -81,47 +87,47 @@ class ListTest {
             new Integer[]{72, 88, 5, 8, 10},
             list.printList()
         );
-    }
-
-    @Test
-    void removeFromTop() {
-        int popped = list.removeFromTop();
-        assertArrayEquals(
-            new Integer[]{8, 10},
-            list.printList()
-        );
-        assertEquals(5, popped);
-    }
-
-    @Test
-    void removeFromTopElementFromEmptyListThrowsException() {
-        assertThrows(
-            EmptyListException.class,
-            empty::removeFromTop
-        );
+        assertEquals(72, list.first());
+        assertEquals(10, list.last());
     }
 
     @Test
     void addElement() {
-        list.addElement(5, 1);    //first element
-        list.addElement(8, 2);    //at the end
-        list.addElement(3, 1);    //at the top
-        list.addElement(4, 3);    //in the middle
+        list.addElement(5, 1);
+        list.addElement(8, 2);
+        list.addElement(3, 1);
+        list.addElement(4, 3);
 
         assertArrayEquals(
             new Integer[]{3, 5, 4, 8, 5, 8, 10},
             list.printList()
         );
+        assertEquals(3, list.first());
+        assertEquals(10, list.last());
     }
 
     @Test
     void addElementAsLast() {
+        list.addElement(8, 4);
+
+        assertArrayEquals(
+            new Integer[]{5, 8, 10, 8},
+            list.printList()
+        );
+        assertEquals(5, list.first());
+        assertEquals(8, list.last());
+    }
+
+    @Test
+    void addLast() {
         list.addLast(55);
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 55},
             list.printList()
         );
+        assertEquals(55, list.last());
+        assertEquals(5, list.first());
 
         empty.addLast(12);
 
@@ -129,6 +135,8 @@ class ListTest {
             new Integer[]{12},
             empty.printList()
         );
+        assertEquals(12, empty.last());
+        assertEquals(12, empty.first());
     }
 
     @Test
@@ -144,22 +152,43 @@ class ListTest {
     }
 
     @Test
-    void removeElement() {
+    void removeElementInFirstPosition() {
         list.removeElement(5);
+
         assertArrayEquals(
             new Integer[]{8, 10},
             list.printList()
         );
+        assertEquals(8, list.first());
+        assertEquals(10, list.last());
+
         list.removeElement(8);
+
         assertArrayEquals(
             new Integer[]{10},
             list.printList()
         );
+        assertEquals(10, list.first());
+        assertEquals(10, list.last());
+
         list.removeElement(10);
+
         assertArrayEquals(
             new Integer[]{},
             list.printList()
         );
+    }
+
+    @Test
+    void removeElementInLastPosition() {
+        list.removeElement(10);
+
+        assertArrayEquals(
+            new Integer[]{5, 8},
+            list.printList()
+        );
+        assertEquals(5, list.first());
+        assertEquals(8, list.last());
     }
 
     @Test
@@ -171,22 +200,68 @@ class ListTest {
     }
 
     @Test
+    void removeFromTop() {
+        int popped = list.removeFromTop();
+
+        assertArrayEquals(
+            new Integer[]{8, 10},
+            list.printList()
+        );
+        assertEquals(8, list.first());
+        assertEquals(10, list.last());
+        assertEquals(5, popped);
+    }
+
+    @Test
+    void removeFromTopElementFromEmptyListThrowsException() {
+        assertThrows(
+            EmptyListException.class,
+            empty::removeFromTop
+        );
+    }
+
+    @Test
     void removeElementAt() {
         list.removeElementAt(2);
         assertArrayEquals(
             new Integer[]{5, 10},
             list.printList()
         );
+
         list.removeElementAt(1);
         assertArrayEquals(
             new Integer[]{10},
             list.printList()
         );
+        assertEquals(10, list.first());
+        assertEquals(10, list.last());
+
         list.removeElementAt(1);
         assertArrayEquals(
             new Integer[]{},
             list.printList()
         );
+    }
+
+    @Test
+    void removeElementAtLastPosition() {
+        list.removeElementAt(3);
+
+        assertArrayEquals(
+            new Integer[]{5, 8},
+            list.printList()
+        );
+        assertEquals(5, list.first());
+        assertEquals(8, list.last());
+
+        list.removeElementAt(2);
+
+        assertArrayEquals(
+            new Integer[]{5},
+            list.printList()
+        );
+        assertEquals(5, list.first());
+        assertEquals(5, list.last());
     }
 
     @Test

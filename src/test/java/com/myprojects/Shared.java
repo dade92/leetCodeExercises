@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class Shared {
 
-    public static void checkListStatus(ListNode head, int[] expectedElements) {
+    public static void checkListStatus(ListNode<Integer> head, int[] expectedElements) {
         if(expectedElements.length == 0) {
             assertNull(head);
         }

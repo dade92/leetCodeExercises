@@ -1,12 +1,17 @@
 package com.myprojects.lists;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 final class ListUtils {
 
-    public static <T> ListNode<T> addElement(ListNode<T> head, T val, int position) {
+    public static <T> Pair<ListNode<T>, ListNode<T>> addElement(ListNode<T> head, ListNode<T> tail, T val, int position) {
         ListNode<T> newNode = new ListNode<>(val);
 
         if (position == 1) {
             newNode.next = head;
+            if (head == null) {
+                tail = newNode;
+            }
             head = newNode;
         } else {
             ListNode<T> current = head;
@@ -16,38 +21,40 @@ final class ListUtils {
 
             newNode.next = current.next;
             current.next = newNode;
-        }
-
-        return head;
-    }
-
-    public static <T> ListNode<T> enqueue(ListNode<T> head, T val) {
-        ListNode<T> newNode = new ListNode<>(val);
-
-        if (head == null) {
-            head = newNode;
-        } else {
-            ListNode<T> current = head;
-            while (current.next != null) {
-                current = current.next;
+            if (current == tail) {
+                tail = newNode;
             }
-            current.next = newNode;
         }
 
-        return head;
+        return Pair.of(head, tail);
     }
 
-    public static <T> ListNode<T> push(ListNode<T> head, T val) {
+    public static <T> Pair<ListNode<T>, ListNode<T>> enqueue(ListNode<T> head, ListNode<T> tail, T val) {
         ListNode<T> newNode = new ListNode<>(val);
 
         if (head == null) {
             head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        return Pair.of(head, tail);
+    }
+
+    public static <T> Pair<ListNode<T>, ListNode<T>> push(ListNode<T> head, ListNode<T> tail, T val) {
+        ListNode<T> newNode = new ListNode<>(val);
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
         } else {
             newNode.next = head;
             head = newNode;
         }
 
-        return head;
+        return Pair.of(head, tail);
     }
 
     public static <T> int searchElement(ListNode<T> current, T val) {
@@ -65,7 +72,7 @@ final class ListUtils {
     public static <T> T getAt(ListNode<T> head, int position) {
         int index = 1;
         ListNode<T> current = head;
-        while(index < position) {
+        while (index < position) {
             current = current.next;
             index++;
         }
@@ -73,7 +80,7 @@ final class ListUtils {
         return current.val;
     }
 
-    public static <T> ListNode<T> removeElement(ListNode<T> head, T val) {
+    public static <T> Pair<ListNode<T>, ListNode<T>> removeElement(ListNode<T> head, ListNode<T> tail, T val) {
         ListNode<T> previous = null;
         ListNode<T> current = head;
         while (current != null && current.val != val) {
@@ -82,15 +89,23 @@ final class ListUtils {
         }
         if (current != null) {
             if (previous == null) {
-                head = head.next;
+                if (head == tail) {
+                    head = null;
+                    tail = null;
+                } else {
+                    head = head.next;
+                }
             } else {
                 previous.next = current.next;
+                if (tail == current) {
+                    tail = previous;
+                }
             }
         }
-        return head;
+        return Pair.of(head, tail);
     }
 
-    public static <T> ListNode<T> removeElementAt(ListNode<T> head, int n) {
+    public static <T> Pair<ListNode<T>, ListNode<T>> removeElementAt(ListNode<T> head, ListNode<T> tail, int n) {
         int i = 1;
         ListNode<T> previous = null;
         ListNode<T> current = head;
@@ -102,11 +117,19 @@ final class ListUtils {
 
         if (current != null) {
             if (previous == null) {
-                head = head.next;
+                if (head == tail) {
+                    head = null;
+                    tail = null;
+                } else {
+                    head = head.next;
+                }
             } else {
                 previous.next = current.next;
+                if (tail == current) {
+                    tail = previous;
+                }
             }
         }
-        return head;
+        return Pair.of(head, tail);
     }
 }
