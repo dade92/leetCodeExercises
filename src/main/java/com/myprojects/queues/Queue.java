@@ -9,11 +9,11 @@ public class Queue<T> {
     private final List<T> list;
 
     public Queue() {
-        this.list = new List<>();
+        list = new List<>();
     }
 
     public Queue(T... elements) {
-        this.list = new List<>(elements);
+        list = new List<>(elements);
     }
 
     public void addAll(List<T> elements) {

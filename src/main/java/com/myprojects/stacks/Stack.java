@@ -9,11 +9,11 @@ public class Stack<T> {
     private final List<T> list;
 
     public Stack() {
-        this.list = new List<>();
+        list = new List<>();
     }
 
     public Stack(T... elements) {
-        this.list = new List<>(elements);
+        list = new List<>(elements);
     }
 
     public void push(T val) {
@@ -37,8 +37,8 @@ public class Stack<T> {
     }
 
     public void addAll(List<T> elements) {
-        for(T e: elements.toArray()) {
-            this.push(e);
+        for (T e : elements.toArray()) {
+            push(e);
         }
     }
 
