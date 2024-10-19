@@ -141,7 +141,7 @@ public class List<T> {
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner(",");
+        StringJoiner sj = new StringJoiner(",", "[ ", " ]");
 
         for (T element : toArray()) {
             sj.add(element.toString());

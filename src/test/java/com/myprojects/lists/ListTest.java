@@ -325,7 +325,7 @@ class ListTest {
     @Test
     void printingWithToString() {
         assertEquals(
-            "5,8,10"
+            "[ 5,8,10 ]"
             ,
             list.toString()
         );
