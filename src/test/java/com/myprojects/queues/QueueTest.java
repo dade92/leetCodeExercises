@@ -1,5 +1,6 @@
 package com.myprojects.queues;
 
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,6 +48,16 @@ public class QueueTest {
 
         assertArrayEquals(
             new Integer[]{5, 8, 10},
+            queue.toArray()
+        );
+    }
+
+    @Test
+    void addAll() {
+        queue.addAll(new List<>(1, 2, 3));
+
+        assertArrayEquals(
+            new Integer[] { 5, 8, 10, 1, 2, 3},
             queue.toArray()
         );
     }

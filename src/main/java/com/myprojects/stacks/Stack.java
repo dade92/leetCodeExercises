@@ -36,6 +36,12 @@ public class Stack<T> {
         return list.toArray();
     }
 
+    public void addAll(List<T> elements) {
+        for(T e: elements.toArray()) {
+            this.push(e);
+        }
+    }
+
     @Override
     public String toString() {
         return list.toString();

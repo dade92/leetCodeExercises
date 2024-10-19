@@ -16,6 +16,10 @@ public class Queue<T> {
         this.list = new List<>(elements);
     }
 
+    public void addAll(List<T> elements) {
+        list.addAll(elements);
+    }
+
     public void enqueue(T val) {
         list.addLast(val);
     }

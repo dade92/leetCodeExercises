@@ -1,5 +1,6 @@
 package com.myprojects.stacks;
 
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,6 +40,16 @@ public class StackTest {
 
         assertArrayEquals(
             new Integer[]{6, 23, 52},
+            stack.toArray()
+        );
+    }
+
+    @Test
+    void addAll() {
+        stack.addAll(new List<>(1, 2, 3));
+
+        assertArrayEquals(
+            new Integer[]{3, 2, 1, 6, 23, 52},
             stack.toArray()
         );
     }
