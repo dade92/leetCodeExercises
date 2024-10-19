@@ -21,7 +21,7 @@ public class List<T> {
 
     public List(T... elements) {
         for (T element : elements) {
-            this.addLast(element);
+            addLast(element);
         }
     }
 
@@ -36,7 +36,7 @@ public class List<T> {
 
     public void addAll(List<T> another) {
         for (T e : another.toArray()) {
-            this.addLast(e);
+            addLast(e);
         }
     }
 
