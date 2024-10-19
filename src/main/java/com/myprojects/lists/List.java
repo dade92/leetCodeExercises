@@ -115,7 +115,11 @@ public class List<T> {
         return ListUtils.searchElement(head, val);
     }
 
-    public T[] printList() {
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public T[] toArray() {
         T[] result = (T[]) new Object[size];
         int index = 0;
         ListNode<T> temp = head;
@@ -125,14 +129,6 @@ public class List<T> {
             index++;
         }
         return result;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    public T[] toArray() {
-        return printList();
     }
 
     public int size() {

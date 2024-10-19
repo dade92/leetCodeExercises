@@ -2,8 +2,6 @@ package com.myprojects.stacks;
 
 import org.junit.jupiter.api.Test;
 
-import java.security.spec.NamedParameterSpec;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
@@ -17,7 +15,7 @@ public class StackTest {
 
         assertArrayEquals(
             new Integer[]{1, 8, 6, 23, 52},
-            stack.printStack()
+            stack.toArray()
         );
     }
 
@@ -29,7 +27,7 @@ public class StackTest {
 
         assertArrayEquals(
             new Integer[]{23, 52},
-            stack.printStack()
+            stack.toArray()
         );
     }
 
@@ -41,7 +39,7 @@ public class StackTest {
 
         assertArrayEquals(
             new Integer[]{6, 23, 52},
-            stack.printStack()
+            stack.toArray()
         );
     }
 

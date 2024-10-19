@@ -25,11 +25,11 @@ class ListTest {
     void initListCorrectlyPassingListOfParams() {
         assertArrayEquals(
             new Integer[]{5, 8, 10},
-            list.printList()
+            list.toArray()
         );
         assertArrayEquals(
             new Integer[]{},
-            empty.printList()
+            empty.toArray()
         );
     }
 
@@ -85,7 +85,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{72, 88, 5, 8, 10},
-            list.printList()
+            list.toArray()
         );
         assertEquals(72, list.first());
         assertEquals(10, list.last());
@@ -100,7 +100,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{3, 5, 4, 8, 5, 8, 10},
-            list.printList()
+            list.toArray()
         );
         assertEquals(3, list.first());
         assertEquals(10, list.last());
@@ -112,7 +112,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 8},
-            list.printList()
+            list.toArray()
         );
         assertEquals(5, list.first());
         assertEquals(8, list.last());
@@ -124,7 +124,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 55},
-            list.printList()
+            list.toArray()
         );
         assertEquals(55, list.last());
         assertEquals(5, list.first());
@@ -133,7 +133,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{12},
-            empty.printList()
+            empty.toArray()
         );
         assertEquals(12, empty.last());
         assertEquals(12, empty.first());
@@ -157,7 +157,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{8, 10},
-            list.printList()
+            list.toArray()
         );
         assertEquals(8, list.first());
         assertEquals(10, list.last());
@@ -166,7 +166,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{10},
-            list.printList()
+            list.toArray()
         );
         assertEquals(10, list.first());
         assertEquals(10, list.last());
@@ -175,7 +175,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{},
-            list.printList()
+            list.toArray()
         );
     }
 
@@ -185,7 +185,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{5, 8},
-            list.printList()
+            list.toArray()
         );
         assertEquals(5, list.first());
         assertEquals(8, list.last());
@@ -205,7 +205,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{8, 10},
-            list.printList()
+            list.toArray()
         );
         assertEquals(8, list.first());
         assertEquals(10, list.last());
@@ -225,13 +225,13 @@ class ListTest {
         list.removeElementAt(2);
         assertArrayEquals(
             new Integer[]{5, 10},
-            list.printList()
+            list.toArray()
         );
 
         list.removeElementAt(1);
         assertArrayEquals(
             new Integer[]{10},
-            list.printList()
+            list.toArray()
         );
         assertEquals(10, list.first());
         assertEquals(10, list.last());
@@ -239,7 +239,7 @@ class ListTest {
         list.removeElementAt(1);
         assertArrayEquals(
             new Integer[]{},
-            list.printList()
+            list.toArray()
         );
 
         assertThrows(
@@ -254,7 +254,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{5, 8},
-            list.printList()
+            list.toArray()
         );
         assertEquals(5, list.first());
         assertEquals(8, list.last());
@@ -263,7 +263,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{5},
-            list.printList()
+            list.toArray()
         );
         assertEquals(5, list.first());
         assertEquals(5, list.last());
@@ -318,7 +318,7 @@ class ListTest {
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 1, 2},
-            list.printList()
+            list.toArray()
         );
     }
 

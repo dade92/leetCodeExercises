@@ -12,7 +12,7 @@ public class QueueTest {
     void initCorrectly() {
         assertArrayEquals(
             new Integer[]{5, 8, 10},
-            queue.printQueue()
+            queue.toArray()
         );
     }
 
@@ -23,7 +23,7 @@ public class QueueTest {
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 62, 64},
-            queue.printQueue()
+            queue.toArray()
         );
     }
 
@@ -35,7 +35,7 @@ public class QueueTest {
 
         assertArrayEquals(
             new Integer[]{8, 10},
-            queue.printQueue()
+            queue.toArray()
         );
     }
 
@@ -47,7 +47,7 @@ public class QueueTest {
 
         assertArrayEquals(
             new Integer[]{5, 8, 10},
-            queue.printQueue()
+            queue.toArray()
         );
     }
 

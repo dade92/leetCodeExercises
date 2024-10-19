@@ -32,8 +32,8 @@ public class Stack<T> {
         return list.isEmpty();
     }
 
-    public T[] printStack() {
-        return list.printList();
+    public T[] toArray() {
+        return list.toArray();
     }
 
     @Override

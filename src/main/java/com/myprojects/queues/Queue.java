@@ -28,8 +28,8 @@ public class Queue<T> {
         return list.first();
     }
 
-    public T[] printQueue() {
-        return list.printList();
+    public T[] toArray() {
+        return list.toArray();
     }
 
     public boolean isEmpty() {
