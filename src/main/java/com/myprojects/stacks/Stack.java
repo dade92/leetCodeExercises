@@ -24,6 +24,12 @@ public class Stack<T> {
         return list.removeFromTop();
     }
 
+    public void addAll(List<T> elements) {
+        for (T e : elements.toArray()) {
+            push(e);
+        }
+    }
+
     public T top() {
         return list.first();
     }
@@ -34,12 +40,6 @@ public class Stack<T> {
 
     public T[] toArray() {
         return list.toArray();
-    }
-
-    public void addAll(List<T> elements) {
-        for (T e : elements.toArray()) {
-            push(e);
-        }
     }
 
     @Override

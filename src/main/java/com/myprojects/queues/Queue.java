@@ -16,16 +16,16 @@ public class Queue<T> {
         list = new List<>(elements);
     }
 
-    public void addAll(List<T> elements) {
-        list.addAll(elements);
-    }
-
     public void enqueue(T val) {
         list.addLast(val);
     }
 
     public T dequeue() {
         return list.removeFromTop();
+    }
+
+    public void addAll(List<T> elements) {
+        list.addAll(elements);
     }
 
     public T top() {
