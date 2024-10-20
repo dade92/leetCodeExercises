@@ -67,7 +67,7 @@ public class List<T> {
     }
 
     public T getAt(int position) {
-        if (position < 0 || position > size) {
+        if (position <= 0 || position > size) {
             throw new InvalidPositionException();
         }
         if (position == 1) {

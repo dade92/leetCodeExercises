@@ -66,6 +66,10 @@ class ListTest {
     void getAtThrowsExceptionIfPositionIsInvalid() {
         assertThrows(
             InvalidPositionException.class,
+            () -> list.getAt(0)
+        );
+        assertThrows(
+            InvalidPositionException.class,
             () -> list.getAt(4)
         );
     }
