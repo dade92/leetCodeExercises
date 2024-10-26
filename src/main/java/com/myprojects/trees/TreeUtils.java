@@ -1,9 +1,7 @@
 package com.myprojects.trees;
 
 import com.myprojects.lists.List;
-
-import java.util.LinkedList;
-import java.util.Queue;
+import com.myprojects.queues.Queue;
 
 public final class TreeUtils {
 
@@ -72,26 +70,25 @@ public final class TreeUtils {
     }
 
     public static <T extends Comparable<T>> List<T> breadthTraversal(TreeNode<T> root) {
-        Queue<TreeNode<T>> queue = new LinkedList<>();
+        Queue<TreeNode<T>> queue = new Queue<>();
         List<T> output = new List<>();
 
         if (root == null) {
             return output;
         }
 
-        queue.offer(root);
+        queue.enqueue(root);
 
         while (!queue.isEmpty()) {
-            TreeNode<T> treeNode = queue.poll();
+            TreeNode<T> treeNode = queue.dequeue();
             output.addLast(treeNode.val);
 
             if (treeNode.left != null) {
-                queue.offer(treeNode.left);
+                queue.enqueue(treeNode.left);
             }
             if (treeNode.right != null) {
-                queue.offer(treeNode.right);
+                queue.enqueue(treeNode.right);
             }
-
         }
 
         return output;
