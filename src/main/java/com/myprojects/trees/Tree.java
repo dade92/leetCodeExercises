@@ -1,6 +1,7 @@
 package com.myprojects.trees;
 
-import java.util.List;
+
+import com.myprojects.lists.List;
 
 public class Tree<T extends Comparable<T>> {
 

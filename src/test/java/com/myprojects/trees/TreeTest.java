@@ -1,9 +1,8 @@
 package com.myprojects.trees;
 
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,7 +20,7 @@ class TreeTest {
         tree.insert(4);
 
         assertEquals(
-            Arrays.asList(3, 4, 5, 7, 8, 9),
+            new List<>(3, 4, 5, 7, 8, 9),
             tree.inOrderTraversal()
         );
     }
@@ -40,7 +39,7 @@ class TreeTest {
     @Test
     void inOrderTraversal() {
         assertEquals(
-            Arrays.asList(3, 5, 7, 8, 9),
+            new List<>(3, 5, 7, 8, 9),
             tree.inOrderTraversal()
         );
     }
@@ -48,7 +47,7 @@ class TreeTest {
     @Test
     void preOrderTraversal() {
         assertEquals(
-            Arrays.asList(5, 3, 8, 7, 9),
+            new List<>(5, 3, 8, 7, 9),
             tree.preOrderTraversal()
         );
     }
@@ -56,7 +55,7 @@ class TreeTest {
     @Test
     void postOrderTraversal() {
         assertEquals(
-            Arrays.asList(3, 7, 9, 8, 5),
+            new List<>(3, 7, 9, 8, 5),
             tree.postOrderTraversal()
         );
     }
@@ -64,7 +63,7 @@ class TreeTest {
     @Test
     void breadthTraversal() {
         assertEquals(
-            Arrays.asList(5, 3, 8, 7, 9),
+            new List<>(5, 3, 8, 7, 9),
             tree.breadthTraversal()
         );
     }

@@ -1,6 +1,7 @@
 package com.myprojects.trees;
 
-import java.util.ArrayList;
+import com.myprojects.lists.List;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -40,39 +41,39 @@ public final class TreeUtils {
         return root;
     }
 
-    public static <T extends Comparable<T>> ArrayList<T> inOrderTraversal(TreeNode<T> root) {
-        ArrayList<T> result = new ArrayList<>();
+    public static <T extends Comparable<T>> List<T> inOrderTraversal(TreeNode<T> root) {
+        List<T> result = new List<>();
         if (root != null) {
             result.addAll(inOrderTraversal(root.left));
-            result.add(root.val);
+            result.addLast(root.val);
             result.addAll(inOrderTraversal(root.right));
         }
         return result;
     }
 
-    public static <T extends Comparable<T>> ArrayList<T> preOrderTraversal(TreeNode<T> root) {
-        ArrayList<T> result = new ArrayList<>();
+    public static <T extends Comparable<T>> List<T> preOrderTraversal(TreeNode<T> root) {
+        List<T> result = new List<>();
         if (root != null) {
-            result.add(root.val);
+            result.addLast(root.val);
             result.addAll(preOrderTraversal(root.left));
             result.addAll(preOrderTraversal(root.right));
         }
         return result;
     }
 
-    public static <T extends Comparable<T>> ArrayList<T> postOrderTraversal(TreeNode<T> root) {
-        ArrayList<T> result = new ArrayList<>();
+    public static <T extends Comparable<T>> List<T> postOrderTraversal(TreeNode<T> root) {
+        List<T> result = new List<>();
         if (root != null) {
             result.addAll(postOrderTraversal(root.left));
             result.addAll(postOrderTraversal(root.right));
-            result.add(root.val);
+            result.addLast(root.val);
         }
         return result;
     }
 
-    public static <T extends Comparable<T>> ArrayList<T> breadthTraversal(TreeNode<T> root) {
+    public static <T extends Comparable<T>> List<T> breadthTraversal(TreeNode<T> root) {
         Queue<TreeNode<T>> queue = new LinkedList<>();
-        ArrayList<T> output = new ArrayList<>();
+        List<T> output = new List<>();
 
         if (root == null) {
             return output;
@@ -82,7 +83,7 @@ public final class TreeUtils {
 
         while (!queue.isEmpty()) {
             TreeNode<T> treeNode = queue.poll();
-            output.add(treeNode.val);
+            output.addLast(treeNode.val);
 
             if (treeNode.left != null) {
                 queue.offer(treeNode.left);

@@ -1,10 +1,8 @@
 package com.myprojects.trees;
 
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -24,22 +22,22 @@ public class TreeUtilsTest {
 
     @Test
     void inOrderTraversal() {
-        assertEquals(Arrays.asList(9, 3, 5, 8, 11), TreeUtils.inOrderTraversal(root));
+        assertEquals(new List<>(9, 3, 5, 8, 11), TreeUtils.inOrderTraversal(root));
     }
 
     @Test
     void preOrderTraversal() {
-        assertEquals(Arrays.asList(5, 3, 9, 8, 11), TreeUtils.preOrderTraversal(root));
+        assertEquals(new List<>(5, 3, 9, 8, 11), TreeUtils.preOrderTraversal(root));
     }
 
     @Test
     void postOrderTraversal() {
-        assertEquals(Arrays.asList(9, 3, 11, 8, 5), TreeUtils.postOrderTraversal(root));
+        assertEquals(new List<>(9, 3, 11, 8, 5), TreeUtils.postOrderTraversal(root));
     }
 
     @Test
     void breadthTraversal() {
-        assertEquals(Arrays.asList(5, 3, 8, 9, 11), TreeUtils.breadthTraversal(root));
+        assertEquals(new List<>(5, 3, 8, 9, 11), TreeUtils.breadthTraversal(root));
     }
 
     @Test
@@ -64,14 +62,14 @@ public class TreeUtilsTest {
         root = TreeUtils.insert(root, 3);
         root = TreeUtils.insert(root, 7);
 
-        checkTreeInBreadth(root, Arrays.asList(5, 3, 7));
+        checkTreeInBreadth(root, new List<>(5, 3, 7));
     }
 
     @Test
     void invertTree() {
         root = TreeUtils.invertTree(root);
 
-        checkTreeInBreadth(root, Arrays.asList(5, 8, 3, 11, 9));
+        checkTreeInBreadth(root, new List<>(5, 8, 3, 11, 9));
     }
 
     private void checkTreeInBreadth(TreeNode<Integer> root, List<Integer> expected) {
