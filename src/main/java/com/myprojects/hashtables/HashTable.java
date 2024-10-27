@@ -34,7 +34,18 @@ public class HashTable<K, V> {
     public V get(K key) {
         int index = (key.hashCode() & Integer.MAX_VALUE) % maxSize;
 
-        return buckets[index].value;
+        HashTableNode<K, V> bucket = buckets[index];
+        if(bucket != null) {
+            return bucket.value;
+        } else {
+            return null;
+        }
+    }
+
+    public void remove(K key) {
+        int index = (key.hashCode() & Integer.MAX_VALUE) % maxSize;
+
+        buckets[index] = null;
     }
 
     public V[] values() {
@@ -78,5 +89,4 @@ public class HashTable<K, V> {
 
         buckets = newBucket;
     }
-
 }

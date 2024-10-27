@@ -1,11 +1,8 @@
 package com.myprojects.hashtables;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HashTableTest {
 
@@ -16,8 +13,8 @@ class HashTableTest {
         hashTable.put("ciccio", "1");
         hashTable.put("pasticcio", "2");
 
-        String[] expectedValues = new String[] {"1", "2"};
-        String[] expectedKeys = new String[] {"ciccio", "pasticcio"};
+        String[] expectedValues = new String[]{"1", "2"};
+        String[] expectedKeys = new String[]{"ciccio", "pasticcio"};
 
         assertArrayEquals(
             expectedValues,
@@ -39,6 +36,20 @@ class HashTableTest {
             "1",
             actual
         );
+    }
+
+    @Test
+    void getNonExistingKey() {
+        assertNull(hashTable.get("ciccio"));
+    }
+
+    @Test
+    void remove() {
+        hashTable.put("ciccio", "1");
+
+        hashTable.remove("ciccio");
+
+        assertNull(hashTable.get("ciccio"));
     }
 
     @Test
