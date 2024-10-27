@@ -61,6 +61,17 @@ class HashTableTest {
     }
 
     @Test
+    void removeNonExistingKey() {
+        hashTable.put("ciccio", "1");
+        hashTable.remove("NON_EXISTING");
+
+        assertArrayEquals(
+            new String[] {"ciccio"},
+            hashTable.keys()
+        );
+    }
+
+    @Test
     void remove() {
         hashTable.put("ciccio", "1");
 
@@ -113,8 +124,8 @@ class HashTableTest {
         hashTable.put("chicco", "1");
         hashTable.put("cervo", "1");
 
-        assertEquals(
-            new String[]{},
+        assertArrayEquals(
+            new String[]{"ciccio", "cervo", "chico", "chicco", "cicce", "cicciu", "cicci", "cico", "ciccia"},
             hashTable.keys()
         );
     }

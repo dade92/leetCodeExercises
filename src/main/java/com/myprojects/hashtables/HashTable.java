@@ -65,13 +65,22 @@ public class HashTable<K, V> {
 
     public void remove(K key) {
         int index = getIndex(key);
+        HashTableNode<K, V> current = buckets[index];
+        HashTableNode<K, V> previous = null;
 
-        HashTableNode<K, V> node = buckets[index];
-
-        while (node != null && node.key != key) {
-            node = node.next;
+        while (current != null) {
+            if (current.key == key) {
+                if (previous == null) {
+                    buckets[index] = current.next;
+                } else {
+                    previous.next = current.next;
+                }
+                size--;
+                break;
+            }
+            previous = current;
+            current = current.next;
         }
-        //TODO for collisions
     }
 
     public V[] values() {
@@ -110,7 +119,7 @@ public class HashTable<K, V> {
 
         for (HashTableNode<K, V> element : buckets) {
             if (element != null) {
-                int index = element.hashCode() % maxSize;
+                int index = getIndex(element.key);
                 newBucket[index] = element;
             }
         }
