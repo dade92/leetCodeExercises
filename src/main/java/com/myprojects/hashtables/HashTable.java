@@ -21,9 +21,27 @@ public class HashTable<K, V> {
     }
 
     public void put(K key, V value) {
-        int index = (key.hashCode() & Integer.MAX_VALUE) % maxSize;
+        int index = getIndex(key);
 
-        buckets[index] = new HashTableNode<>(key, value);
+        if (buckets[index] == null) {
+            buckets[index] = new HashTableNode<>(key, value);
+        } else {
+            HashTableNode<K, V> node = buckets[index];
+
+            while (node != null) {
+                if (key == node.key) {
+                    node.value = value;
+                    return;
+                }
+                node = node.next;
+            }
+
+            HashTableNode<K, V> newNode = new HashTableNode<>(key, value);
+
+            newNode.next = buckets[index];
+            buckets[index] = newNode;
+        }
+
         size++;
 
         if ((double) size / maxSize > loadFactor) {
@@ -32,49 +50,58 @@ public class HashTable<K, V> {
     }
 
     public V get(K key) {
-        int index = (key.hashCode() & Integer.MAX_VALUE) % maxSize;
+        int index = getIndex(key);
 
-        HashTableNode<K, V> bucket = buckets[index];
-        if(bucket != null) {
-            return bucket.value;
+        HashTableNode<K, V> node = buckets[index];
+        while (node != null && node.key != key) {
+            node = node.next;
+        }
+        if (node != null) {
+            return node.value;
         } else {
             return null;
         }
     }
 
     public void remove(K key) {
-        int index = (key.hashCode() & Integer.MAX_VALUE) % maxSize;
+        int index = getIndex(key);
 
-        buckets[index] = null;
+        HashTableNode<K, V> node = buckets[index];
+
+        while (node != null && node.key != key) {
+            node = node.next;
+        }
+        //TODO for collisions
     }
 
     public V[] values() {
         List<V> values = new List<>();
 
         for (HashTableNode<K, V> node : buckets) {
-            if (node != null) {
+            while (node != null) {
                 values.addLast(node.value);
+                node = node.next;
             }
         }
 
         return values.toArray();
     }
 
-    public int size() {
-        return size;
-    }
-
     public K[] keys() {
         List<K> keys = new List<>();
 
         for (HashTableNode<K, V> node : buckets) {
-            if (node != null) {
-
+            while (node != null) {
                 keys.addLast(node.key);
+                node = node.next;
             }
         }
 
         return keys.toArray();
+    }
+
+    public int size() {
+        return size;
     }
 
     private void rehash() {
@@ -82,11 +109,16 @@ public class HashTable<K, V> {
         HashTableNode<K, V>[] newBucket = new HashTableNode[maxSize];
 
         for (HashTableNode<K, V> element : buckets) {
-            int index = element.hashCode() % maxSize;
-
-            newBucket[index] = element;
+            if (element != null) {
+                int index = element.hashCode() % maxSize;
+                newBucket[index] = element;
+            }
         }
 
         buckets = newBucket;
+    }
+
+    private int getIndex(K key) {
+        return (key.hashCode() & Integer.MAX_VALUE) % maxSize;
     }
 }

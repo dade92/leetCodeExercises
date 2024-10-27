@@ -27,6 +27,23 @@ class HashTableTest {
     }
 
     @Test
+    void putAlreadyExistingKey() {
+        hashTable.put("ciccio", "1");
+
+        assertEquals(
+            "1",
+            hashTable.get("ciccio")
+        );
+
+        hashTable.put("ciccio", "2");
+
+        assertEquals(
+            "2",
+            hashTable.get("ciccio")
+        );
+    }
+
+    @Test
     void get() {
         hashTable.put("ciccio", "1");
 
@@ -64,6 +81,41 @@ class HashTableTest {
         assertEquals(
             1,
             hashTable.size()
+        );
+    }
+
+    @Test
+    void shouldHandleCollisions() {
+        hashTable.put("ciccio", "1");
+        hashTable.put("ciccia", "1");
+        hashTable.put("cicci", "1");
+        hashTable.put("cicce", "1");
+        hashTable.put("cicciu", "1");
+        hashTable.put("cervo", "1");
+        hashTable.put("casa", "1");
+
+
+        assertArrayEquals(
+            new String[]{"cicciu", "casa", "cicci", "ciccia", "ciccio", "cervo", "cicce"},
+            hashTable.keys()
+        );
+    }
+
+    @Test
+    void rehashingShouldNotAlterHashTable() {
+        hashTable.put("ciccio", "1");
+        hashTable.put("ciccia", "1");
+        hashTable.put("cicci", "1");
+        hashTable.put("cicce", "1");
+        hashTable.put("cicciu", "1");
+        hashTable.put("cico", "1");
+        hashTable.put("chico", "1");
+        hashTable.put("chicco", "1");
+        hashTable.put("cervo", "1");
+
+        assertEquals(
+            new String[]{},
+            hashTable.keys()
         );
     }
 }
