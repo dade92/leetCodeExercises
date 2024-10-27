@@ -49,6 +49,10 @@ public class HashTable<K, V> {
         return values.toArray();
     }
 
+    public int size() {
+        return size;
+    }
+
     public K[] keys() {
         List<K> keys = new List<>();
 
