@@ -113,6 +113,25 @@ class HashTableTest {
     }
 
     @Test
+    void insertInSamePosition() {
+        hashTable.put("pasticcio", "1");
+        hashTable.put("cicce", "2");
+
+        assertArrayEquals(
+            new String[]{"2", "1"},
+            hashTable.values()
+        );
+        assertArrayEquals(
+            new String[]{"cicce", "pasticcio"},
+            hashTable.keys()
+        );
+        assertEquals(
+            2,
+            hashTable.size()
+        );
+    }
+
+    @Test
     void rehashingShouldNotRemoveElements() {
         hashTable.put("ciccio", "1");
         hashTable.put("ciccia", "1");
@@ -127,6 +146,9 @@ class HashTableTest {
         assertArrayEquals(
             new String[]{"ciccio", "cervo", "chico", "chicco", "cicce", "cicciu", "cicci", "cico", "ciccia"},
             hashTable.keys()
+        );
+        assertEquals(
+            9, hashTable.size()
         );
     }
 }
