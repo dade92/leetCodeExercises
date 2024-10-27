@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HashTableTest {
 
-    private HashTable<String, String> hashTable = new HashTable<>();
+    private final HashTable<String, String> hashTable = new HashTable<>();
 
     @Test
     void put() {

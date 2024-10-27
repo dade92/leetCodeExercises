@@ -37,19 +37,6 @@ public class HashTable<K, V> {
         return buckets[index].value;
     }
 
-    private void rehash() {
-        maxSize = maxSize * 2;
-        HashTableNode<K, V>[] newBucket = new HashTableNode[maxSize];
-
-        for (HashTableNode<K, V> element : buckets) {
-            int index = element.hashCode() % maxSize;
-
-            newBucket[index] = element;
-        }
-
-        buckets = newBucket;
-    }
-
     public V[] values() {
         List<V> values = new List<>();
 
@@ -75,5 +62,17 @@ public class HashTable<K, V> {
         return keys.toArray();
     }
 
+    private void rehash() {
+        maxSize = maxSize * 2;
+        HashTableNode<K, V>[] newBucket = new HashTableNode[maxSize];
+
+        for (HashTableNode<K, V> element : buckets) {
+            int index = element.hashCode() % maxSize;
+
+            newBucket[index] = element;
+        }
+
+        buckets = newBucket;
+    }
 
 }
