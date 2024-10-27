@@ -1,7 +1,9 @@
 package com.myprojects.hashtables;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class HashTableTest {
@@ -23,6 +25,18 @@ class HashTableTest {
         assertArrayEquals(
             expectedKeys,
             hashTable.keys()
+        );
+    }
+
+    @Test
+    void get() {
+        hashTable.put("ciccio", "1");
+
+        String actual = hashTable.get("ciccio");
+
+        assertEquals(
+            "1",
+            actual
         );
     }
 }

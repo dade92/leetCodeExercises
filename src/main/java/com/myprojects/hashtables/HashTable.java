@@ -32,7 +32,7 @@ public class HashTable<K, V> {
     }
 
     public V get(K key) {
-        int index = key.hashCode() % maxSize;
+        int index = (key.hashCode() & Integer.MAX_VALUE) % maxSize;
 
         return buckets[index].value;
     }
