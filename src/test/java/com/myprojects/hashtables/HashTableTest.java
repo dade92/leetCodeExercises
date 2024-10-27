@@ -98,7 +98,7 @@ class HashTableTest {
     @Test
     void shouldHandleCollisions() {
         hashTable.put("ciccio", "1");
-        hashTable.put("ciccia", "1");
+        hashTable.put("pasticcio", "1");
         hashTable.put("cicci", "1");
         hashTable.put("cicce", "1");
         hashTable.put("cicciu", "1");
@@ -107,13 +107,13 @@ class HashTableTest {
 
 
         assertArrayEquals(
-            new String[]{"cicciu", "casa", "cicci", "ciccia", "ciccio", "cervo", "cicce"},
+            new String[]{"cicciu", "casa", "cicci", "ciccio", "cervo", "cicce", "pasticcio"},
             hashTable.keys()
         );
     }
 
     @Test
-    void rehashingShouldNotAlterHashTable() {
+    void rehashingShouldNotRemoveElements() {
         hashTable.put("ciccio", "1");
         hashTable.put("ciccia", "1");
         hashTable.put("cicci", "1");
