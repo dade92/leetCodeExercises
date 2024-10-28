@@ -3,6 +3,8 @@ package com.myprojects.hashtables;
 import com.myprojects.lists.List;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.StringJoiner;
+
 public class HashTable<K, V> {
 
     private final double loadFactor;
@@ -16,7 +18,7 @@ public class HashTable<K, V> {
 
     public HashTable(Pair<K, V>... pairs) {
         this();
-        for(Pair<K, V> pair : pairs) {
+        for (Pair<K, V> pair : pairs) {
             put(pair.getLeft(), pair.getRight());
         }
     }
@@ -141,7 +143,18 @@ public class HashTable<K, V> {
         buckets = newBucket;
     }
 
-    //TODO custom toString ?
+    @Override
+    public String toString() {
+        StringJoiner sj = new StringJoiner(",", "[", "]");
+
+        for (HashTableNode<K, V> node : buckets) {
+            if (node != null) {
+                sj.add(node.toString());
+            }
+        }
+
+        return sj.toString();
+    }
 
     private int getIndex(K key) {
         return (key.hashCode() & Integer.MAX_VALUE) % maxSize;

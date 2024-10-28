@@ -26,4 +26,9 @@ public class HashTableNode<K, V> {
     public int hashCode() {
         return Objects.hash(key, value, next);
     }
+
+    @Override
+    public String toString() {
+        return "{" + key + "," + value + '}';
+    }
 }

@@ -1,9 +1,11 @@
 package com.myprojects.hashtables;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.apache.commons.lang3.tuple.Pair.of;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -149,6 +151,14 @@ class HashTableTest {
         assertEquals(
             10,
             hashTable.size()
+        );
+    }
+
+    @Test
+    void stringRepresentation() {
+        assertEquals(
+            "[{ciccio,1},{pasticcio,2}]",
+            hashTable.toString()
         );
     }
 }
