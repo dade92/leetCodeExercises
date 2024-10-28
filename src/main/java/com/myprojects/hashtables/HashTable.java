@@ -148,8 +148,9 @@ public class HashTable<K, V> {
         StringJoiner sj = new StringJoiner(",", "[", "]");
 
         for (HashTableNode<K, V> node : buckets) {
-            if (node != null) {
+            while (node != null) {
                 sj.add(node.toString());
+                node = node.next;
             }
         }
 
