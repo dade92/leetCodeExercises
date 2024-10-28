@@ -1,18 +1,27 @@
 package com.myprojects.hashtables;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.apache.commons.lang3.tuple.Pair.of;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class HashTableTest {
 
-    private final HashTable<String, String> hashTable = new HashTable<>();
+    private HashTable<String, String> hashTable;
+
+    @BeforeEach
+    void setUp() {
+        hashTable = new HashTable<>(
+            of("ciccio", "1"),
+            of("pasticcio", "2")
+        );
+    }
 
     @Test
     void put() {
-        hashTable.put("ciccio", "1");
-        hashTable.put("pasticcio", "2");
-
         String[] expectedValues = new String[]{"1", "2"};
         String[] expectedKeys = new String[]{"ciccio", "pasticcio"};
 
@@ -28,8 +37,6 @@ class HashTableTest {
 
     @Test
     void putAlreadyExistingKey() {
-        hashTable.put("ciccio", "1");
-
         assertEquals(
             "1",
             hashTable.get("ciccio")
@@ -45,8 +52,6 @@ class HashTableTest {
 
     @Test
     void get() {
-        hashTable.put("ciccio", "1");
-
         String actual = hashTable.get("ciccio");
 
         assertEquals(
@@ -57,24 +62,21 @@ class HashTableTest {
 
     @Test
     void getNonExistingKey() {
-        assertNull(hashTable.get("ciccio"));
+        assertNull(hashTable.get("ciccia"));
     }
 
     @Test
     void removeNonExistingKey() {
-        hashTable.put("ciccio", "1");
         hashTable.remove("NON_EXISTING");
 
         assertArrayEquals(
-            new String[] {"ciccio"},
+            new String[]{"ciccio", "pasticcio"},
             hashTable.keys()
         );
     }
 
     @Test
     void remove() {
-        hashTable.put("ciccio", "1");
-
         hashTable.remove("ciccio");
 
         assertNull(hashTable.get("ciccio"));
@@ -83,11 +85,11 @@ class HashTableTest {
     @Test
     void size() {
         assertEquals(
-            0,
+            2,
             hashTable.size()
         );
 
-        hashTable.put("Giorgio", "1");
+        hashTable.remove("ciccio");
 
         assertEquals(
             1,
@@ -97,8 +99,6 @@ class HashTableTest {
 
     @Test
     void shouldHandleCollisions() {
-        hashTable.put("ciccio", "1");
-        hashTable.put("pasticcio", "1");
         hashTable.put("cicci", "1");
         hashTable.put("cicce", "1");
         hashTable.put("cicciu", "1");
@@ -114,19 +114,18 @@ class HashTableTest {
 
     @Test
     void insertInSamePosition() {
-        hashTable.put("pasticcio", "1");
-        hashTable.put("cicce", "2");
+        hashTable.put("cicce", "3");
 
         assertArrayEquals(
-            new String[]{"2", "1"},
+            new String[]{"1", "3", "2"},
             hashTable.values()
         );
         assertArrayEquals(
-            new String[]{"cicce", "pasticcio"},
+            new String[]{"ciccio", "cicce", "pasticcio"},
             hashTable.keys()
         );
         assertEquals(
-            2,
+            3,
             hashTable.size()
         );
     }

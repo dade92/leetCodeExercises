@@ -1,6 +1,7 @@
 package com.myprojects.hashtables;
 
 import com.myprojects.lists.List;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class HashTable<K, V> {
 
@@ -11,6 +12,13 @@ public class HashTable<K, V> {
 
     public HashTable() {
         this(0.75, 11);
+    }
+
+    public HashTable(Pair<K, V>... pairs) {
+        this();
+        for(Pair<K, V> pair : pairs) {
+            put(pair.getLeft(), pair.getRight());
+        }
     }
 
     public HashTable(double loadFactor, int maxSize) {
@@ -120,12 +128,15 @@ public class HashTable<K, V> {
         for (HashTableNode<K, V> element : buckets) {
             if (element != null) {
                 int index = getIndex(element.key);
+                //TODO must handle collisions!
                 newBucket[index] = element;
             }
         }
 
         buckets = newBucket;
     }
+
+    //TODO custom toString ?
 
     private int getIndex(K key) {
         return (key.hashCode() & Integer.MAX_VALUE) % maxSize;
