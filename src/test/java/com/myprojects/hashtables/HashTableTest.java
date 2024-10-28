@@ -1,11 +1,9 @@
 package com.myprojects.hashtables;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.apache.commons.lang3.tuple.Pair.of;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -145,13 +143,14 @@ class HashTableTest {
         hashTable.put("cervo", "1");
 
         assertArrayEquals(
-            new String[]{"ciccio", "cervo", "chicco", "cicce", "pasticcio", "cicciu", "cicci", "cico", "ciccia", "chico"},
+            new String[]{"ciccio", "cervo", "pasticcio", "cicce", "chicco", "cicciu", "cicci", "ciccia", "cico", "chico"},
             hashTable.keys()
         );
         assertEquals(
             10,
             hashTable.size()
         );
+        System.out.println(hashTable);
     }
 
     @Test

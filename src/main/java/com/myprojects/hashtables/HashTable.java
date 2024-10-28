@@ -38,7 +38,18 @@ public class HashTable<K, V> {
         } else {
             HashTableNode<K, V> node = buckets[index];
 
-            if (insertInPosition(key, value, node, index)) return;
+            while (node != null) {
+                if (key == node.key) {
+                    node.value = value;
+                    return;
+                }
+                node = node.next;
+            }
+
+            HashTableNode<K, V> newNode = new HashTableNode<>(key, value);
+
+            newNode.next = buckets[index];
+            buckets[index] = newNode;
         }
 
         size++;
@@ -46,22 +57,6 @@ public class HashTable<K, V> {
         if ((double) size / maxSize > loadFactor) {
             rehash();
         }
-    }
-
-    private boolean insertInPosition(K key, V value, HashTableNode<K, V> node, int index) {
-        while (node != null) {
-            if (key == node.key) {
-                node.value = value;
-                return true;
-            }
-            node = node.next;
-        }
-
-        HashTableNode<K, V> newNode = new HashTableNode<>(key, value);
-
-        newNode.next = buckets[index];
-        buckets[index] = newNode;
-        return false;
     }
 
     public V get(K key) {
@@ -132,16 +127,21 @@ public class HashTable<K, V> {
         maxSize = maxSize * 2;
         HashTableNode<K, V>[] newBucket = new HashTableNode[maxSize];
 
-        for (HashTableNode<K, V> element : buckets) {
-            if (element != null) {
-                int index = getIndex(element.key);
-                //TODO must handle collisions!
-                newBucket[index] = element;
+        for (HashTableNode<K, V> node : buckets) {
+            while (node != null) {
+                HashTableNode<K, V> nextNode = node.next;
+                int newIndex = getIndex(node.key);
+
+                node.next = newBucket[newIndex];
+                newBucket[newIndex] = node;
+
+                node = nextNode;
             }
         }
 
         buckets = newBucket;
     }
+
 
     @Override
     public String toString() {
