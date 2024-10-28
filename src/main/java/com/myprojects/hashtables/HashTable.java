@@ -36,18 +36,7 @@ public class HashTable<K, V> {
         } else {
             HashTableNode<K, V> node = buckets[index];
 
-            while (node != null) {
-                if (key == node.key) {
-                    node.value = value;
-                    return;
-                }
-                node = node.next;
-            }
-
-            HashTableNode<K, V> newNode = new HashTableNode<>(key, value);
-
-            newNode.next = buckets[index];
-            buckets[index] = newNode;
+            if (insertInPosition(key, value, node, index)) return;
         }
 
         size++;
@@ -55,6 +44,22 @@ public class HashTable<K, V> {
         if ((double) size / maxSize > loadFactor) {
             rehash();
         }
+    }
+
+    private boolean insertInPosition(K key, V value, HashTableNode<K, V> node, int index) {
+        while (node != null) {
+            if (key == node.key) {
+                node.value = value;
+                return true;
+            }
+            node = node.next;
+        }
+
+        HashTableNode<K, V> newNode = new HashTableNode<>(key, value);
+
+        newNode.next = buckets[index];
+        buckets[index] = newNode;
+        return false;
     }
 
     public V get(K key) {

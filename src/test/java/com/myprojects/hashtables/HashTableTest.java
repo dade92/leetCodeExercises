@@ -143,11 +143,12 @@ class HashTableTest {
         hashTable.put("cervo", "1");
 
         assertArrayEquals(
-            new String[]{"ciccio", "cervo", "chico", "chicco", "cicce", "cicciu", "cicci", "cico", "ciccia"},
+            new String[]{"ciccio", "cervo", "chicco", "cicce", "pasticcio", "cicciu", "cicci", "cico", "ciccia", "chico"},
             hashTable.keys()
         );
         assertEquals(
-            9, hashTable.size()
+            10,
+            hashTable.size()
         );
     }
 }
