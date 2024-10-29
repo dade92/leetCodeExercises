@@ -125,21 +125,21 @@ public class HashTable<K, V> {
 
     private void rehash() {
         maxSize = maxSize * 2;
-        HashTableNode<K, V>[] newBucket = new HashTableNode[maxSize];
+        HashTableNode<K, V>[] newBuckets = new HashTableNode[maxSize];
 
         for (HashTableNode<K, V> node : buckets) {
             while (node != null) {
                 HashTableNode<K, V> nextNode = node.next;
                 int newIndex = getIndex(node.key);
 
-                node.next = newBucket[newIndex];
-                newBucket[newIndex] = node;
+                node.next = newBuckets[newIndex];
+                newBuckets[newIndex] = node;
 
                 node = nextNode;
             }
         }
 
-        buckets = newBucket;
+        buckets = newBuckets;
     }
 
 
