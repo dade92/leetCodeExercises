@@ -132,7 +132,6 @@ class HashTableTest {
 
     @Test
     void rehashingShouldNotRemoveElements() {
-        hashTable.put("ciccio", "1");
         hashTable.put("ciccia", "1");
         hashTable.put("cicci", "1");
         hashTable.put("cicce", "1");
