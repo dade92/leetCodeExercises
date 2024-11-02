@@ -6,9 +6,9 @@ import java.util.List;
 
 class Trie {
     public static final int NUM_OF_SYMBOLS = 26;
+    private static final char OFFSET = 'a';
 
     private final TrieNode root;
-    private static final char OFFSET = 'a';
 
     public Trie() {
         root = new TrieNode();
