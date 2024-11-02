@@ -2,9 +2,11 @@ package com.myprojects.lists;
 
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -333,5 +335,13 @@ class ListTest {
             ,
             list.toString()
         );
+    }
+
+    @Test
+    void equalsAmongListOfStrings() {
+        List<String> first = new List<>("hey", "my", "friend");
+        List<String> second = new List<>("hey", "my", "friend");
+
+        assertEquals(first, second);
     }
 }
