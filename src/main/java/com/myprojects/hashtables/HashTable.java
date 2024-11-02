@@ -7,13 +7,16 @@ import java.util.StringJoiner;
 
 public class HashTable<K, V> {
 
+    private static final double DEFAULT_LOAD_FACTOR = 0.75;
+    private static final int DEFAULT_MAX_SIZE = 11;
+
     private final double loadFactor;
     private int maxSize;
     private HashTableNode<K, V>[] buckets;
     private int size;
 
     public HashTable() {
-        this(0.75, 11);
+        this(DEFAULT_LOAD_FACTOR, DEFAULT_MAX_SIZE);
     }
 
     public HashTable(Pair<K, V>... pairs) {
@@ -141,7 +144,6 @@ public class HashTable<K, V> {
 
         buckets = newBuckets;
     }
-
 
     @Override
     public String toString() {
