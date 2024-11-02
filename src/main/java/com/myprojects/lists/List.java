@@ -157,7 +157,7 @@ public class List<T> {
         }
         int index = 1;
         while (index <= size) {
-            if (this.getAt(index) != list.getAt(index)) return false;
+            if (!this.getAt(index).equals(list.getAt(index))) return false;
             index++;
         }
         return true;

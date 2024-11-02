@@ -1,8 +1,8 @@
 package com.myprojects.tries;
 
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.Test;
 
-import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,7 +13,7 @@ public class TriesTest {
 
     @Test
     void initCorrectly() {
-        assertEquals(trie.retrieveWords(), asList("app", "apple", "banana", "bananas", "pear"));
+        assertEquals(trie.retrieveWords(), new List<>("app", "apple", "banana", "bananas", "pear"));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class TriesTest {
 
     @Test
     void retrieveWordsFromPrefix() {
-        assertEquals(trie.retrieveWordsWithPrefix("ap"), asList("app", "apple"));
+        assertEquals(trie.retrieveWordsWithPrefix("ap"), new List<>("app", "apple"));
     }
 
     @Test

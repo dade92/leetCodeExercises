@@ -1,8 +1,8 @@
 package com.myprojects.tries;
 
+import com.myprojects.lists.List;
+
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 class Trie {
     public static final int NUM_OF_SYMBOLS = 26;
@@ -50,7 +50,7 @@ class Trie {
     }
 
     public List<String> retrieveWords() {
-        List<String> output = new LinkedList<>();
+        List<String> output = new List<>();
         retrieveWordsStartingFrom(root, new StringBuilder(), output);
         return output;
     }
@@ -60,12 +60,12 @@ class Trie {
         for (char c : word.toCharArray()) {
             int index = c - OFFSET;
             if (node.children[index] == null) {
-                return Collections.emptyList();
+                return new List<>();
             }
             node = node.children[index];
         }
 
-        List<String> output = new LinkedList<>();
+        List<String> output = new List<>();
         retrieveWordsStartingFrom(node, new StringBuilder(word), output);
         return output;
     }
@@ -99,7 +99,7 @@ class Trie {
 
     private void retrieveWordsStartingFrom(TrieNode node, StringBuilder temp, List<String> output) {
         if (node.isEndOfWord) {
-            output.add(temp.toString());
+            output.addLast(temp.toString());
         }
 
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {
