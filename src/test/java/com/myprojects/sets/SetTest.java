@@ -1,5 +1,6 @@
 package com.myprojects.sets;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -7,7 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SetTest {
 
-    private Set<String> set = new Set<>("Davide", "Sergio", "Paola");
+    private Set<String> set;
+
+    @BeforeEach
+    void setUp() {
+        set = new Set<>("Davide", "Sergio", "Paola");
+    }
 
     @Test
     void add() {
@@ -15,6 +21,16 @@ class SetTest {
 
         assertArrayEquals(
             new String[] {"Elena", "Paola", "Davide", "Sergio"},
+            set.toArray()
+        );
+    }
+
+    @Test
+    void addsTheSameElement() {
+        set.add("Davide");
+
+        assertArrayEquals(
+            new String[] {"Paola", "Davide", "Sergio"},
             set.toArray()
         );
     }
