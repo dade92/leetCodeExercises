@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SetTest {
 
@@ -23,6 +25,10 @@ class SetTest {
             new String[] {"Elena", "Paola", "Davide", "Sergio"},
             set.toArray()
         );
+        assertEquals(
+            4,
+            set.size()
+        );
     }
 
     @Test
@@ -33,12 +39,46 @@ class SetTest {
             new String[] {"Paola", "Davide", "Sergio"},
             set.toArray()
         );
+        assertEquals(
+            3,
+            set.size()
+        );
+    }
+
+    @Test
+    void remove() {
+        set.remove("Davide");
+
+        assertArrayEquals(
+            new String[] {"Paola", "Sergio"},
+            set.toArray()
+        );
+        assertEquals(
+            2,
+            set.size()
+        );
+    }
+
+    @Test
+    void contains() {
+        assertTrue(set.contains("Davide"));
+        assertFalse(set.contains("Elena"));
     }
 
     @Test
     void size() {
         assertEquals(
             3, set.size()
+        );
+    }
+
+    @Test
+    void emptySet() {
+        Set empty = new Set();
+
+        assertEquals(
+            0,
+            empty.size()
         );
     }
 
