@@ -19,18 +19,18 @@ public class HashTable<K, V> {
         this(DEFAULT_LOAD_FACTOR, DEFAULT_MAX_SIZE);
     }
 
-    public HashTable(Pair<K, V>... pairs) {
-        this();
-        for (Pair<K, V> pair : pairs) {
-            put(pair.getLeft(), pair.getRight());
-        }
-    }
-
     public HashTable(double loadFactor, int maxSize) {
         this.loadFactor = loadFactor;
         this.maxSize = maxSize;
         buckets = new HashTableNode[maxSize];
         size = 0;
+    }
+
+    public HashTable(Pair<K, V>... pairs) {
+        this();
+        for (Pair<K, V> pair : pairs) {
+            put(pair.getLeft(), pair.getRight());
+        }
     }
 
     public void put(K key, V value) {
