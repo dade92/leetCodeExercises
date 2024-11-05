@@ -23,6 +23,12 @@ public class Set<V> {
         hashTable.put(value, true);
     }
 
+    public void addAll(Set<V> elements) {
+        for (V value: elements.toArray()) {
+            hashTable.put(value, true);
+        }
+    }
+
     public void remove(V value) {
         hashTable.remove(value);
     }

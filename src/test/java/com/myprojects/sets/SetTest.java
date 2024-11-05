@@ -32,6 +32,18 @@ class SetTest {
     }
 
     @Test
+    void addAll() {
+        Set<String> set2 = new Set<>("Elena", "Stefania");
+
+        set.addAll(set2);
+
+        assertArrayEquals(
+            new String[] {"Elena", "Paola", "Stefania", "Davide", "Sergio"},
+            set.toArray()
+        );
+    }
+
+    @Test
     void addsTheSameElement() {
         set.add("Davide");
 
