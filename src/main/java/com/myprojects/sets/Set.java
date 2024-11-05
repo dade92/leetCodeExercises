@@ -13,7 +13,7 @@ public class Set<V> {
     }
 
     public Set(V... elements) {
-        hashTable = new HashTable<>();
+        this();
         for (V element : elements) {
             hashTable.put(element, true);
         }
@@ -24,7 +24,7 @@ public class Set<V> {
     }
 
     public void addAll(Set<V> elements) {
-        for (V value: elements.toArray()) {
+        for (V value : elements.toArray()) {
             hashTable.put(value, true);
         }
     }
@@ -53,7 +53,7 @@ public class Set<V> {
     public String toString() {
         StringJoiner sj = new StringJoiner(",", "[ ", " ]");
 
-        for(V value : hashTable.keys()) {
+        for (V value : hashTable.keys()) {
             sj.add(value.toString());
         }
 

@@ -159,6 +159,8 @@ public class HashTable<K, V> {
         return sj.toString();
     }
 
+    //TODO implement the equals and hashcode method
+
     private int getIndex(K key) {
         return (key.hashCode() & Integer.MAX_VALUE) % maxSize;
     }
