@@ -159,4 +159,14 @@ class HashTableTest {
             hashTable.toString()
         );
     }
+
+    @Test
+    void equality() {
+        HashTable<String, String> anotherHashTable = new HashTable<>(
+            of("ciccio", "1"),
+            of("pasticcio", "2")
+        );
+
+        assertEquals(hashTable, anotherHashTable);
+    }
 }

@@ -3,6 +3,8 @@ package com.myprojects.hashtables;
 import com.myprojects.lists.List;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class HashTable<K, V> {
@@ -159,7 +161,21 @@ public class HashTable<K, V> {
         return sj.toString();
     }
 
-    //TODO implement the equals and hashcode method
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HashTable<?, ?> hashTable = (HashTable<?, ?>) o;
+        return Double.compare(loadFactor, hashTable.loadFactor) == 0 &&
+            maxSize == hashTable.maxSize &&
+            size == hashTable.size &&
+            Objects.deepEquals(buckets, hashTable.buckets);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loadFactor, maxSize, Arrays.hashCode(buckets), size);
+    }
 
     private int getIndex(K key) {
         return (key.hashCode() & Integer.MAX_VALUE) % maxSize;

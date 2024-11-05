@@ -2,6 +2,7 @@ package com.myprojects.sets;
 
 import com.myprojects.hashtables.HashTable;
 
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Set<V> {
@@ -58,5 +59,18 @@ public class Set<V> {
         }
 
         return sj.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Set<?> set = (Set<?>) o;
+        return Objects.equals(hashTable, set.hashTable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(hashTable);
     }
 }

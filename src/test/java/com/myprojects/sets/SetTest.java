@@ -101,4 +101,11 @@ class SetTest {
             set.toString()
         );
     }
+
+    @Test
+    void equality() {
+        Set<String> anotherSet = new Set<>("Davide", "Sergio", "Paola");
+
+        assertEquals(anotherSet, set);
+    }
 }
