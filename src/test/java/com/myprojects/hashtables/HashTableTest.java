@@ -80,6 +80,15 @@ class HashTableTest {
         hashTable.remove("ciccio");
 
         assertNull(hashTable.get("ciccio"));
+
+        assertArrayEquals(
+            new String[] {"pasticcio"},
+            hashTable.keys()
+        );
+        assertArrayEquals(
+            new String[] {"2"},
+            hashTable.values()
+        );
     }
 
     @Test
