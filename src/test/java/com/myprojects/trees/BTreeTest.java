@@ -49,4 +49,14 @@ class BTreeTest {
         assertNotNull(bTree.search(8));
         assertNull(bTree.search(7));
     }
+
+    @Test
+    void removesCorrectly() {
+        bTree.remove(8);
+
+        assertEquals(
+            new List<>(5, 4, 10),
+            bTree.traverseBFS()
+        );
+    }
 }

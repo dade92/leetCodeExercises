@@ -292,11 +292,9 @@ public class BTree<T extends Comparable<T>> {
     }
 
     private void splitChild(BTreeNode<T> parent, int i, BTreeNode<T> fullChild) {
-        // Create a new node to hold keys and children of fullChild
         BTreeNode<T> newChild = new BTreeNode<>(fullChild.minDegree, fullChild.leaf);
         newChild.numberOfKeys = minDegree - 1;
 
-        // Move keys and children to the new node
         for (int j = 0; j < minDegree - 1; j++)
             newChild.keys[j] = fullChild.keys[j + minDegree];
         if (!fullChild.leaf) {
@@ -305,12 +303,10 @@ public class BTree<T extends Comparable<T>> {
         }
         fullChild.numberOfKeys = minDegree - 1;
 
-        // Insert new child into the parent node
         for (int j = parent.numberOfKeys; j >= i + 1; j--)
             parent.children[j + 1] = parent.children[j];
         parent.children[i + 1] = newChild;
 
-        // Move middle key up to the parent node
         for (int j = parent.numberOfKeys - 1; j >= i; j--)
             parent.keys[j + 1] = parent.keys[j];
         parent.keys[i] = fullChild.keys[minDegree - 1];
@@ -320,7 +316,6 @@ public class BTree<T extends Comparable<T>> {
     private void insertNonFull(BTreeNode<T> node, T key) {
         int i = node.numberOfKeys - 1;
         if (node.leaf) {
-            // Find location to insert key and shift keys to make space
             while (i >= 0 && node.keys[i].compareTo(key) > 0) {
                 node.keys[i + 1] = node.keys[i];
                 i--;
@@ -328,7 +323,6 @@ public class BTree<T extends Comparable<T>> {
             node.keys[i + 1] = key;
             node.numberOfKeys += 1;
         } else {
-            // Find the child which is going to have the new key
             while (i >= 0 && node.keys[i].compareTo(key) > 0)
                 i--;
             i++;
