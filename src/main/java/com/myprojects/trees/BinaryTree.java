@@ -22,7 +22,7 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public BinaryTreeNode<T> search(T val) {
-        return TreeUtils.search(root, val);
+        return TreeUtils.binarySearch(root, val);
     }
 
     public List<T> inOrderTraversal() {

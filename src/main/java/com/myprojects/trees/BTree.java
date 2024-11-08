@@ -84,26 +84,19 @@ public class BTree<T extends Comparable<T>> {
         return search(root, key);
     }
 
-    // Helper function to search in a given node
     private BTreeNode<T> search(BTreeNode<T> node, T key) {
         int i = 0;
 
-        // Find the first key greater than or equal to key
         while (i < node.numberOfKeys && key.compareTo(node.keys[i]) > 0) {
             i++;
         }
-
-        // If the found key is equal to the key we're searching for, return the node
         if (i < node.numberOfKeys && node.keys[i] == key) {
             return node;
         }
-
-        // If the key is not found and this is a leaf node, return null
         if (node.leaf) {
             return null;
         }
 
-        // Otherwise, go to the appropriate child
         return search(node.children[i], key);
     }
 

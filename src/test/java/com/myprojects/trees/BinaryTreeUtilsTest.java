@@ -41,7 +41,7 @@ public class BinaryTreeUtilsTest {
     }
 
     @Test
-    void search() {
+    void binarySearch() {
         BinaryTreeNode<Integer> toBeSearched = new BinaryTreeNode<>(8);
 
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(5);
@@ -50,8 +50,8 @@ public class BinaryTreeUtilsTest {
         root.left.left = new BinaryTreeNode<>(9);
         root.right.right = new BinaryTreeNode<>(11);
 
-        assertEquals(toBeSearched, TreeUtils.search(root, 8));
-        assertNull(TreeUtils.search(root, 66));
+        assertEquals(toBeSearched, TreeUtils.binarySearch(root, 8));
+        assertNull(TreeUtils.binarySearch(root, 66));
     }
 
     @Test

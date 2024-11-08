@@ -18,14 +18,14 @@ public final class TreeUtils {
         return root;
     }
 
-    public static <T extends Comparable<T>> BinaryTreeNode<T> search(BinaryTreeNode<T> root, T val) {
+    public static <T extends Comparable<T>> BinaryTreeNode<T> binarySearch(BinaryTreeNode<T> root, T val) {
         if (root == null || root.val == val) {
             return root;
         } else {
             if (val.compareTo(root.val) < 0) {
-                return search(root.left, val);
+                return binarySearch(root.left, val);
             } else {
-                return search(root.right, val);
+                return binarySearch(root.right, val);
             }
         }
     }
