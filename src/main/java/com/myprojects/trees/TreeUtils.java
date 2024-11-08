@@ -30,10 +30,10 @@ public final class TreeUtils {
         }
     }
 
-    public static <T extends Comparable<T>> BinaryTreeNode<T> invertTree(BinaryTreeNode<T> root) {
+    public static <T extends Comparable<T>> BinaryTreeNode<T> invertBinaryTree(BinaryTreeNode<T> root) {
         if (root != null) {
-            BinaryTreeNode<T> temp = invertTree(root.left);
-            root.left = invertTree(root.right);
+            BinaryTreeNode<T> temp = invertBinaryTree(root.left);
+            root.left = invertBinaryTree(root.right);
             root.right = temp;
         }
         return root;

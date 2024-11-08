@@ -66,8 +66,8 @@ public class BinaryTreeUtilsTest {
     }
 
     @Test
-    void invertTree() {
-        root = TreeUtils.invertTree(root);
+    void invertBinaryTree() {
+        root = TreeUtils.invertBinaryTree(root);
 
         checkTreeInBreadth(root, new List<>(5, 8, 3, 11, 9));
     }
