@@ -36,9 +36,38 @@ class BTreeTest {
     @Test
     void insertsCorrectly() {
         bTree.insert(15);
-
         assertEquals(
             new List<>(4, 8, 2, 6, 10, 12, 1, 3, 5, 7, 9, 11, 13, 14, 15),
+            bTree.traverseBFS()
+        );
+
+        bTree.insert(16);
+        assertEquals(
+            new List<>(4, 8, 2, 6, 10, 12, 14, 1, 3, 5, 7, 9, 11, 13, 15, 16),
+            bTree.traverseBFS()
+        );
+
+        bTree.insert(17);
+        assertEquals(
+            new List<>(4, 8, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15, 16, 17),
+            bTree.traverseBFS()
+        );
+
+        bTree.insert(18);
+        assertEquals(
+            new List<>(8, 4, 12, 2, 6, 10, 14, 16, 1, 3, 5, 7, 9, 11, 13, 15, 17, 18),
+            bTree.traverseBFS()
+        );
+
+        bTree.insert(19);
+        assertEquals(
+            new List<>(8, 4, 12, 2, 6, 10, 14, 16, 1, 3, 5, 7, 9, 11, 13, 15, 17, 18, 19),
+            bTree.traverseBFS()
+        );
+
+        bTree.insert(20);
+        assertEquals(
+            new List<>(8, 4, 12, 2, 6, 10, 14, 16, 18, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 20),
             bTree.traverseBFS()
         );
     }
