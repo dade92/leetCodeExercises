@@ -45,6 +45,7 @@ class BTreeTest {
 
     @Test
     void searchAnElement() {
+        // TODO handle with the node reference is not easy here
         assertNotNull(bTree.search(8));
         assertNull(bTree.search(7));
     }
