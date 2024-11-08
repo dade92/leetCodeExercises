@@ -57,7 +57,7 @@ final class ListUtils {
         return Pair.of(head, tail);
     }
 
-    public static <T> int searchElement(ListNode<T> current, T val) {
+    public static <T> int indexOf(ListNode<T> current, T val) {
         int index = 1;
         while (current != null) {
             if (current.val.equals(val)) {

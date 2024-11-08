@@ -112,7 +112,12 @@ public class List<T> {
     }
 
     public int indexOf(T val) {
-        return ListUtils.searchElement(head, val);
+        return ListUtils.indexOf(head, val);
+    }
+
+    public ListNode<T> search(T val) {
+        //TODO implement a proper search
+        return null;
     }
 
     public boolean isEmpty() {
