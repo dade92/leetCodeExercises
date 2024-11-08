@@ -98,7 +98,7 @@ public class BTree<T extends Comparable<T>> {
     }
 
     private void remove(BTreeNode<T> node, T key) {
-        int idx = findKey(node, key);
+        int idx = findKeyGreaterOrEqualTo(node, key);
 
         // Case 1: The key is in this node
         if (idx < node.numberOfKeys && node.keys[idx].compareTo(key) == 0) {
@@ -110,7 +110,6 @@ public class BTree<T extends Comparable<T>> {
         } else {
             // Case 3: The key is not in this node, must be in a child subtree
             if (node.leaf) {
-                System.out.println("The key " + key + " is not in the tree.");
                 return;
             }
 
@@ -132,7 +131,7 @@ public class BTree<T extends Comparable<T>> {
     }
 
     // Find the index of the first key greater than or equal to key
-    private int findKey(BTreeNode<T> node, T key) {
+    private int findKeyGreaterOrEqualTo(BTreeNode<T> node, T key) {
         int idx = 0;
         while (idx < node.numberOfKeys && node.keys[idx].compareTo(key) < 0) {
             idx++;
@@ -169,7 +168,6 @@ public class BTree<T extends Comparable<T>> {
         }
     }
 
-    // Helper methods for removeFromNonLeaf
     private T getPred(BTreeNode<T> node, int idx) {
         BTreeNode<T> cur = node.children[idx];
         while (!cur.leaf) {
@@ -273,7 +271,6 @@ public class BTree<T extends Comparable<T>> {
         child.numberOfKeys += sibling.numberOfKeys + 1;
         node.numberOfKeys--;
     }
-
 
     private BTreeNode<T> search(BTreeNode<T> node, T key) {
         int i = 0;
