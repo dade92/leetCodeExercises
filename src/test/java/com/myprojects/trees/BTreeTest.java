@@ -30,4 +30,26 @@ class BTreeTest {
             bTree.traverseBFS()
         );
     }
+
+    @Test
+    void insertsCorrectly() {
+        bTree.insert(11);
+
+        assertEquals(
+            new List<>(4, 5, 8, 10, 11),
+            bTree.traverseDFS()
+        );
+    }
+
+    @Test
+    void searchAnElement() {
+        Integer searched = 8;
+        BTreeNode<Integer> expected = new BTreeNode<>(3, true);
+        expected.keys[0] = searched;
+
+        assertEquals(
+            expected,
+            bTree.search(searched)
+        );
+    }
 }
