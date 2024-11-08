@@ -6,29 +6,29 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TreeTest {
+class BinaryTreeTest {
 
-    private Tree<Integer> tree;
+    private BinaryTree<Integer> binaryTree;
 
     @BeforeEach
     void setUp() {
-        tree = new Tree<>(5, 3, 8, 9, 7);
+        binaryTree = new BinaryTree<>(5, 3, 8, 9, 7);
     }
 
     @Test
     void insert() {
-        tree.insert(4);
+        binaryTree.insert(4);
 
         assertEquals(
             new List<>(3, 4, 5, 7, 8, 9),
-            tree.inOrderTraversal()
+            binaryTree.inOrderTraversal()
         );
     }
 
     @Test
     void search() {
         int searched = 9;
-        TreeNode<Integer> found = tree.search(searched);
+        TreeNode<Integer> found = binaryTree.search(searched);
 
         assertEquals(
             searched,
@@ -40,7 +40,7 @@ class TreeTest {
     void inOrderTraversal() {
         assertEquals(
             new List<>(3, 5, 7, 8, 9),
-            tree.inOrderTraversal()
+            binaryTree.inOrderTraversal()
         );
     }
 
@@ -48,7 +48,7 @@ class TreeTest {
     void preOrderTraversal() {
         assertEquals(
             new List<>(5, 3, 8, 7, 9),
-            tree.preOrderTraversal()
+            binaryTree.preOrderTraversal()
         );
     }
 
@@ -56,7 +56,7 @@ class TreeTest {
     void postOrderTraversal() {
         assertEquals(
             new List<>(3, 7, 9, 8, 5),
-            tree.postOrderTraversal()
+            binaryTree.postOrderTraversal()
         );
     }
 
@@ -64,7 +64,7 @@ class TreeTest {
     void breadthTraversal() {
         assertEquals(
             new List<>(5, 3, 8, 7, 9),
-            tree.breadthTraversal()
+            binaryTree.breadthTraversal()
         );
     }
 }

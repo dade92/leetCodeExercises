@@ -3,15 +3,15 @@ package com.myprojects.trees;
 
 import com.myprojects.lists.List;
 
-public class Tree<T extends Comparable<T>> {
+public class BinaryTree<T extends Comparable<T>> {
 
     private TreeNode<T> root;
 
-    public Tree() {
+    public BinaryTree() {
         this.root = null;
     }
 
-    public Tree(T... elements) {
+    public BinaryTree(T... elements) {
         for (T e : elements) {
             insert(e);
         }
