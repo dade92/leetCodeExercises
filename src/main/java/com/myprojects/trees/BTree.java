@@ -224,9 +224,9 @@ public class BTree<T extends Comparable<T>> {
         sibling.numberOfKeys -= 1;
     }
 
-    private void borrowFromNext(BTreeNode node, int idx) {
-        BTreeNode child = node.children[idx];
-        BTreeNode sibling = node.children[idx + 1];
+    private void borrowFromNext(BTreeNode<T> node, int idx) {
+        BTreeNode<T> child = node.children[idx];
+        BTreeNode<T> sibling = node.children[idx + 1];
 
         child.keys[child.numberOfKeys] = node.keys[idx];
         if (!child.leaf) {
@@ -248,9 +248,9 @@ public class BTree<T extends Comparable<T>> {
         sibling.numberOfKeys -= 1;
     }
 
-    private void merge(BTreeNode node, int idx) {
-        BTreeNode child = node.children[idx];
-        BTreeNode sibling = node.children[idx + 1];
+    private void merge(BTreeNode<T> node, int idx) {
+        BTreeNode<T> child = node.children[idx];
+        BTreeNode<T> sibling = node.children[idx + 1];
 
         child.keys[minDegree - 1] = node.keys[idx];
         for (int i = 0; i < sibling.numberOfKeys; ++i) {
