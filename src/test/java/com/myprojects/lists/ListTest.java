@@ -52,6 +52,16 @@ class ListTest {
     }
 
     @Test
+    void search() {
+        int searched = 10;
+
+        assertEquals(
+            searched,
+            list.search(searched).val
+        );
+    }
+
+    @Test
     void returnFirstElementCorrectly() {
         assertEquals(5, list.first());
     }

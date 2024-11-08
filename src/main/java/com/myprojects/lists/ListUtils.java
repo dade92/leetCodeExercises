@@ -69,6 +69,16 @@ final class ListUtils {
         return -1;
     }
 
+    public static <T>  ListNode<T> search(ListNode<T> current, T val) {
+        while (current != null) {
+            if (current.val.equals(val)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
     public static <T> T getAt(ListNode<T> head, int position) {
         int index = 1;
         ListNode<T> current = head;

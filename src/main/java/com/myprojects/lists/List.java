@@ -116,8 +116,7 @@ public class List<T> {
     }
 
     public ListNode<T> search(T val) {
-        //TODO implement a proper search
-        return null;
+        return ListUtils.search(head, val);
     }
 
     public boolean isEmpty() {
