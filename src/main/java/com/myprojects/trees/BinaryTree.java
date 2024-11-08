@@ -5,7 +5,7 @@ import com.myprojects.lists.List;
 
 public class BinaryTree<T extends Comparable<T>> {
 
-    private TreeNode<T> root;
+    private BinaryTreeNode<T> root;
 
     public BinaryTree() {
         this.root = null;
@@ -21,7 +21,7 @@ public class BinaryTree<T extends Comparable<T>> {
         root = TreeUtils.insert(root, val);
     }
 
-    public TreeNode<T> search(T val) {
+    public BinaryTreeNode<T> search(T val) {
         return TreeUtils.search(root, val);
     }
 

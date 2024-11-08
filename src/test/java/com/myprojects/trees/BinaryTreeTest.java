@@ -28,7 +28,7 @@ class BinaryTreeTest {
     @Test
     void search() {
         int searched = 9;
-        TreeNode<Integer> found = binaryTree.search(searched);
+        BinaryTreeNode<Integer> found = binaryTree.search(searched);
 
         assertEquals(
             searched,

@@ -5,9 +5,9 @@ import com.myprojects.queues.Queue;
 
 public final class TreeUtils {
 
-    public static <T extends Comparable<T>> TreeNode<T> insert(TreeNode<T> root, T val) {
+    public static <T extends Comparable<T>> BinaryTreeNode<T> insert(BinaryTreeNode<T> root, T val) {
         if (root == null) {
-            root = new TreeNode<>(val);
+            root = new BinaryTreeNode<>(val);
         } else {
             if (val.compareTo(root.val) < 0) {
                 root.left = insert(root.left, val);
@@ -18,7 +18,7 @@ public final class TreeUtils {
         return root;
     }
 
-    public static <T extends Comparable<T>> TreeNode<T> search(TreeNode<T> root, T val) {
+    public static <T extends Comparable<T>> BinaryTreeNode<T> search(BinaryTreeNode<T> root, T val) {
         if (root == null || root.val == val) {
             return root;
         } else {
@@ -30,16 +30,16 @@ public final class TreeUtils {
         }
     }
 
-    public static <T extends Comparable<T>> TreeNode<T> invertTree(TreeNode<T> root) {
+    public static <T extends Comparable<T>> BinaryTreeNode<T> invertTree(BinaryTreeNode<T> root) {
         if (root != null) {
-            TreeNode<T> temp = invertTree(root.left);
+            BinaryTreeNode<T> temp = invertTree(root.left);
             root.left = invertTree(root.right);
             root.right = temp;
         }
         return root;
     }
 
-    public static <T extends Comparable<T>> List<T> inOrderTraversal(TreeNode<T> root) {
+    public static <T extends Comparable<T>> List<T> inOrderTraversal(BinaryTreeNode<T> root) {
         List<T> result = new List<>();
         if (root != null) {
             result.addAll(inOrderTraversal(root.left));
@@ -49,7 +49,7 @@ public final class TreeUtils {
         return result;
     }
 
-    public static <T extends Comparable<T>> List<T> preOrderTraversal(TreeNode<T> root) {
+    public static <T extends Comparable<T>> List<T> preOrderTraversal(BinaryTreeNode<T> root) {
         List<T> result = new List<>();
         if (root != null) {
             result.addLast(root.val);
@@ -59,7 +59,7 @@ public final class TreeUtils {
         return result;
     }
 
-    public static <T extends Comparable<T>> List<T> postOrderTraversal(TreeNode<T> root) {
+    public static <T extends Comparable<T>> List<T> postOrderTraversal(BinaryTreeNode<T> root) {
         List<T> result = new List<>();
         if (root != null) {
             result.addAll(postOrderTraversal(root.left));
@@ -69,8 +69,8 @@ public final class TreeUtils {
         return result;
     }
 
-    public static <T extends Comparable<T>> List<T> breadthTraversal(TreeNode<T> root) {
-        Queue<TreeNode<T>> queue = new Queue<>();
+    public static <T extends Comparable<T>> List<T> breadthTraversal(BinaryTreeNode<T> root) {
+        Queue<BinaryTreeNode<T>> queue = new Queue<>();
         List<T> output = new List<>();
 
         if (root == null) {
@@ -80,14 +80,14 @@ public final class TreeUtils {
         queue.enqueue(root);
 
         while (!queue.isEmpty()) {
-            TreeNode<T> treeNode = queue.dequeue();
-            output.addLast(treeNode.val);
+            BinaryTreeNode<T> binaryTreeNode = queue.dequeue();
+            output.addLast(binaryTreeNode.val);
 
-            if (treeNode.left != null) {
-                queue.enqueue(treeNode.left);
+            if (binaryTreeNode.left != null) {
+                queue.enqueue(binaryTreeNode.left);
             }
-            if (treeNode.right != null) {
-                queue.enqueue(treeNode.right);
+            if (binaryTreeNode.right != null) {
+                queue.enqueue(binaryTreeNode.right);
             }
         }
 

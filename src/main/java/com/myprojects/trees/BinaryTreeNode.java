@@ -2,12 +2,12 @@ package com.myprojects.trees;
 
 import java.util.Objects;
 
-public final class TreeNode<T> {
+public final class BinaryTreeNode<T> {
     public T val;
-    public TreeNode<T> left;
-    public TreeNode<T> right;
+    public BinaryTreeNode<T> left;
+    public BinaryTreeNode<T> right;
 
-    public TreeNode(T val) {
+    public BinaryTreeNode(T val) {
         this.val = val;
     }
 
@@ -15,8 +15,8 @@ public final class TreeNode<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TreeNode<T> treeNode = (TreeNode) o;
-        return val == treeNode.val && Objects.equals(left, treeNode.left) && Objects.equals(right, treeNode.right);
+        BinaryTreeNode<T> binaryTreeNode = (BinaryTreeNode) o;
+        return val == binaryTreeNode.val && Objects.equals(left, binaryTreeNode.left) && Objects.equals(right, binaryTreeNode.right);
     }
 
     @Override

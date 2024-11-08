@@ -9,15 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class BinaryTreeUtilsTest {
 
-    TreeNode<Integer> root;
+    BinaryTreeNode<Integer> root;
 
     @BeforeEach
     void setUp() {
-        root = new TreeNode<>(5);
-        root.left = new TreeNode<>(3);
-        root.right = new TreeNode<>(8);
-        root.left.left = new TreeNode<>(9);
-        root.right.right = new TreeNode<>(11);
+        root = new BinaryTreeNode<>(5);
+        root.left = new BinaryTreeNode<>(3);
+        root.right = new BinaryTreeNode<>(8);
+        root.left.left = new BinaryTreeNode<>(9);
+        root.right.right = new BinaryTreeNode<>(11);
     }
 
     @Test
@@ -42,13 +42,13 @@ public class BinaryTreeUtilsTest {
 
     @Test
     void search() {
-        TreeNode<Integer> toBeSearched = new TreeNode<>(8);
+        BinaryTreeNode<Integer> toBeSearched = new BinaryTreeNode<>(8);
 
-        TreeNode<Integer> root = new TreeNode<>(5);
-        root.left = new TreeNode<>(3);
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(5);
+        root.left = new BinaryTreeNode<>(3);
         root.right = toBeSearched;
-        root.left.left = new TreeNode<>(9);
-        root.right.right = new TreeNode<>(11);
+        root.left.left = new BinaryTreeNode<>(9);
+        root.right.right = new BinaryTreeNode<>(11);
 
         assertEquals(toBeSearched, TreeUtils.search(root, 8));
         assertNull(TreeUtils.search(root, 66));
@@ -56,7 +56,7 @@ public class BinaryTreeUtilsTest {
 
     @Test
     void insert() {
-        TreeNode<Integer> root = null;
+        BinaryTreeNode<Integer> root = null;
 
         root = TreeUtils.insert(root, 5);
         root = TreeUtils.insert(root, 3);
@@ -72,7 +72,7 @@ public class BinaryTreeUtilsTest {
         checkTreeInBreadth(root, new List<>(5, 8, 3, 11, 9));
     }
 
-    private void checkTreeInBreadth(TreeNode<Integer> root, List<Integer> expected) {
+    private void checkTreeInBreadth(BinaryTreeNode<Integer> root, List<Integer> expected) {
         assertEquals(expected, TreeUtils.breadthTraversal(root));
     }
 }
