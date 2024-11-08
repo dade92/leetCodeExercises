@@ -14,8 +14,7 @@ public class BTree<T extends Comparable<T>> {
     }
 
     public BTree(int minDegree, T... elements) {
-        this.root = null;
-        this.minDegree = minDegree;
+        this(minDegree);
         for (T element : elements) {
             this.insert(element);
         }
