@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class BTreeTest {
 
@@ -43,13 +45,7 @@ class BTreeTest {
 
     @Test
     void searchAnElement() {
-        Integer searched = 8;
-        BTreeNode<Integer> expected = new BTreeNode<>(3, true);
-        expected.keys[0] = searched;
-
-        assertEquals(
-            expected,
-            bTree.search(searched)
-        );
+        assertNotNull(bTree.search(8));
+        assertNull(bTree.search(7));
     }
 }
