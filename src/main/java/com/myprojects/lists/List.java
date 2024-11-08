@@ -111,7 +111,7 @@ public class List<T> {
         return poppedValue;
     }
 
-    public int searchElement(T val) {
+    public int indexOf(T val) {
         return ListUtils.searchElement(head, val);
     }
 
@@ -133,6 +133,10 @@ public class List<T> {
 
     public int size() {
         return size;
+    }
+
+    public boolean contains(T val) {
+        return this.indexOf(val) != -1;
     }
 
     @Override

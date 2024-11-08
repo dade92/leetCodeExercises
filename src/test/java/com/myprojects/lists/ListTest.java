@@ -2,11 +2,9 @@ package com.myprojects.lists;
 
 import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -45,6 +43,12 @@ class ListTest {
     void isEmpty() {
         assertFalse(list.isEmpty());
         assertTrue(empty.isEmpty());
+    }
+
+    @Test
+    void contains() {
+        assertTrue(list.contains(8));
+        assertFalse(list.contains(9));
     }
 
     @Test
@@ -288,14 +292,14 @@ class ListTest {
     }
 
     @Test
-    void search() {
+    void indexOf() {
         assertEquals(
             2,
-            list.searchElement(8)
+            list.indexOf(8)
         );
         assertEquals(
             -1,
-            list.searchElement(69)
+            list.indexOf(69)
         );
     }
 
