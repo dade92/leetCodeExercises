@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class List<T> {
+public class List<T> implements Iterable<T> {
 
     private ListNode<T> head;
     private ListNode<T> tail;

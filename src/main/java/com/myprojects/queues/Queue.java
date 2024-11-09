@@ -5,7 +5,7 @@ import com.myprojects.lists.List;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Queue<T> {
+public class Queue<T> implements Iterable<T> {
 
     private final List<T> list;
 

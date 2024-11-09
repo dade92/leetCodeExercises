@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class Set<V> {
+public class Set<V> implements Iterable<V> {
 
     private final HashTable<V, Boolean> hashTable;
 
@@ -26,7 +26,7 @@ public class Set<V> {
     }
 
     public void addAll(Set<V> elements) {
-        for (V value : elements.toArray()) {
+        for (V value : elements) {
             hashTable.put(value, true);
         }
     }
@@ -59,7 +59,7 @@ public class Set<V> {
 
     public boolean intersect(Set<V> anotherSet) {
         boolean outcome = false;
-        for (V value : this.toArray()) {
+        for (V value : this) {
             if (!anotherSet.contains(value)) {
                 this.remove(value);
                 outcome = true;
@@ -77,7 +77,7 @@ public class Set<V> {
     public String toString() {
         StringJoiner sj = new StringJoiner(",", "[ ", " ]");
 
-        for (V value : hashTable.keys().toArray()) {
+        for (V value : hashTable.keys()) {
             sj.add(value.toString());
         }
 
