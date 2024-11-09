@@ -22,7 +22,7 @@ public class List<T> {
 
     public List(T... elements) {
         for (T element : elements) {
-            addLast(element);
+            this.add(element);
         }
     }
 
@@ -37,11 +37,11 @@ public class List<T> {
 
     public void addAll(List<T> another) {
         for (T e : another.toArray()) {
-            addLast(e);
+            this.add(e);
         }
     }
 
-    public void addLast(T val) {
+    public void add(T val) {
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, val);
         movePointers(outcome);
         size++;

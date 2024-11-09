@@ -2,8 +2,6 @@ package com.myprojects.tries;
 
 import com.myprojects.lists.List;
 
-import java.util.Collections;
-
 class Trie {
     public static final int NUM_OF_SYMBOLS = 26;
     private static final char OFFSET = 'a';
@@ -99,7 +97,7 @@ class Trie {
 
     private void retrieveWordsStartingFrom(TrieNode node, StringBuilder temp, List<String> output) {
         if (node.isEndOfWord) {
-            output.addLast(temp.toString());
+            output.add(temp.toString());
         }
 
         for (int i = 0; i < NUM_OF_SYMBOLS; i++) {

@@ -138,8 +138,8 @@ class ListTest {
     }
 
     @Test
-    void addLast() {
-        list.addLast(55);
+    void add() {
+        list.add(55);
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 55},
@@ -151,7 +151,7 @@ class ListTest {
 
     @Test
     void addInEmptyList() {
-        empty.addLast(12);
+        empty.add(12);
 
         assertArrayEquals(
             new Integer[]{12},

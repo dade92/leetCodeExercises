@@ -103,7 +103,7 @@ public class HashTable<K, V> {
 
         for (HashTableNode<K, V> node : buckets) {
             while (node != null) {
-                values.addLast(node.value);
+                values.add(node.value);
                 node = node.next;
             }
         }
@@ -116,7 +116,7 @@ public class HashTable<K, V> {
 
         for (HashTableNode<K, V> node : buckets) {
             while (node != null) {
-                keys.addLast(node.key);
+                keys.add(node.key);
                 node = node.next;
             }
         }

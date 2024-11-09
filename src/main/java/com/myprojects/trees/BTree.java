@@ -63,7 +63,7 @@ public class BTree<T extends Comparable<T>> {
             BTreeNode<T> node = queue.dequeue();
 
             for (int i = 0; i < node.numberOfKeys; i++) {
-                output.addLast(node.keys[i]);
+                output.add(node.keys[i]);
             }
 
             if (!node.leaf) {
@@ -338,7 +338,7 @@ public class BTree<T extends Comparable<T>> {
                 traverseDFS(node.children[i], output);
             }
 
-            output.addLast(node.keys[i]);
+            output.add(node.keys[i]);
         }
         if (!node.leaf) {
             traverseDFS(node.children[i], output);

@@ -43,7 +43,7 @@ public final class TreeUtils {
         List<T> result = new List<>();
         if (root != null) {
             result.addAll(inOrderTraversal(root.left));
-            result.addLast(root.val);
+            result.add(root.val);
             result.addAll(inOrderTraversal(root.right));
         }
         return result;
@@ -52,7 +52,7 @@ public final class TreeUtils {
     public static <T extends Comparable<T>> List<T> preOrderTraversal(BinaryTreeNode<T> root) {
         List<T> result = new List<>();
         if (root != null) {
-            result.addLast(root.val);
+            result.add(root.val);
             result.addAll(preOrderTraversal(root.left));
             result.addAll(preOrderTraversal(root.right));
         }
@@ -64,7 +64,7 @@ public final class TreeUtils {
         if (root != null) {
             result.addAll(postOrderTraversal(root.left));
             result.addAll(postOrderTraversal(root.right));
-            result.addLast(root.val);
+            result.add(root.val);
         }
         return result;
     }
@@ -81,7 +81,7 @@ public final class TreeUtils {
 
         while (!queue.isEmpty()) {
             BinaryTreeNode<T> binaryTreeNode = queue.dequeue();
-            output.addLast(binaryTreeNode.val);
+            output.add(binaryTreeNode.val);
 
             if (binaryTreeNode.left != null) {
                 queue.enqueue(binaryTreeNode.left);

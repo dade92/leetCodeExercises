@@ -18,7 +18,7 @@ public class Queue<T> {
     }
 
     public void enqueue(T val) {
-        list.addLast(val);
+        list.add(val);
     }
 
     public T dequeue() {
