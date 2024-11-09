@@ -50,6 +50,18 @@ public class Set<V> {
         return hashTable.keys();
     }
 
+    public boolean intersect(Set<V> anotherSet) {
+        boolean outcome = false;
+        for (V value : this.toArray()) {
+            if (!anotherSet.contains(value)) {
+                this.remove(value);
+                outcome = true;
+            }
+        }
+
+        return outcome;
+    }
+
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner(",", "[ ", " ]");

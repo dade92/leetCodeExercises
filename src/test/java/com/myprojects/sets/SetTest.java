@@ -3,10 +3,7 @@ package com.myprojects.sets;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SetTest {
 
@@ -22,7 +19,7 @@ class SetTest {
         set.add("Elena");
 
         assertArrayEquals(
-            new String[] {"Elena", "Paola", "Davide", "Sergio"},
+            new String[]{"Elena", "Paola", "Davide", "Sergio"},
             set.toArray()
         );
         assertEquals(
@@ -38,7 +35,7 @@ class SetTest {
         set.addAll(set2);
 
         assertArrayEquals(
-            new String[] {"Elena", "Paola", "Stefania", "Davide", "Sergio"},
+            new String[]{"Elena", "Paola", "Stefania", "Davide", "Sergio"},
             set.toArray()
         );
     }
@@ -48,7 +45,7 @@ class SetTest {
         set.add("Davide");
 
         assertArrayEquals(
-            new String[] {"Paola", "Davide", "Sergio"},
+            new String[]{"Paola", "Davide", "Sergio"},
             set.toArray()
         );
         assertEquals(
@@ -62,7 +59,7 @@ class SetTest {
         set.remove("Davide");
 
         assertArrayEquals(
-            new String[] {"Paola", "Sergio"},
+            new String[]{"Paola", "Sergio"},
             set.toArray()
         );
         assertEquals(
@@ -107,5 +104,17 @@ class SetTest {
         Set<String> anotherSet = new Set<>("Davide", "Sergio", "Paola");
 
         assertEquals(anotherSet, set);
+    }
+
+    @Test
+    void intersect() {
+        Set<String> anotherSet = new Set<>("Elena", "Sergio", "Stefania");
+
+        assertTrue(set.intersect(anotherSet));
+
+        assertArrayEquals(
+            new String[] {"Sergio"},
+            set.toArray()
+        );
     }
 }
