@@ -3,6 +3,8 @@ package com.myprojects.sets;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SetTest {
@@ -126,5 +128,20 @@ class SetTest {
             new String[]{"Sergio"},
             set.toArray()
         );
+    }
+
+    @Test
+    void iterator() {
+        Iterator<String> iterator = set.iterator();
+        String[] expectedElements = new String[]{"Paola", "Davide", "Sergio"};
+        int i = 0;
+
+        while (iterator.hasNext()) {
+            assertEquals(
+                expectedElements[i],
+                iterator.next()
+            );
+            i++;
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.myprojects.sets;
 
 import com.myprojects.hashtables.HashTable;
 
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -66,6 +67,23 @@ public class Set<V> {
         }
 
         return outcome;
+    }
+
+    public Iterator<V> iterator() {
+        return new Iterator<>() {
+            private final V[] elements = hashTable.keys();
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < elements.length - 1;
+            }
+
+            @Override
+            public V next() {
+                return elements[index++];
+            }
+        };
     }
 
     @Override
