@@ -54,7 +54,7 @@ public class Set<V> {
     }
 
     public V[] toArray() {
-        return hashTable.keys();
+        return hashTable.keys().toArray();
     }
 
     public boolean intersect(Set<V> anotherSet) {
@@ -70,27 +70,14 @@ public class Set<V> {
     }
 
     public Iterator<V> iterator() {
-        return new Iterator<>() {
-            private final V[] elements = hashTable.keys();
-            private int index = 0;
-
-            @Override
-            public boolean hasNext() {
-                return index < elements.length - 1;
-            }
-
-            @Override
-            public V next() {
-                return elements[index++];
-            }
-        };
+        return hashTable.keys().iterator();
     }
 
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner(",", "[ ", " ]");
 
-        for (V value : hashTable.keys()) {
+        for (V value : hashTable.keys().toArray()) {
             sj.add(value.toString());
         }
 

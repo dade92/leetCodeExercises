@@ -7,7 +7,7 @@ import static com.myprojects.Shared.checkListStatus;
 public class ListUtilsTest {
 
     @Test
-    void addElement() {
+    void add() {
         int[] expectedFinalResult = {3, 5, 4, 8};
 
         ListNode<Integer> head = null;

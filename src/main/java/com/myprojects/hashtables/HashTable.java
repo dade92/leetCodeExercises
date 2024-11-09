@@ -98,7 +98,7 @@ public class HashTable<K, V> {
         }
     }
 
-    public V[] values() {
+    public List<V> values() {
         List<V> values = new List<>();
 
         for (HashTableNode<K, V> node : buckets) {
@@ -108,10 +108,10 @@ public class HashTable<K, V> {
             }
         }
 
-        return values.toArray();
+        return values;
     }
 
-    public K[] keys() {
+    public List<K> keys() {
         List<K> keys = new List<>();
 
         for (HashTableNode<K, V> node : buckets) {
@@ -121,7 +121,7 @@ public class HashTable<K, V> {
             }
         }
 
-        return keys.toArray();
+        return keys;
     }
 
     public V replace(K key, V newValue) {

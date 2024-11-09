@@ -110,11 +110,11 @@ class ListTest {
     }
 
     @Test
-    void addElement() {
-        list.addElement(5, 0);
-        list.addElement(8, 1);
-        list.addElement(3, 0);
-        list.addElement(4, 2);
+    void addAtPosition() {
+        list.add(5, 0);
+        list.add(8, 1);
+        list.add(3, 0);
+        list.add(4, 2);
 
         assertArrayEquals(
             new Integer[]{3, 5, 4, 8, 5, 8, 10},
@@ -125,8 +125,8 @@ class ListTest {
     }
 
     @Test
-    void addElementAsLast() {
-        list.addElement(8, 3);
+    void addAsLast() {
+        list.add(8, 3);
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 8},
@@ -163,15 +163,15 @@ class ListTest {
     }
 
     @Test
-    void addElementInInvalidPositionThrowsException() {
+    void addInInvalidPositionThrowsException() {
         int element = 11;
         assertThrows(
             InvalidPositionException.class,
-            () -> empty.addElement(element, 1)
+            () -> empty.add(element, 1)
         );
         assertThrows(
             InvalidPositionException.class,
-            () -> list.addElement(element, 4)
+            () -> list.add(element, 4)
         );
     }
 

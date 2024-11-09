@@ -26,7 +26,13 @@ public class List<T> {
         }
     }
 
-    public void addElement(T val, int position) {
+    public void add(T val) {
+        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, val);
+        movePointers(outcome);
+        size++;
+    }
+
+    public void add(T val, int position) {
         if (position < 0 || position > size) {
             throw new InvalidPositionException();
         }
@@ -39,12 +45,6 @@ public class List<T> {
         for (T e : another.toArray()) {
             this.add(e);
         }
-    }
-
-    public void add(T val) {
-        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, val);
-        movePointers(outcome);
-        size++;
     }
 
     public void addFirst(T val) {

@@ -1,5 +1,6 @@
 package com.myprojects.hashtables;
 
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,14 +21,14 @@ class HashTableTest {
 
     @Test
     void put() {
-        String[] expectedValues = new String[]{"1", "2"};
-        String[] expectedKeys = new String[]{"ciccio", "pasticcio"};
+        List<String> expectedValues = new List<>("1", "2");
+        List<String> expectedKeys = new List<>("ciccio", "pasticcio");
 
-        assertArrayEquals(
+        assertEquals(
             expectedValues,
             hashTable.values()
         );
-        assertArrayEquals(
+        assertEquals(
             expectedKeys,
             hashTable.keys()
         );
@@ -67,8 +68,8 @@ class HashTableTest {
     void removeNonExistingKey() {
         hashTable.remove("NON_EXISTING");
 
-        assertArrayEquals(
-            new String[]{"ciccio", "pasticcio"},
+        assertEquals(
+            new List<>("ciccio", "pasticcio"),
             hashTable.keys()
         );
     }
@@ -79,12 +80,12 @@ class HashTableTest {
 
         assertNull(hashTable.get("ciccio"));
 
-        assertArrayEquals(
-            new String[]{"pasticcio"},
+        assertEquals(
+            new List<>("pasticcio"),
             hashTable.keys()
         );
-        assertArrayEquals(
-            new String[]{"2"},
+        assertEquals(
+            new List<>("2"),
             hashTable.values()
         );
     }
@@ -113,8 +114,8 @@ class HashTableTest {
         hashTable.put("casa", "1");
 
 
-        assertArrayEquals(
-            new String[]{"cicciu", "casa", "cicci", "ciccio", "cervo", "cicce", "pasticcio"},
+        assertEquals(
+            new List<>("cicciu", "casa", "cicci", "ciccio", "cervo", "cicce", "pasticcio"),
             hashTable.keys()
         );
     }
@@ -123,12 +124,12 @@ class HashTableTest {
     void insertInSamePosition() {
         hashTable.put("cicce", "3");
 
-        assertArrayEquals(
-            new String[]{"1", "3", "2"},
+        assertEquals(
+            new List<>("1", "3", "2"),
             hashTable.values()
         );
-        assertArrayEquals(
-            new String[]{"ciccio", "cicce", "pasticcio"},
+        assertEquals(
+            new List<>("ciccio", "cicce", "pasticcio"),
             hashTable.keys()
         );
         assertEquals(
@@ -148,8 +149,8 @@ class HashTableTest {
         hashTable.put("chicco", "1");
         hashTable.put("cervo", "1");
 
-        assertArrayEquals(
-            new String[]{"ciccio", "cervo", "pasticcio", "cicce", "chicco", "cicciu", "cicci", "ciccia", "cico", "chico"},
+        assertEquals(
+            new List<>("ciccio", "cervo", "pasticcio", "cicce", "chicco", "cicciu", "cicci", "ciccia", "cico", "chico"),
             hashTable.keys()
         );
         assertEquals(
