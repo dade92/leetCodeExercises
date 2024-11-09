@@ -124,6 +124,38 @@ public class HashTable<K, V> {
         return keys.toArray();
     }
 
+    public V replace(K key, V newValue) {
+        int index = getIndex(key);
+        V oldValue = null;
+
+        HashTableNode<K, V> node = buckets[index];
+
+        while (node != null && node.key != key) {
+            node = node.next;
+        }
+
+        if (node != null) {
+            oldValue = node.value;
+            node.value = newValue;
+        }
+
+        return oldValue;
+    }
+
+    public boolean containsValue(V value) {
+        for (HashTableNode<K, V> node : buckets) {
+            while (node != null) {
+                if (node.value.equals(value)) return true;
+                node = node.next;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsKey(K key) {
+        return get(key) != null;
+    }
+
     public int size() {
         return size;
     }

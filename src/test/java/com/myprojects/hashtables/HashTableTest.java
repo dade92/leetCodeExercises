@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.apache.commons.lang3.tuple.Pair.of;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HashTableTest {
 
@@ -82,11 +80,11 @@ class HashTableTest {
         assertNull(hashTable.get("ciccio"));
 
         assertArrayEquals(
-            new String[] {"pasticcio"},
+            new String[]{"pasticcio"},
             hashTable.keys()
         );
         assertArrayEquals(
-            new String[] {"2"},
+            new String[]{"2"},
             hashTable.values()
         );
     }
@@ -177,5 +175,34 @@ class HashTableTest {
         );
 
         assertEquals(hashTable, anotherHashTable);
+    }
+
+    @Test
+    void containsKey() {
+        assertTrue(hashTable.containsKey("ciccio"));
+        assertFalse(hashTable.containsKey("ciccia"));
+    }
+
+    @Test
+    void containsValue() {
+        assertTrue(hashTable.containsValue("1"));
+        assertFalse(hashTable.containsValue("3"));
+    }
+
+    @Test
+    void replace() {
+        String newValue = "3";
+        String oldValue = hashTable.replace("ciccio", newValue);
+        assertEquals(
+            "1",
+            oldValue
+        );
+        assertEquals(
+            newValue,
+            hashTable.get("ciccio")
+        );
+
+        assertNull(hashTable.replace("ciccia", "5"));
+        assertNull(hashTable.get("ciccia"));
     }
 }
