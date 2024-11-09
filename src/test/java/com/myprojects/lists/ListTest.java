@@ -373,6 +373,27 @@ class ListTest {
     }
 
     @Test
+    void subList() {
+        List<Integer> subList = list.subList(1, 2);
+        assertEquals(
+            new List<>(8, 10),
+            subList
+        );
+
+
+        List<String> others = new List<>("ciccio", "pasticcio", "Stefania", "Giorgio");
+        assertEquals(
+            new List<>("pasticcio", "Stefania", "Giorgio"),
+            others.subList(1, 3)
+        );
+
+        assertThrows(
+            InvalidPositionException.class,
+            () -> empty.subList(1, 2)
+        );
+    }
+
+    @Test
     void printingWithToString() {
         assertEquals(
             "[ 5,8,10 ]"

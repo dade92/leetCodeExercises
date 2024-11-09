@@ -162,6 +162,33 @@ public class List<T> {
         };
     }
 
+    public List<T> subList(int startingIndex, int endingIndex) {
+        if(startingIndex > endingIndex ||
+            startingIndex < 0 ||
+            startingIndex > size - 1 ||
+            endingIndex > size - 1
+        ) {
+            throw new InvalidPositionException();
+        }
+
+        List<T> subList = new List<>();
+        int index = 0;
+        ListNode<T> temp = head;
+
+        while(index < startingIndex) {
+            temp = temp.next;
+            index++;
+        }
+
+        while(index <= endingIndex) {
+            subList.add(temp.val);
+            temp = temp.next;
+            index++;
+        }
+
+        return subList;
+    }
+
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner(",", "[ ", " ]");
