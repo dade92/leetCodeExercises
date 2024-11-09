@@ -3,6 +3,8 @@ package com.myprojects.queues;
 import com.myprojects.lists.List;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QueueTest {
@@ -71,5 +73,20 @@ public class QueueTest {
         assertEquals(queue, another);
         assertNotEquals(queue, notEqual);
         assertNotEquals(queue, notEqual2);
+    }
+
+    @Test
+    void iterator() {
+        Iterator<Integer> iterator = queue.iterator();
+        Integer[] expected = {5, 8, 10};
+        int i = 0;
+
+        while (iterator.hasNext()) {
+            assertEquals(
+                expected[i],
+                iterator.next()
+            );
+            i++;
+        }
     }
 }

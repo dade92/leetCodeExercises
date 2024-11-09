@@ -3,6 +3,8 @@ package com.myprojects.stacks;
 import com.myprojects.lists.List;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
@@ -52,6 +54,21 @@ public class StackTest {
             new Integer[]{3, 2, 1, 6, 23, 52},
             stack.toArray()
         );
+    }
+
+    @Test
+    void iterator() {
+        Iterator<Integer> iterator = stack.iterator();
+        Integer[] expected = {6, 23, 52};
+        int i = 0;
+
+        while (iterator.hasNext()) {
+            assertEquals(
+                expected[i],
+                iterator.next()
+            );
+            i++;
+        }
     }
 
     @Test

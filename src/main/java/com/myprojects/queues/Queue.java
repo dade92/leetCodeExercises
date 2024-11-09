@@ -2,6 +2,7 @@ package com.myprojects.queues;
 
 import com.myprojects.lists.List;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Queue<T> {
@@ -38,6 +39,10 @@ public class Queue<T> {
 
     public boolean isEmpty() {
         return list.isEmpty();
+    }
+
+    public Iterator<T> iterator() {
+        return list.iterator();
     }
 
     @Override

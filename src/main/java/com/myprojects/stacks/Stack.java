@@ -2,6 +2,7 @@ package com.myprojects.stacks;
 
 import com.myprojects.lists.List;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Stack<T> {
@@ -40,6 +41,10 @@ public class Stack<T> {
 
     public T[] toArray() {
         return list.toArray();
+    }
+
+    public Iterator<T> iterator() {
+        return list.iterator();
     }
 
     @Override
