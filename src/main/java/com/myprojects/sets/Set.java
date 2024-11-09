@@ -34,6 +34,12 @@ public class Set<V> {
         hashTable.remove(value);
     }
 
+    public void removeAll(V... values) {
+        for (V value : values) {
+            remove(value);
+        }
+    }
+
     public boolean contains(V value) {
         return hashTable.get(value) != null;
     }

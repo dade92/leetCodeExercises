@@ -69,6 +69,16 @@ class SetTest {
     }
 
     @Test
+    void removeAll() {
+        set.removeAll("Davide", "Paola", "Elena");
+
+        assertArrayEquals(
+            new String[]{"Sergio"},
+            set.toArray()
+        );
+    }
+
+    @Test
     void contains() {
         assertTrue(set.contains("Davide"));
         assertFalse(set.contains("Elena"));
@@ -113,7 +123,7 @@ class SetTest {
         assertTrue(set.intersect(anotherSet));
 
         assertArrayEquals(
-            new String[] {"Sergio"},
+            new String[]{"Sergio"},
             set.toArray()
         );
     }
