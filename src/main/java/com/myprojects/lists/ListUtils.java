@@ -7,7 +7,7 @@ final class ListUtils {
     public static <T> Pair<ListNode<T>, ListNode<T>> addElement(ListNode<T> head, ListNode<T> tail, T val, int position) {
         ListNode<T> newNode = new ListNode<>(val);
 
-        if (position == 1) {
+        if (position == 0) {
             newNode.next = head;
             if (head == null) {
                 tail = newNode;
@@ -15,7 +15,7 @@ final class ListUtils {
             head = newNode;
         } else {
             ListNode<T> current = head;
-            for (int i = 1; i < position - 1; i++) {
+            for (int i = 0; i < position - 1; i++) {
                 current = current.next;
             }
 
@@ -58,7 +58,7 @@ final class ListUtils {
     }
 
     public static <T> int indexOf(ListNode<T> current, T val) {
-        int index = 1;
+        int index = 0;
         while (current != null) {
             if (current.val.equals(val)) {
                 return index;
@@ -80,7 +80,7 @@ final class ListUtils {
     }
 
     public static <T> T getAt(ListNode<T> head, int position) {
-        int index = 1;
+        int index = 0;
         ListNode<T> current = head;
         while (index < position) {
             current = current.next;
@@ -115,11 +115,11 @@ final class ListUtils {
         return Pair.of(head, tail);
     }
 
-    public static <T> Pair<ListNode<T>, ListNode<T>> removeElementAt(ListNode<T> head, ListNode<T> tail, int n) {
-        int i = 1;
+    public static <T> Pair<ListNode<T>, ListNode<T>> removeElementAt(ListNode<T> head, ListNode<T> tail, int position) {
+        int i = 0;
         ListNode<T> previous = null;
         ListNode<T> current = head;
-        while (current != null && i < n) {
+        while (current != null && i < position) {
             previous = current;
             current = current.next;
             i++;

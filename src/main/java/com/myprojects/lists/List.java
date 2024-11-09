@@ -27,7 +27,7 @@ public class List<T> {
     }
 
     public void addElement(T val, int position) {
-        if (position < 1 || position > size + 1) {
+        if (position < 0 || position > size) {
             throw new InvalidPositionException();
         }
         Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.addElement(head, tail, val, position);
@@ -68,12 +68,12 @@ public class List<T> {
     }
 
     public T getAt(int position) {
-        if (position <= 0 || position > size) {
+        if (position < 0 || position >= size) {
             throw new InvalidPositionException();
         }
-        if (position == 1) {
+        if (position == 0) {
             return head.val;
-        } else if (position == size) {
+        } else if (position == size - 1) {
             return tail.val;
         } else {
             return ListUtils.getAt(head, position);
@@ -91,7 +91,7 @@ public class List<T> {
     }
 
     public void removeElementAt(int n) {
-        if (n < 1 || n > size) {
+        if (n < 0 || n >= size) {
             throw new InvalidPositionException();
         }
 
@@ -182,8 +182,8 @@ public class List<T> {
         if (!sizeAreEquals) {
             return false;
         }
-        int index = 1;
-        while (index <= size) {
+        int index = 0;
+        while (index < size) {
             if (!this.getAt(index).equals(list.getAt(index))) return false;
             index++;
         }

@@ -12,13 +12,13 @@ public class ListUtilsTest {
 
         ListNode<Integer> head = null;
         ListNode<Integer> tail = null;
-        head = ListUtils.addElement(head, tail, 5, 1).getLeft();    //first element
+        head = ListUtils.addElement(head, tail, 5, 0).getLeft();    //first element
         checkListStatus(head,  new int[]{5});
-        head = ListUtils.addElement(head, tail, 8, 2).getLeft();    //at the end
+        head = ListUtils.addElement(head, tail, 8, 1).getLeft();    //at the end
         checkListStatus(head, new int[]{5, 8});
-        head = ListUtils.addElement(head, tail, 3, 1).getLeft();    //at the top
+        head = ListUtils.addElement(head, tail, 3, 0).getLeft();    //at the top
         checkListStatus(head, new int[]{3, 5, 8});
-        head = ListUtils.addElement(head, tail, 4, 3).getLeft();    //in the middle
+        head = ListUtils.addElement(head, tail, 4, 2).getLeft();    //in the middle
 
         checkListStatus(head, expectedFinalResult);
     }
@@ -32,8 +32,8 @@ public class ListUtilsTest {
 
         head = tail = new ListNode<>(5);
 
-        head = ListUtils.addElement(head, tail, 8, 2).getLeft();
-        head = ListUtils.addElement(head, tail,10, 3).getLeft();
+        head = ListUtils.addElement(head, tail, 8, 1).getLeft();
+        head = ListUtils.addElement(head, tail,10, 2).getLeft();
         checkListStatus(head, new int[]{5, 8, 10});
         head = ListUtils.removeElement(head, tail, 5).getLeft();            //at the top
         checkListStatus(head, new int[]{8, 10});
@@ -51,14 +51,14 @@ public class ListUtilsTest {
         ListNode<Integer> tail;
         head = tail = new ListNode<>(5);
 
-        head = ListUtils.addElement(head, tail, 8, 2).getLeft();
-        head = ListUtils.addElement(head, tail, 10, 3).getLeft();
+        head = ListUtils.addElement(head, tail, 8, 1).getLeft();
+        head = ListUtils.addElement(head, tail, 10, 2).getLeft();
         checkListStatus(head, new int[]{5, 8, 10});
-        head = ListUtils.removeElementAt(head,tail, 1).getLeft();            //at the top
+        head = ListUtils.removeElementAt(head,tail, 0).getLeft();            //at the top
         checkListStatus(head, new int[]{8, 10});
-        head = ListUtils.removeElementAt(head,tail, 2).getLeft();            //at the end
+        head = ListUtils.removeElementAt(head,tail, 1).getLeft();            //at the end
         checkListStatus(head, new int[]{8});
-        head = ListUtils.removeElementAt(head,tail, 8).getLeft();            //Non existing position
+        head = ListUtils.removeElementAt(head,tail, 7).getLeft();            //Non existing position
         checkListStatus(head, expectedFinalResult);
     }
 

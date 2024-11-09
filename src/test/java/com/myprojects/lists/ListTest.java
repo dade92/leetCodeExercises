@@ -70,20 +70,20 @@ class ListTest {
 
     @Test
     void getAt() {
-        assertEquals(5, list.getAt(1));
-        assertEquals(8, list.getAt(2));
-        assertEquals(10, list.getAt(3));
+        assertEquals(5, list.getAt(0));
+        assertEquals(8, list.getAt(1));
+        assertEquals(10, list.getAt(2));
     }
 
     @Test
     void getAtThrowsExceptionIfPositionIsInvalid() {
         assertThrows(
             InvalidPositionException.class,
-            () -> list.getAt(0)
+            () -> list.getAt(-1)
         );
         assertThrows(
             InvalidPositionException.class,
-            () -> list.getAt(4)
+            () -> list.getAt(3)
         );
     }
 
@@ -110,10 +110,10 @@ class ListTest {
 
     @Test
     void addElement() {
-        list.addElement(5, 1);
-        list.addElement(8, 2);
-        list.addElement(3, 1);
-        list.addElement(4, 3);
+        list.addElement(5, 0);
+        list.addElement(8, 1);
+        list.addElement(3, 0);
+        list.addElement(4, 2);
 
         assertArrayEquals(
             new Integer[]{3, 5, 4, 8, 5, 8, 10},
@@ -125,7 +125,7 @@ class ListTest {
 
     @Test
     void addElementAsLast() {
-        list.addElement(8, 4);
+        list.addElement(8, 3);
 
         assertArrayEquals(
             new Integer[]{5, 8, 10, 8},
@@ -160,11 +160,11 @@ class ListTest {
     void addElementInInvalidPositionThrowsException() {
         assertThrows(
             InvalidPositionException.class,
-            () -> empty.addElement(11, 2)
+            () -> empty.addElement(11, 1)
         );
         assertThrows(
             InvalidPositionException.class,
-            () -> list.addElement(11, 5)
+            () -> list.addElement(11, 4)
         );
     }
 
@@ -239,13 +239,13 @@ class ListTest {
 
     @Test
     void removeElementAt() {
-        list.removeElementAt(2);
+        list.removeElementAt(1);
         assertArrayEquals(
             new Integer[]{5, 10},
             list.toArray()
         );
 
-        list.removeElementAt(1);
+        list.removeElementAt(0);
         assertArrayEquals(
             new Integer[]{10},
             list.toArray()
@@ -253,7 +253,7 @@ class ListTest {
         assertEquals(10, list.first());
         assertEquals(10, list.last());
 
-        list.removeElementAt(1);
+        list.removeElementAt(0);
         assertArrayEquals(
             new Integer[]{},
             list.toArray()
@@ -261,13 +261,13 @@ class ListTest {
 
         assertThrows(
             InvalidPositionException.class,
-            () -> list.removeElementAt(1)
+            () -> list.removeElementAt(0)
         );
     }
 
     @Test
     void removeElementAtLastPosition() {
-        list.removeElementAt(3);
+        list.removeElementAt(2);
 
         assertArrayEquals(
             new Integer[]{5, 8},
@@ -276,7 +276,7 @@ class ListTest {
         assertEquals(5, list.first());
         assertEquals(8, list.last());
 
-        list.removeElementAt(2);
+        list.removeElementAt(1);
 
         assertArrayEquals(
             new Integer[]{5},
@@ -290,18 +290,18 @@ class ListTest {
     void removeElementAtInvalidPosition() {
         assertThrows(
             InvalidPositionException.class,
-            () -> list.removeElementAt(4)
+            () -> list.removeElementAt(3)
         );
         assertThrows(
             InvalidPositionException.class,
-            () -> list.removeElementAt(0)
+            () -> list.removeElementAt(-1)
         );
     }
 
     @Test
     void indexOf() {
         assertEquals(
-            2,
+            1,
             list.indexOf(8)
         );
         assertEquals(
