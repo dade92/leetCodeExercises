@@ -4,6 +4,7 @@ import com.myprojects.lists.exceptions.EmptyListException;
 import com.myprojects.lists.exceptions.InvalidPositionException;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -101,7 +102,7 @@ public class List<T> {
 
     public T removeFromTop() {
         T poppedValue = first();
-        if(head == tail) {
+        if (head == tail) {
             head = null;
             tail = null;
         } else {
@@ -141,6 +142,24 @@ public class List<T> {
 
     public boolean contains(T val) {
         return this.indexOf(val) != -1;
+    }
+
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private ListNode<T> current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                T next = current.val;
+                current = current.next;
+                return next;
+            }
+        };
     }
 
     @Override

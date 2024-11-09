@@ -5,12 +5,9 @@ import com.myprojects.lists.exceptions.InvalidPositionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.Iterator;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class ListTest {
     private List<Integer> list;
@@ -340,6 +337,21 @@ class ListTest {
             new Integer[]{5, 8, 10, 1, 2},
             list.toArray()
         );
+    }
+
+    @Test
+    void iterator() {
+        Iterator<Integer> iterator = list.iterator();
+        Integer[] expected = {5, 8, 10};
+        int i = 0;
+
+        while (iterator.hasNext()) {
+            assertEquals(
+                expected[i],
+                iterator.next()
+            );
+            i++;
+        }
     }
 
     @Test
