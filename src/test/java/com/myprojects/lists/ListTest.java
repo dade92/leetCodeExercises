@@ -176,6 +176,23 @@ class ListTest {
     }
 
     @Test
+    void setValue() {
+        list.set(69, 1);
+        assertArrayEquals(
+            new Integer[]{5, 69, 10},
+            list.toArray()
+        );
+
+        list.set(68, 0);
+        assertArrayEquals(
+            new Integer[]{68, 69, 10},
+            list.toArray()
+        );
+
+        assertThrows(InvalidPositionException.class, () -> list.set(69, 3));
+    }
+
+    @Test
     void removeElementWhenItIsInFirstPosition() {
         list.removeElement(5);
 

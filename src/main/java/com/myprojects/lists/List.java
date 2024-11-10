@@ -80,6 +80,22 @@ public class List<T> implements Iterable<T> {
         }
     }
 
+    public void set(T element, int position) {
+        if (position >= size) {
+            throw new InvalidPositionException();
+        }
+
+        ListNode<T> temp = head;
+        int index = 0;
+
+        while (index < position) {
+            temp = temp.next;
+            index++;
+        }
+
+        temp.val = element;
+    }
+
     public void removeElement(T val) {
         if (head != null) {
             Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.removeElement(head, tail, val);
@@ -163,7 +179,7 @@ public class List<T> implements Iterable<T> {
     }
 
     public List<T> subList(int startingIndex, int endingIndex) {
-        if(startingIndex > endingIndex ||
+        if (startingIndex > endingIndex ||
             startingIndex < 0 ||
             startingIndex > size - 1 ||
             endingIndex > size - 1
@@ -175,12 +191,12 @@ public class List<T> implements Iterable<T> {
         int index = 0;
         ListNode<T> temp = head;
 
-        while(index < startingIndex) {
+        while (index < startingIndex) {
             temp = temp.next;
             index++;
         }
 
-        while(index <= endingIndex) {
+        while (index <= endingIndex) {
             subList.add(temp.val);
             temp = temp.next;
             index++;
