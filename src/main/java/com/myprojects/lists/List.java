@@ -81,7 +81,7 @@ public class List<T> implements Iterable<T> {
     }
 
     public T set(T element, int position) {
-        if (position >= size) {
+        if (position >= size || position < 0) {
             throw new InvalidPositionException();
         }
 

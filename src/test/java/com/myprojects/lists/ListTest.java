@@ -196,6 +196,7 @@ class ListTest {
         );
 
         assertThrows(InvalidPositionException.class, () -> list.set(69, 3));
+        assertThrows(InvalidPositionException.class, () -> list.set(69, -1));
     }
 
     @Test
