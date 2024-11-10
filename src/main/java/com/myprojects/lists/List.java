@@ -131,7 +131,17 @@ public class List<T> implements Iterable<T> {
     }
 
     public int indexOf(T val) {
-        return ListUtils.indexOf(head, val);
+        ListNode<T> current = head;
+        int index = 0;
+
+        while (current != null) {
+            if (current.val.equals(val)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
     }
 
     public ListNode<T> search(T val) {

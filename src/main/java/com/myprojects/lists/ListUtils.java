@@ -57,18 +57,6 @@ final class ListUtils {
         return Pair.of(head, tail);
     }
 
-    public static <T> int indexOf(ListNode<T> current, T val) {
-        int index = 0;
-        while (current != null) {
-            if (current.val.equals(val)) {
-                return index;
-            }
-            current = current.next;
-            index++;
-        }
-        return -1;
-    }
-
     public static <T>  ListNode<T> search(ListNode<T> current, T val) {
         while (current != null) {
             if (current.val.equals(val)) {
