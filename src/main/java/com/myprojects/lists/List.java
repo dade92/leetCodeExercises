@@ -42,7 +42,7 @@ public class List<T> implements Iterable<T> {
     }
 
     public void addAll(List<T> another) {
-        for (T e : another.toArray()) {
+        for (T e : another) {
             this.add(e);
         }
     }

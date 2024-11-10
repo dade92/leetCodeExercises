@@ -122,6 +122,7 @@ class ListTest {
         );
         assertEquals(3, list.first());
         assertEquals(10, list.last());
+        assertEquals(4, list.getAt(2));
     }
 
     @Test
