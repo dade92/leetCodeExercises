@@ -80,7 +80,7 @@ public class List<T> implements Iterable<T> {
         }
     }
 
-    public void set(T element, int position) {
+    public T set(T element, int position) {
         if (position >= size) {
             throw new InvalidPositionException();
         }
@@ -93,7 +93,9 @@ public class List<T> implements Iterable<T> {
             index++;
         }
 
+        T oldValue = temp.val;
         temp.val = element;
+        return oldValue;
     }
 
     public void removeElement(T val) {
