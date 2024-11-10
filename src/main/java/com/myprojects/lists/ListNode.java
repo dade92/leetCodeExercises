@@ -2,7 +2,7 @@ package com.myprojects.lists;
 
 import java.util.Objects;
 
-public final class ListNode<T> {
+public class ListNode<T> {
     public T val;
     public ListNode<T> next;
 
