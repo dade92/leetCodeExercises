@@ -89,4 +89,9 @@ public class QueueTest {
             i++;
         }
     }
+
+    @Test
+    void stringRepresentation() {
+        assertEquals("[5,8,10]", queue.toString());
+    }
 }

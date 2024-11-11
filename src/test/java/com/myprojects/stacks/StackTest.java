@@ -81,4 +81,9 @@ public class StackTest {
         assertNotEquals(stack, notEqual);
         assertNotEquals(stack, notEqual2);
     }
+
+    @Test
+    void stringRepresentation() {
+        assertEquals("[6,23,52]", stack.toString());
+    }
 }

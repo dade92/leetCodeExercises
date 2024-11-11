@@ -106,7 +106,7 @@ class SetTest {
     @Test
     void stringRepresentation() {
         assertEquals(
-            "[ Paola,Davide,Sergio ]",
+            "[Paola,Davide,Sergio]",
             set.toString()
         );
     }

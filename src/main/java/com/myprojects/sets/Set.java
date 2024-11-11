@@ -75,7 +75,7 @@ public class Set<V> implements Iterable<V> {
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner(",", "[ ", " ]");
+        StringJoiner sj = new StringJoiner(",", "[", "]");
 
         for (V value : hashTable.keys()) {
             sj.add(value.toString());
