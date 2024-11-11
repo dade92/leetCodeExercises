@@ -2,7 +2,7 @@ package com.myprojects.tries;
 
 import com.myprojects.lists.List;
 
-class Trie {
+public class Trie {
     public static final int NUM_OF_SYMBOLS = 26;
     private static final char OFFSET = 'a';
 
