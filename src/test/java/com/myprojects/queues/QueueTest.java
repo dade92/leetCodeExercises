@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class QueueTest {
 
@@ -59,7 +61,7 @@ public class QueueTest {
         queue.addAll(new List<>(1, 2, 3));
 
         assertArrayEquals(
-            new Integer[] { 5, 8, 10, 1, 2, 3},
+            new Integer[]{5, 8, 10, 1, 2, 3},
             queue.toArray()
         );
     }
