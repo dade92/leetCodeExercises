@@ -27,7 +27,17 @@ public class List<T> implements Iterable<T> {
     }
 
     public void add(T val) {
-        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.enqueue(head, tail, val);
+        ListNode<T> newNode = new ListNode<>(val);
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        Pair<ListNode<T>, ListNode<T>> outcome = Pair.of(head, tail);
         movePointers(outcome);
         size++;
     }
@@ -76,7 +86,14 @@ public class List<T> implements Iterable<T> {
         } else if (position == size - 1) {
             return tail.val;
         } else {
-            return ListUtils.getAt(head, position);
+            int index = 0;
+            ListNode<T> current = head;
+            while (index < position) {
+                current = current.next;
+                index++;
+            }
+
+            return current.val;
         }
     }
 
@@ -219,9 +236,9 @@ public class List<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        StringJoiner sj = new StringJoiner(",", "[ ", " ]");
+        StringJoiner sj = new StringJoiner(",", "[", "]");
 
-        for (T element : toArray()) {
+        for (T element : this) {
             sj.add(element.toString());
         }
 
