@@ -26,7 +26,7 @@ public class Stack<T> implements Iterable<T> {
     }
 
     public void addAll(List<T> elements) {
-        for (T e : elements.toArray()) {
+        for (T e : elements) {
             push(e);
         }
     }
