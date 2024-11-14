@@ -1,6 +1,7 @@
 package com.myprojects.bloomfilter;
 
-import java.util.BitSet;
+import com.myprojects.bitsets.BitSet;
+
 import java.util.function.Function;
 
 public class BloomFilter<T> {
