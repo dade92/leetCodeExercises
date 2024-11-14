@@ -14,7 +14,7 @@ class BloomFilterTest {
 
     @BeforeEach
     void setUp() {
-        Function<String, Integer> hash1 = s -> s.hashCode();
+        Function<String, Integer> hash1 = String::hashCode;
         Function<String, Integer> hash2 = s -> s.getBytes(StandardCharsets.UTF_8).length;
 
         bloomFilter = new BloomFilter<>(1000, 3, hash1, hash2);
