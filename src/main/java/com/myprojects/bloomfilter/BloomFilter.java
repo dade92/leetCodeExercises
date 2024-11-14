@@ -10,7 +10,12 @@ public class BloomFilter<T> {
     private final Function<T, Integer> hashFunction1;
     private final Function<T, Integer> hashFunction2;
 
-    public BloomFilter(int size, int hashCount, Function<T, Integer> hashFunction1, Function<T, Integer> hashFunction2) {
+    public BloomFilter(
+        int size,
+        int hashCount,
+        Function<T, Integer> hashFunction1,
+        Function<T, Integer> hashFunction2
+    ) {
         this.size = size;
         this.hashCount = hashCount;
         this.hashFunction1 = hashFunction1;
