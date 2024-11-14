@@ -32,17 +32,10 @@ public class BitSet {
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("", "[", "]");
-        for (int i = 0; i < size; i++) {
+        for (int i = size - 1; i >= 0; i--) {
             sj.add(get(i) ? "1" : "0");
         }
         return sj.toString();
-    }
-
-    public void printBits() {
-        for (int i = 0; i < size; i++) {
-            System.out.print(get(i) ? "1" : "0");
-        }
-        System.out.println();
     }
 }
 

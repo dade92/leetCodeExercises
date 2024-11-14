@@ -19,6 +19,6 @@ class BitSetTest {
     void stringRepresentation() {
         bitSet.set(3);
 
-        Assertions.assertEquals("[0001000000]", bitSet.toString());
+        Assertions.assertEquals("[0000001000]", bitSet.toString());
     }
 }
