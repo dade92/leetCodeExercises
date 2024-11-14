@@ -1,8 +1,11 @@
 package com.myprojects.bitsets;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.StringJoiner;
 
-public class BitSet {
+public class BitSet implements Iterable<Integer> {
     private final int[] bitArray;
     private final int size;
 
@@ -29,6 +32,37 @@ public class BitSet {
         return (bitArray[arrayIndex] & (1 << bitPosition)) != 0;
     }
 
+    public void flip(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        int arrayIndex = index / 32;
+        int bitPosition = index % 32;
+        bitArray[arrayIndex] &= ~(1 << bitPosition);
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            private int index = size - 1;
+
+            @Override
+            public boolean hasNext() {
+                return index >= 0;
+            }
+
+            @Override
+            public Integer next() {
+                Integer bit = get(index) ? 1 : 0;
+                index--;
+                return bit;
+            }
+        };
+    }
+
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("", "[", "]");
@@ -36,6 +70,19 @@ public class BitSet {
             sj.add(get(i) ? "1" : "0");
         }
         return sj.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BitSet integers = (BitSet) o;
+        return size == integers.size && Objects.deepEquals(bitArray, integers.bitArray);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Arrays.hashCode(bitArray), size);
     }
 }
 
