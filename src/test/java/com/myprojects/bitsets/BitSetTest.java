@@ -25,6 +25,9 @@ class BitSetTest {
 
         bitSet.flip(3);
         assertFalse(bitSet.get(3));
+
+        bitSet.flip(2);
+        assertTrue(bitSet.get(2));
     }
 
     @Test

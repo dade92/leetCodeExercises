@@ -11,15 +11,16 @@ public class BitSet implements Iterable<Integer> {
 
     public BitSet(int size) {
         this.size = size;
-        bitArray = new int[(size + 31) / 32];
+        bitArray = new int[getArrayIndex((size + 31))];
     }
 
     public void set(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        int arrayIndex = index / 32;
-        int bitPosition = index % 32;
+
+        int arrayIndex = getArrayIndex(index);
+        int bitPosition = getBitPosition(index);
         bitArray[arrayIndex] |= (1 << bitPosition);
     }
 
@@ -27,8 +28,9 @@ public class BitSet implements Iterable<Integer> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        int arrayIndex = index / 32;
-        int bitPosition = index % 32;
+
+        int arrayIndex = getArrayIndex(index);
+        int bitPosition = getBitPosition(index);
         return (bitArray[arrayIndex] & (1 << bitPosition)) != 0;
     }
 
@@ -36,9 +38,10 @@ public class BitSet implements Iterable<Integer> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        int arrayIndex = index / 32;
-        int bitPosition = index % 32;
-        bitArray[arrayIndex] &= ~(1 << bitPosition);
+
+        int arrayIndex = getArrayIndex(index);
+        int bitPosition = getBitPosition(index);
+        bitArray[arrayIndex] ^= (1 << bitPosition);
     }
 
     public int size() {
@@ -83,6 +86,14 @@ public class BitSet implements Iterable<Integer> {
     @Override
     public int hashCode() {
         return Objects.hash(Arrays.hashCode(bitArray), size);
+    }
+
+    private int getBitPosition(int index) {
+        return index % 32;
+    }
+
+    private int getArrayIndex(int index) {
+        return index / 32;
     }
 }
 
