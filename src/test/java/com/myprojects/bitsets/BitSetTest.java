@@ -110,6 +110,48 @@ class BitSetTest {
     }
 
     @Test
+    void or() {
+        bitSet.set(1);
+        bitSet.set(5);
+        // 0000100010
+        BitSet another = new BitSet(10);
+        another.set(5);
+        another.set(8);
+        // 0100100000
+        bitSet.or(another);
+
+        assertEquals("[0100100010]", bitSet.toString());
+    }
+
+    @Test
+    void xor() {
+        bitSet.set(1);
+        bitSet.set(5);
+        // 0000100010
+        BitSet another = new BitSet(10);
+        another.set(5);
+        another.set(8);
+        // 0100100000
+        bitSet.xor(another);
+
+        assertEquals("[0100000010]", bitSet.toString());
+    }
+
+    @Test
+    void and() {
+        bitSet.set(1);
+        bitSet.set(5);
+        // 0000100010
+        BitSet another = new BitSet(10);
+        another.set(5);
+        another.set(8);
+        // 0100100000
+        bitSet.and(another);
+
+        assertEquals("[0000100000]", bitSet.toString());
+    }
+
+    @Test
     void size() {
         assertEquals(10, bitSet.size());
     }

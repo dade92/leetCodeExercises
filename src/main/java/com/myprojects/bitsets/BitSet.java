@@ -69,6 +69,34 @@ public class BitSet implements Iterable<Integer> {
         return size;
     }
 
+    public void or(BitSet bitSet) {
+        for (int i = 0; i < size; i++) {
+            int arrayIndex = getWordPosition(i);
+            int bitPosition = getBitPosition(i);
+            int other = bitSet.get(i) ? 1 : 0;
+            bitArray[arrayIndex] |= (other << bitPosition);
+        }
+    }
+
+    public void xor(BitSet bitSet) {
+        for (int i = 0; i < size; i++) {
+            int arrayIndex = getWordPosition(i);
+            int bitPosition = getBitPosition(i);
+            int other = bitSet.get(i) ? 1 : 0;
+            bitArray[arrayIndex] ^= (other << bitPosition);
+        }
+    }
+
+    public void and(BitSet bitSet) {
+        for (int i = 0; i < size; i++) {
+            int arrayIndex = getWordPosition(i);
+            int bitPosition = getBitPosition(i);
+            int other = bitSet.get(i) ? 1 : 0;
+            int mask = Integer.MAX_VALUE ^ (other << bitPosition);
+            bitArray[arrayIndex] &= mask;
+        }
+    }
+
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
