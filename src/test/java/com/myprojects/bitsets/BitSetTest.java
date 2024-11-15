@@ -28,6 +28,7 @@ class BitSetTest {
     void getASetValue() {
         bitSet.set(5);
         assertTrue(bitSet.get(5));
+        assertFalse(bitSet.get(4));
     }
 
     @Test
@@ -59,7 +60,7 @@ class BitSetTest {
         bitSet.set(5);
         bitSet.set(7);
         bitSet.set(0);
-        int[] expectedResult = new int[]{0, 0, 1, 0, 1, 0, 0, 0, 0, 1};
+        int[] expectedResult = new int[]{1, 0, 0, 0, 0, 1, 0, 1, 0, 0};
         Iterator<Integer> iterator = bitSet.iterator();
         int index = 0;
 
@@ -70,11 +71,11 @@ class BitSetTest {
     }
 
     @Test
-    void iterationWithFor() {
+    void iterationWithEnhancedFor() {
         bitSet.set(5);
         bitSet.set(9);
         bitSet.set(0);
-        int[] expectedResult = new int[]{1, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+        int[] expectedResult = new int[]{1, 0, 0, 0, 0, 1, 0, 0, 0, 1};
         int index = 0;
 
         for (int i : bitSet) {
@@ -92,21 +93,6 @@ class BitSetTest {
     }
 
     @Test
-    void clear() {
-        BitSet another = new BitSet(10);
-        another.set(9);
-        another.set(8);
-        another.set(2);
-        another.set(3);
-
-        another.clear();
-
-        for (int i : another) {
-            assertEquals(0, i);
-        }
-    }
-
-    @Test
     void isEmpty() {
         assertTrue(bitSet.isEmpty());
         bitSet.set(5);
@@ -120,6 +106,32 @@ class BitSetTest {
         assertEquals(1, bitSet.cardinality());
         bitSet.set(7);
         assertEquals(2, bitSet.cardinality());
+    }
+
+    @Test
+    void size() {
+        assertEquals(10, bitSet.size());
+    }
+
+    @Test
+    void length() {
+        bitSet.set(8);
+
+        assertEquals(9, bitSet.length());
+    }
+
+    @Test
+    void clear() {
+        bitSet.set(9);
+        bitSet.set(8);
+        bitSet.set(2);
+        bitSet.set(3);
+
+        bitSet.clear();
+
+        for (int i : bitSet) {
+            assertEquals(0, i);
+        }
     }
 
     @Test
@@ -176,11 +188,6 @@ class BitSetTest {
 
         assertTrue(bitSet.intersects(another));
         assertFalse(bitSet.intersects(third));
-    }
-
-    @Test
-    void size() {
-        assertEquals(10, bitSet.size());
     }
 
     @Test

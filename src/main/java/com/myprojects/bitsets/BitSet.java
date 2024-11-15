@@ -83,6 +83,16 @@ public class BitSet implements Iterable<Integer> {
         return size;
     }
 
+    public int length() {
+        int length = 0;
+        int index = 0;
+        for (int i : this) {
+            if (i == 1) length = index + 1;
+            index++;
+        }
+        return length;
+    }
+
     public void or(BitSet bitSet) {
         for (int i = 0; i < size; i++) {
             int arrayIndex = getWordPosition(i);
@@ -126,17 +136,17 @@ public class BitSet implements Iterable<Integer> {
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
-            private int index = size - 1;
+            private int index = 0;
 
             @Override
             public boolean hasNext() {
-                return index >= 0;
+                return index < size;
             }
 
             @Override
             public Integer next() {
                 Integer bit = get(index) ? 1 : 0;
-                index--;
+                index++;
                 return bit;
             }
         };
@@ -145,8 +155,8 @@ public class BitSet implements Iterable<Integer> {
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("", "[", "]");
-        for (Integer i : this) {
-            sj.add(i.toString());
+        for (int i = size - 1; i >= 0; i--) {
+            sj.add(get(i) ? "1" : "0");
         }
         return sj.toString();
     }
