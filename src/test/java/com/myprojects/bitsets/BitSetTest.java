@@ -79,6 +79,37 @@ class BitSetTest {
     }
 
     @Test
+    void clear() {
+        BitSet another = new BitSet(10);
+        another.set(9);
+        another.set(8);
+        another.set(2);
+        another.set(3);
+
+        another.clear();
+
+        for(int i : another) {
+            assertEquals(0, i);
+        }
+    }
+
+    @Test
+    void isEmpty() {
+        assertTrue(bitSet.isEmpty());
+        bitSet.set(5);
+        assertFalse(bitSet.isEmpty());
+    }
+
+    @Test
+    void cardinality() {
+        assertEquals(0, bitSet.cardinality());
+        bitSet.set(5);
+        assertEquals(1, bitSet.cardinality());
+        bitSet.set(7);
+        assertEquals(2, bitSet.cardinality());
+    }
+
+    @Test
     void size() {
         assertEquals(10, bitSet.size());
     }

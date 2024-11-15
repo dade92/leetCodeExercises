@@ -1,7 +1,5 @@
 package com.myprojects.bitsets;
 
-import com.myprojects.lists.List;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
@@ -44,6 +42,27 @@ public class BitSet implements Iterable<Integer> {
         int arrayIndex = getWordPosition(index);
         int bitPosition = getBitPosition(index);
         bitArray[arrayIndex] ^= (1 << bitPosition);
+    }
+
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            bitArray[getWordPosition(i)] &= 0;
+        }
+    }
+
+    public boolean isEmpty() {
+        for (int i : this) {
+            if (i == 1) return false;
+        }
+        return true;
+    }
+
+    public int cardinality() {
+        int cardinality = 0;
+        for (int i : this) {
+            cardinality += i;
+        }
+        return cardinality;
     }
 
     public int size() {
