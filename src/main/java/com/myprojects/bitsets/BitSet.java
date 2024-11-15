@@ -91,9 +91,8 @@ public class BitSet implements Iterable<Integer> {
         for (int i = 0; i < size; i++) {
             int arrayIndex = getWordPosition(i);
             int bitPosition = getBitPosition(i);
-            int other = bitSet.get(i) ? 1 : 0;
-            int mask = Integer.MAX_VALUE ^ (other << bitPosition);
-            bitArray[arrayIndex] &= mask;
+            int other = bitSet.get(i) ? 0 : 1;
+            bitArray[arrayIndex] &= ~(other << bitPosition);
         }
     }
 
