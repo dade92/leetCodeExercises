@@ -96,6 +96,15 @@ public class BitSet implements Iterable<Integer> {
         }
     }
 
+    public boolean intersects(BitSet bitSet) {
+        int index = 0;
+        for (int i : this) {
+            if (i == 1 && bitSet.get(index)) return true;
+            index++;
+        }
+        return false;
+    }
+
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {

@@ -152,6 +152,20 @@ class BitSetTest {
     }
 
     @Test
+    void intersects() {
+        bitSet.set(1);
+        bitSet.set(5);
+        // 0000100010
+        BitSet another = new BitSet(10);
+        another.set(5);
+        another.set(8);
+        BitSet third = new BitSet(10);
+
+        assertTrue(bitSet.intersects(another));
+        assertFalse(bitSet.intersects(third));
+    }
+
+    @Test
     void size() {
         assertEquals(10, bitSet.size());
     }
