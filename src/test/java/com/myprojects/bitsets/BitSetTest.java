@@ -31,6 +31,18 @@ class BitSetTest {
     }
 
     @Test
+    void setRange() {
+        bitSet.set(5, 8);
+
+        assertTrue(bitSet.get(5));
+        assertTrue(bitSet.get(6));
+        assertTrue(bitSet.get(7));
+        assertTrue(bitSet.get(8));
+
+        assertEquals("[0111100000]", bitSet.toString());
+    }
+
+    @Test
     void flip() {
         bitSet.set(3);
         assertTrue(bitSet.get(3));

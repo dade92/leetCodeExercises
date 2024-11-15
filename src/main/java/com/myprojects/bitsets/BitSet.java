@@ -25,6 +25,19 @@ public class BitSet implements Iterable<Integer> {
         bitArray[arrayIndex] |= (1 << bitPosition);
     }
 
+    public void set(int from, int to) {
+        if (from < 0 || from >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        if (to < from || to >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        for (int i = from; i <= to; i++) {
+            this.set(i);
+        }
+    }
+
     public boolean get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
