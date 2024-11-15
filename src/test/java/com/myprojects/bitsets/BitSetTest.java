@@ -13,6 +13,17 @@ class BitSetTest {
     private final BitSet bitSet = new BitSet(10);
 
     @Test
+    void initializedCorrectly() {
+        int counter = 0;
+        for (int i : bitSet) {
+            assertEquals(i, 0);
+            counter++;
+        }
+
+        assertEquals(10, counter);
+    }
+
+    @Test
     void getASetValue() {
         bitSet.set(5);
         assertTrue(bitSet.get(5));
@@ -35,7 +46,7 @@ class BitSetTest {
         bitSet.set(5);
         bitSet.set(7);
         bitSet.set(0);
-        int[] expectedResult = new int[]{0,0,1,0,1,0,0,0,0,1};
+        int[] expectedResult = new int[]{0, 0, 1, 0, 1, 0, 0, 0, 0, 1};
         Iterator<Integer> iterator = bitSet.iterator();
         int index = 0;
 
@@ -46,10 +57,25 @@ class BitSetTest {
     }
 
     @Test
+    void iterationWithFor() {
+        bitSet.set(5);
+        bitSet.set(9);
+        bitSet.set(0);
+        int[] expectedResult = new int[]{1, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+        int index = 0;
+
+        for (int i : bitSet) {
+            assertEquals(i, expectedResult[index]);
+            index++;
+        }
+    }
+
+    @Test
     void stringRepresentation() {
         bitSet.set(3);
+        bitSet.set(5);
 
-        assertEquals("[0000001000]", bitSet.toString());
+        assertEquals("[0000101000]", bitSet.toString());
     }
 
     @Test
