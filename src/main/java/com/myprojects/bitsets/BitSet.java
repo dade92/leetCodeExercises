@@ -12,6 +12,7 @@ public class BitSet implements Iterable<Integer> {
     public BitSet(int size) {
         this.size = size;
         bitArray = new int[getWordPosition((size + 31))];
+        Arrays.fill(bitArray, 0);
     }
 
     public void set(int index) {
