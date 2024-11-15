@@ -36,10 +36,6 @@ class BloomFilterTest {
         bloomFilter.add("Test");
 
         assertFalse(bloomFilter.mightContain("NotInFilter"));
-
-        // This might be a false positive, so we don't use an assertion
-        System.out.println("False positive test: mightContain('NotInFilter') = "
-            + bloomFilter.mightContain("NotInFilter"));
     }
 
     @Test
