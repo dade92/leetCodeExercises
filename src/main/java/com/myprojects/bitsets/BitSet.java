@@ -1,5 +1,7 @@
 package com.myprojects.bitsets;
 
+import com.myprojects.lists.List;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
@@ -11,7 +13,7 @@ public class BitSet implements Iterable<Integer> {
 
     public BitSet(int size) {
         this.size = size;
-        bitArray = new int[getArrayIndex((size + 31))];
+        bitArray = new int[getWordPosition((size + 31))];
     }
 
     public void set(int index) {
@@ -19,7 +21,7 @@ public class BitSet implements Iterable<Integer> {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
 
-        int arrayIndex = getArrayIndex(index);
+        int arrayIndex = getWordPosition(index);
         int bitPosition = getBitPosition(index);
         bitArray[arrayIndex] |= (1 << bitPosition);
     }
@@ -29,7 +31,7 @@ public class BitSet implements Iterable<Integer> {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
 
-        int arrayIndex = getArrayIndex(index);
+        int arrayIndex = getWordPosition(index);
         int bitPosition = getBitPosition(index);
         return (bitArray[arrayIndex] & (1 << bitPosition)) != 0;
     }
@@ -39,7 +41,7 @@ public class BitSet implements Iterable<Integer> {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
 
-        int arrayIndex = getArrayIndex(index);
+        int arrayIndex = getWordPosition(index);
         int bitPosition = getBitPosition(index);
         bitArray[arrayIndex] ^= (1 << bitPosition);
     }
@@ -48,6 +50,7 @@ public class BitSet implements Iterable<Integer> {
         return size;
     }
 
+    @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
             private int index = size - 1;
@@ -69,8 +72,8 @@ public class BitSet implements Iterable<Integer> {
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("", "[", "]");
-        for (int i = size - 1; i >= 0; i--) {
-            sj.add(get(i) ? "1" : "0");
+        for (Integer i : this) {
+            sj.add(i.toString());
         }
         return sj.toString();
     }
@@ -79,8 +82,8 @@ public class BitSet implements Iterable<Integer> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BitSet integers = (BitSet) o;
-        return size == integers.size && Objects.deepEquals(bitArray, integers.bitArray);
+        BitSet other = (BitSet) o;
+        return size == other.size && Objects.deepEquals(bitArray, other.bitArray);
     }
 
     @Override
@@ -92,7 +95,7 @@ public class BitSet implements Iterable<Integer> {
         return index % 32;
     }
 
-    private int getArrayIndex(int index) {
+    private int getWordPosition(int index) {
         return index / 32;
     }
 }
