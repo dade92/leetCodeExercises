@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -88,7 +89,7 @@ class BitSetTest {
 
         another.clear();
 
-        for(int i : another) {
+        for (int i : another) {
             assertEquals(0, i);
         }
     }
@@ -177,5 +178,16 @@ class BitSetTest {
         bitSet.set(3);
 
         assertEquals(anotherBitSet, bitSet);
+    }
+
+    @Test
+    void toArray() {
+        bitSet.set(0);
+        bitSet.set(8);
+
+        assertArrayEquals(
+            new int[]{257},
+            bitSet.toArray()
+        );
     }
 }

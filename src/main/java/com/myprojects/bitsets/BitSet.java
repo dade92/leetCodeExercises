@@ -105,6 +105,10 @@ public class BitSet implements Iterable<Integer> {
         return false;
     }
 
+    public int[] toArray() {
+        return bitArray;
+    }
+
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
