@@ -1,6 +1,7 @@
 package com.myprojects.loadbalancer;
 
-import java.util.List;
+
+import com.myprojects.lists.List;
 
 public class RoundRobinLoadBalancer implements LoadBalancer {
 
@@ -15,6 +16,6 @@ public class RoundRobinLoadBalancer implements LoadBalancer {
     @Override
     public String getNextServer() {
         currentIndex = (currentIndex + 1) % servers.size();
-        return servers.get(currentIndex);
+        return servers.getAt(currentIndex);
     }
 }

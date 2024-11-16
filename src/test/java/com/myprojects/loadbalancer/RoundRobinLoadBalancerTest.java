@@ -1,24 +1,20 @@
 package com.myprojects.loadbalancer;
 
-import org.junit.jupiter.api.Assertions;
+import com.myprojects.lists.List;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RoundRobinLoadBalancerTest {
 
-    private final List<String> servers = Arrays.asList("Server1", "Server2", "Server3");
+    private final List<String> servers = new List<>("Server1", "Server2", "Server3");
 
     private final RoundRobinLoadBalancer roundRobinLoadBalancer = new RoundRobinLoadBalancer(servers);
 
     @Test
     void getNextServer() {
-        List<String> actual = new ArrayList<>();
-        List<String> expected = Arrays.asList(
+        List<String> actual = new List<>();
+        List<String> expected = new List<>(
             "Server1",
             "Server2",
             "Server3",
