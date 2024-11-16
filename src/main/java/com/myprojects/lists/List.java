@@ -36,9 +36,6 @@ public class List<T> implements Iterable<T> {
             tail.next = newNode;
             tail = newNode;
         }
-
-        Pair<ListNode<T>, ListNode<T>> outcome = Pair.of(head, tail);
-        movePointers(outcome);
         size++;
     }
 
@@ -58,8 +55,16 @@ public class List<T> implements Iterable<T> {
     }
 
     public void addFirst(T val) {
-        Pair<ListNode<T>, ListNode<T>> outcome = ListUtils.push(head, tail, val);
-        movePointers(outcome);
+        ListNode<T> newNode = new ListNode<>(val);
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+
         size++;
     }
 

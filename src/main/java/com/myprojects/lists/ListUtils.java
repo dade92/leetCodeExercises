@@ -29,20 +29,6 @@ final class ListUtils {
         return Pair.of(head, tail);
     }
 
-    public static <T> Pair<ListNode<T>, ListNode<T>> push(ListNode<T> head, ListNode<T> tail, T val) {
-        ListNode<T> newNode = new ListNode<>(val);
-
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            newNode.next = head;
-            head = newNode;
-        }
-
-        return Pair.of(head, tail);
-    }
-
     public static <T>  ListNode<T> search(ListNode<T> current, T val) {
         while (current != null) {
             if (current.val.equals(val)) {
